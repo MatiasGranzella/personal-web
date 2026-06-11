@@ -10,17 +10,18 @@
     html, body { width: 1200px; height: 630px; }
     body {
       font-family: "Inter", system-ui, sans-serif;
-      background: #0E0B2E;
-      color: #fff;
+      background: #faf9f6;
+      color: #1a1a18;
       position: relative;
       overflow: hidden;
     }
-    .glow { position: absolute; border-radius: 50%; filter: blur(90px); }
-    .glow--teal { width: 560px; height: 560px; background: rgba(60,203,206,.28); top: -160px; left: -120px; }
-    .glow--purple { width: 620px; height: 620px; background: rgba(113,93,242,.32); bottom: -220px; right: -140px; }
+    /* orbs verdes difuminados, igual que el hero */
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); }
+    .orb--1 { width: 540px; height: 540px; background: rgba(15,157,111,.16); top: -180px; left: -120px; }
+    .orb--2 { width: 600px; height: 600px; background: rgba(15,157,111,.08); bottom: -240px; right: -160px; }
     .frame {
       position: absolute; inset: 0;
-      border: 1px solid rgba(255,255,255,.08);
+      border: 1px solid rgba(15,157,111,.16);
       margin: 22px; border-radius: 28px;
     }
     .wrap {
@@ -34,42 +35,39 @@
     .badge {
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 18px; font-weight: 600; letter-spacing: .02em;
-      color: #3CCBCE;
-      background: rgba(60,203,206,.12);
-      border: 1px solid rgba(60,203,206,.3);
+      color: #0F9D6F;
+      background: rgba(15,157,111,.12);
+      border: 1px solid rgba(15,157,111,.28);
       padding: 10px 20px; border-radius: 100px;
       margin-bottom: 30px;
     }
-    .badge::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #3CCBCE; }
+    .badge::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #0F9D6F; }
     .name {
       font-family: "Fraunces", serif;
-      font-size: 78px; font-weight: 600; line-height: .98;
+      font-size: 82px; font-weight: 600; line-height: .96;
       letter-spacing: -.02em;
+      color: #1a1a18;
       margin-bottom: 22px;
     }
     .headline {
       font-size: 30px; font-weight: 600; line-height: 1.25;
+      color: #1a1a18;
       margin-bottom: 16px;
     }
-    .headline .teal { color: #3CCBCE; }
-    .headline .purple { color: #9B8CFF; }
-    .tagline { font-size: 21px; color: rgba(255,255,255,.6); line-height: 1.4; max-width: 22ch; margin-bottom: 40px; }
-    .foot { display: flex; align-items: center; gap: 22px; font-size: 19px; font-weight: 600; color: rgba(255,255,255,.85); }
-    .foot .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.35); }
-    .vesty-pill {
-      background: linear-gradient(100deg, #3CCBCE, #715DF2);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-    }
+    .headline .accent { color: #0F9D6F; }
+    .tagline { font-size: 21px; color: #5b5a54; line-height: 1.4; max-width: 22ch; margin-bottom: 40px; }
+    .foot { display: flex; align-items: center; gap: 22px; font-size: 19px; font-weight: 600; color: #1a1a18; }
+    .foot .dot { width: 5px; height: 5px; border-radius: 50%; background: #8d8b83; }
+    .foot .vesty { color: #0F9D6F; }
+    .foot .muted { color: #5b5a54; }
 
     .right { flex-shrink: 0; }
     .photo-wrap {
       width: 320px; height: 380px;
       border-radius: 28px;
       padding: 4px;
-      background: linear-gradient(140deg, #3CCBCE, #715DF2);
-      box-shadow: 0 30px 80px rgba(113,93,242,.45);
+      background: linear-gradient(140deg, #0F9D6F, rgba(15,157,111,.45));
+      box-shadow: 0 30px 80px rgba(15,157,111,.28);
     }
     .photo {
       width: 100%; height: 100%;
@@ -80,8 +78,8 @@
   </style>
 </head>
 <body>
-  <div class="glow glow--teal"></div>
-  <div class="glow glow--purple"></div>
+  <div class="orb orb--1"></div>
+  <div class="orb orb--2"></div>
   <div class="frame"></div>
 
   <div class="wrap">
@@ -89,13 +87,13 @@
       <span class="badge">Buenos Aires, Argentina</span>
       <div class="name">Matías<br/>Granzella</div>
       <div class="headline">
-        <span class="teal">AI Lead</span> @ Ualá · <span class="purple">Founder</span> de Vesty
+        <span class="accent">AI Lead</span> @ Ualá · <span class="accent">Founder</span> de Vesty
       </div>
       <div class="tagline">Construyo IA en producción — y la app que unifica tus inversiones.</div>
       <div class="foot">
-        <span class="vesty-pill">vestyapp.io</span>
+        <span class="vesty">vestyapp.io</span>
         <span class="dot"></span>
-        <span>in/matias-federico-granzella</span>
+        <span class="muted">in/matias-federico-granzella</span>
       </div>
     </div>
     <div class="right">
