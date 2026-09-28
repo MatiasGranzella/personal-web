@@ -267,7 +267,7 @@
       </div>
       <div class="cv__roles${multi ? " cv__roles--track" : ""}">
         ${g.roles.map((r) => `
-          <div class="cv__role">
+          <div class="cv__role${r.current ? " cv__role--now" : ""}">
             <div class="cv__role-title">${r.role}${r.current ? `<span class="cv__now">${U.current}</span>` : ""}</div>
             ${multi ? `<div class="cv__period">${r.period}</div>` : ""}
             <p class="cv__desc">${r.description}</p>
@@ -366,9 +366,18 @@
         n.style.setProperty("--d", Math.min(i, 5) * 0.08 + "s");
       })
     );
-    document.querySelectorAll(".cv__roles--track").forEach((t) =>
+    document.querySelectorAll(".cv__roles").forEach((t) =>
       t.querySelectorAll(".cv__role").forEach((r, i) => r.style.setProperty("--i", i))
     );
+    // Cada rol entra por su cuenta cuando llega a la pantalla
+    const roleIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("is-in");
+        roleIO.unobserve(e.target);
+      });
+    }, { threshold: 0.3, rootMargin: "0px 0px -10% 0px" });
+    document.querySelectorAll(".cv__role").forEach((r) => roleIO.observe(r));
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
@@ -431,7 +440,17 @@
   const progress = $("progress");
   const navLinks = [...document.querySelectorAll("[data-nav]")];
   const sections = navLinks.map((a) => document.querySelector(a.getAttribute("href")));
+  const tracks = [...document.querySelectorAll(".cv__roles--track")];
   const onScrollFx = () => {
+    // Línea verde del recorrido: se llena hasta la altura de lectura (60% de la pantalla)
+    const mark = innerHeight * 0.6;
+    tracks.forEach((t) => {
+      const r = t.getBoundingClientRect();
+      t.style.setProperty("--fill", Math.max(0, Math.min(1, (mark - r.top) / r.height)).toFixed(3));
+      t.querySelectorAll(".cv__role").forEach((role) =>
+        role.classList.toggle("is-passed", role.getBoundingClientRect().top + 8 < mark)
+      );
+    });
     const h = document.documentElement.scrollHeight - innerHeight;
     progress.style.setProperty("--p", h > 0 ? scrollY / h : 0);
     let active = -1;

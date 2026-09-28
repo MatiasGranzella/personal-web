@@ -740,10 +740,34 @@ p { text-wrap: pretty; }
 .feature:hover .i { transform: rotate(-8deg) scale(1.15); color: var(--accent-ink); }
 
 /* Línea de carrera que se dibuja al hacer scroll */
+/* Recorrido laboral: línea gris que se dibuja, línea verde que se llena con el scroll,
+   roles que entran de a uno y puntos que se encienden al pasarlos */
 .motion .cv__roles--track::before { transform: scaleY(0); transform-origin: top; transition: transform 1.4s var(--ease-out) .2s; }
 .motion .cv__roles--track.is-in::before { transform: scaleY(1); }
-.motion .cv__roles--track .cv__role::before { transform: scale(0); transition: transform .5s var(--ease-out); transition-delay: calc(.3s + var(--i, 0) * .25s); }
-.motion .cv__roles--track.is-in .cv__role::before { transform: scale(1); }
+.cv__roles--track::after {
+  content: ""; position: absolute; left: 3px; top: 9px; bottom: 9px;
+  width: 1px; background: var(--accent);
+  transform: scaleY(var(--fill, 0)); transform-origin: top;
+  transition: transform .25s linear;
+}
+.motion .cv__role {
+  opacity: 0; transform: translateX(-12px); filter: blur(4px);
+  transition: opacity .7s var(--ease-out), transform .7s var(--ease-out), filter .7s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * .12s);
+}
+.motion .cv__role.is-in { opacity: 1; transform: none; filter: none; }
+.cv__roles--track .cv__role::before { transition: transform .5s var(--ease-out), background-color .4s, border-color .4s, box-shadow .4s; }
+.motion .cv__roles--track .cv__role:not(.is-in)::before { transform: scale(0); }
+.cv__roles--track .cv__role.is-passed::before { background: var(--accent); border-color: var(--accent); }
+.cv__roles--track .cv__role--now::before { animation: nowPulse 2.4s var(--ease-out) infinite; }
+@keyframes nowPulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 9px transparent; }
+}
+.cv__role-title, .cv__period { transition: color .3s, transform .45s var(--ease-out); }
+.cv__role:hover .cv__role-title { color: var(--accent-ink); transform: translateX(4px); }
+.cv__role:hover .cv__period { color: var(--accent-ink); }
+.cv__roles--track .cv__role:hover::before { transform: scale(1.5); }
 
 /* Botones primarios: brillo que cruza al pasar el mouse */
 .btn--primary { position: relative; overflow: hidden; }
@@ -770,5 +794,7 @@ p { text-wrap: pretty; }
   .stack__track { width: auto; flex-wrap: wrap; justify-content: center; row-gap: 8px; }
   .stack__track > [aria-hidden="true"] { display: none; }
   .motion [data-reveal] { opacity: 1; transform: none; filter: none; }
+  .motion .cv__role { opacity: 1; transform: none; filter: none; }
+  .cv__roles--track::after { display: none; }
   .progress { display: none; }
 }

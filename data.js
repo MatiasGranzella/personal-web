@@ -13,7 +13,7 @@ window.PROFILE = {
      DATOS BÁSICOS
      ---------------------------------------------------------------------- */
   meta: {
-    siteTitle: "Matías Granzella — AI Lead @ Ualá · Founder de Vesty",
+    siteTitle: "Matías Granzella — AI Lead y desarrollador fullstack",
     siteDescription: "AI Lead en Ualá y desarrollador fullstack. Construyo sistemas a medida con IA en producción: web, backend, datos y LLMs. Founder de Vesty y Millo Manager.",
   },
 
@@ -225,14 +225,20 @@ window.PROFILE = {
       "enfocarme 100% en IA, así que construyo el sistema entero, no solo el prompt.",
     items: [
       {
-        period: "2024 — Hoy",
-        role: "AI Lead · Sr AI Engineer",
+        period: "2026 — Hoy",
+        role: "AI Lead",
         company: "Ualá",
         description:
-          "Coordino y desarrollo soluciones de Generative AI. Chatbot de Customer Experience con " +
-          "LLM + RAG (81% de accuracy) y un chatbot de Cobranzas que automatiza gestiones y deriva " +
-          "casos sensibles a un humano.",
+          "Lidero el desarrollo de soluciones de IA generativa para procesos y áreas críticas del negocio.",
         current: true,
+      },
+      {
+        period: "2024 — 2026",
+        role: "Sr AI Engineer",
+        company: "Ualá",
+        description:
+          "Chatbot de Customer Experience con LLM + RAG que clasifica consultas con 81% de accuracy, " +
+          "y un chatbot de Cobranzas que automatiza gestiones y deriva casos sensibles a un humano.",
       },
       {
         period: "2023 — 2024",
@@ -332,7 +338,7 @@ window.PROFILE = {
    ========================================================================== */
 window.PROFILE_EN = {
   meta: {
-    siteTitle: "Matías Granzella — AI Lead @ Ualá · Founder of Vesty",
+    siteTitle: "Matías Granzella — AI Lead and full-stack developer",
     siteDescription: "AI Lead at Ualá and full-stack developer. I build custom systems with AI in production: web, backend, data and LLMs. Founder of Vesty and Millo Manager.",
   },
   ui: {
@@ -461,10 +467,13 @@ window.PROFILE_EN = {
       "Engineering and Data Platform before focusing fully on AI, so I build the whole system, not just the prompt.",
     items: [
       {
-        period: "2024 — Now",
+        period: "2026 — Now",
+        description: "I lead the development of Generative AI solutions for critical business processes and areas.",
+      },
+      {
         description:
-          "I lead and build Generative AI solutions. A customer-experience chatbot with LLM + RAG " +
-          "(81% accuracy) and a collections chatbot that automates cases and hands sensitive ones to a human.",
+          "A customer-experience chatbot with LLM + RAG that classifies queries with 81% accuracy, " +
+          "and a collections chatbot that automates cases and hands sensitive ones to a human.",
       },
       {
         description:
