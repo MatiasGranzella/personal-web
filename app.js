@@ -3,7 +3,26 @@
    Normalmente no necesitás tocar esto. Editá data.js.
    ========================================================================== */
 (function () {
-  const D = window.PROFILE;
+  /* ---- Idioma: ?lang=en, o el último elegido. Español por defecto. ---- */
+  const deepMerge = (base, over) => {
+    if (Array.isArray(base) && Array.isArray(over)) return base.map((b, i) => (i in over ? deepMerge(b, over[i]) : b));
+    if (base && over && typeof base === "object" && typeof over === "object" && !Array.isArray(base)) {
+      const out = { ...base };
+      Object.keys(over).forEach((k) => { out[k] = k in base ? deepMerge(base[k], over[k]) : over[k]; });
+      return out;
+    }
+    return over === undefined ? base : over;
+  };
+  let lang = "es";
+  try {
+    const q = new URLSearchParams(location.search).get("lang");
+    lang = q || localStorage.getItem("lang") || "es";
+  } catch (e) {}
+  if (lang !== "en" || !window.PROFILE_EN) lang = "es";
+  const D = lang === "en" ? deepMerge(window.PROFILE, window.PROFILE_EN) : window.PROFILE;
+  const U = D.ui;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.lang = lang;
   const $ = (id) => document.getElementById(id);
   const el = (tag, cls, html) => {
     const n = document.createElement(tag);
@@ -11,379 +30,434 @@
     if (html != null) n.innerHTML = html;
     return n;
   };
-  const initials = (name) =>
-    name.split(" ").filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+  // "linkedin" en data.js apunta al link principal de LinkedIn
+  const resolve = (href) => (href === "linkedin" ? D.linkedin : href || "#");
+  const setLink = (a, href) => {
+    a.href = resolve(href);
+    if (a.href.startsWith("http")) { a.target = "_blank"; a.rel = "noopener"; }
+    return a;
+  };
+
+  /* ---- Íconos (SVG de línea, un solo trazo) ---- */
+  const ICONS = {
+    arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+    download: '<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
+    up: '<path d="M12 19V5M6 11l6-6 6 6"/>',
+    external: '<path d="M7 17 17 7M8 7h9v9"/>',
+    linkedin: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
+    x: '<path d="M4 4h4.5L20 20h-4.5zM20 4l-6.6 7.2M4 20l6.6-7.2"/>',
+    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    import: '<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',
+    currency: '<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
+    chart: '<path d="M4 20V4M4 20h16M8 15l4-4 3 3 5-6"/>',
+    assistant: '<path d="M12 3l1.8 4.6L18.5 9l-4.7 1.6L12 15l-1.8-4.4L5.5 9l4.7-1.4z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/>',
+    cards: '<rect x="3" y="6" width="11" height="15" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v12"/>',
+    formation: '<circle cx="12" cy="5" r="1.6"/><circle cx="6" cy="11" r="1.6"/><circle cx="18" cy="11" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/>',
+    trophy: '<path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M10 17h4"/>',
+    whistle: '<circle cx="9" cy="14" r="5"/><path d="M13 11l8-4v4l-7 2M9 14h.01"/>',
+  };
+  const icon = (name, extra) =>
+    `<svg class="i${extra ? " " + extra : ""}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ""}</svg>`;
 
   /* ---- Color de acento + meta ---- */
+  // Solo en modo claro: el modo oscuro usa su propia variante más luminosa
   if (D.accent) {
-    const hex = D.accent.replace("#", "");
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    const root = document.documentElement.style;
-    root.setProperty("--accent", D.accent);
-    root.setProperty("--accent-soft", `rgba(${r},${g},${b},0.12)`);
-    root.setProperty("--accent-line", `rgba(${r},${g},${b},0.28)`);
+    const st = document.createElement("style");
+    st.textContent = `:root:not([data-theme="dark"]){--accent:${D.accent};--accent-ink:${D.accent};--accent-strong:${D.accent};--accent-display:${D.accent};--closing-bg:${D.accent}}`;
+    document.head.appendChild(st);
   }
   document.title = D.meta.siteTitle;
   const md = document.querySelector('meta[name="description"]');
   if (md) md.setAttribute("content", D.meta.siteDescription);
 
   /* ---- NAV ---- */
-  $("navBrand").textContent = initials(D.hero.name);
+  $("navHandle").textContent = D.hero.handle || D.hero.name;
+  document.querySelector(".skip").textContent = U.skip;
+  document.querySelectorAll("[data-nav]").forEach((a) => (a.textContent = U.nav[a.dataset.nav]));
+  $("navCta").textContent = U.navCta;
+  document.querySelector(".stack").setAttribute("aria-label", U.stackAria);
+  const langBtn = $("langToggle");
+  langBtn.textContent = U.switchTo;
+  langBtn.setAttribute("aria-label", U.switchLabel);
+  langBtn.addEventListener("click", () => {
+    const next = lang === "en" ? "es" : "en";
+    try { localStorage.setItem("lang", next); } catch (e) {}
+    const url = new URL(location.href);
+    url.searchParams.delete("lang");
+    location.href = url.pathname + url.search + location.hash;
+  });
+  setLink($("navCta"), "linkedin");
 
   /* ---- HERO ---- */
-  $("heroBadge").textContent = D.hero.headline + (D.hero.location ? " · " + D.hero.location : "");
-  $("heroName").textContent = D.hero.name;
-  $("heroTagline").textContent = D.hero.tagline;
-  $("heroIntro").textContent = D.hero.intro;
+  if (D.hero.photo) {
+    $("heroPhoto").src = D.hero.photo;
+  }
+  // La última línea del título va en verde
+  const tl = D.hero.title.split("\n");
+  const last = tl.pop();
+  $("heroTitle").textContent = tl.length ? tl.join("\n") + "\n" : "";
+  $("heroTitle").appendChild(el("span", "hero__accent")).textContent = last;
+  $("heroSub").textContent = D.hero.subtitle;
 
   const ctas = $("heroCtas");
   D.hero.ctas.forEach((c) => {
-    const a = el("a", "btn " + (c.primary ? "btn--primary" : "btn--ghost"));
-    a.href = c.href;
-    a.textContent = c.label;
+    const a = setLink(el("a", "btn " + (c.primary ? "btn--primary" : "btn--ghost")), c.href);
+    a.innerHTML = c.label + (c.primary ? "" : icon("arrow", "i--arrow"));
     ctas.appendChild(a);
   });
 
-  const stats = $("heroStats");
-  D.hero.stats.forEach((s) => {
-    const wrap = el("div", "hero__stat");
-    wrap.appendChild(el("div", "hero__stat-value", s.value));
-    wrap.appendChild(el("div", "hero__stat-label", s.label));
-    stats.appendChild(wrap);
+  if (D.hero.availability) {
+    $("heroStatus").innerHTML =
+      `<span class="status-dot" aria-hidden="true"></span><span>${D.hero.availability}` +
+      (D.hero.location ? `<span class="hero__loc"> · ${D.hero.location}</span>` : "") + "</span>";
+  }
+
+  /* ---- STACK (cinta; la lista se duplica para el loop continuo) ---- */
+  $("stackLabel").textContent = D.stack.label;
+  const fillTrack = (track, items, render) =>
+    [false, true].forEach((dupe) =>
+      items.forEach((t) => {
+        const li = render(t);
+        if (dupe) li.setAttribute("aria-hidden", "true");
+        track.appendChild(li);
+      })
+    );
+  fillTrack($("stackTrack"), D.stack.items, (t) => {
+    const li = el("li", "stack__item");
+    const name = t.name || t;
+    if (t.logo) {
+      const logo = el("span", "stack__logo" + (t.logoOnly ? " stack__logo--wide" : ""));
+      logo.style.setProperty("--logo", `url("assets/stack/${t.logo}.svg")`);
+      logo.setAttribute("aria-hidden", "true");
+      li.appendChild(logo);
+    } else {
+      // Sin logo público: monograma con la inicial, del mismo tamaño que los logos
+      const mono = el("span", "stack__mono", name[0].toUpperCase());
+      mono.setAttribute("aria-hidden", "true");
+      li.appendChild(mono);
+    }
+    if (t.logoOnly) li.setAttribute("aria-label", name);
+    else li.appendChild(document.createTextNode(name));
+    return li;
   });
+  fillTrack($("capsTrack"), D.stack.capabilities || [], (t) => el("li", "stack__cap", t));
 
-  const avatar = $("heroAvatar");
-  if (D.hero.photo) {
-    const img = el("img");
-    img.src = D.hero.photo;
-    img.alt = D.hero.name;
-    avatar.appendChild(img);
-  } else {
-    avatar.textContent = initials(D.hero.name);
-  }
-
-  /* ---- ABOUT ---- */
-  $("aboutTitle").textContent = D.about.title;
-  const aboutText = $("aboutText");
-  D.about.paragraphs.forEach((p) => aboutText.appendChild(el("p", null, p)));
-  const aboutTags = $("aboutTags");
-  D.about.highlights.forEach((t) => aboutTags.appendChild(el("span", "about__tag", t)));
-
-  /* ---- BANDA DE MÉTRICAS ---- */
-  if (D.metrics && D.metrics.items && D.metrics.items.length) {
-    const mg = $("metricsGrid");
-    D.metrics.items.forEach((it, i) => {
-      const item = el("div", "metric reveal");
-      item.style.transitionDelay = i * 0.08 + "s";
-      item.innerHTML = `<div class="metric__value">${it.value}</div><div class="metric__label">${it.label}</div>`;
-      mg.appendChild(item);
-    });
-  } else {
-    const mb = $("metrics");
-    if (mb) mb.style.display = "none";
-  }
-
-  /* ---- VESTY ---- */
-  const V = D.vesty;
-  $("vestyTitle").textContent = V.title;
-  $("vestySubtitle").textContent = V.subtitle;
-  $("vestyPitch").textContent = V.pitch;
-  $("vestyDesc").textContent = V.description;
-
-  // Problema → solución
-  if (V.problem) {
-    $("vestyProblem").innerHTML = `
-      <div class="vesty__problem-card vesty__problem-card--before">${V.problem.before}</div>
-      <div class="vesty__problem-arrow">→</div>
-      <div class="vesty__problem-card vesty__problem-card--after">${V.problem.after}</div>`;
-  }
-
-  const feats = $("vestyFeatures");
-  V.features.forEach((f, i) => {
-    const card = el("div", "vesty__feature");
-    card.style.transitionDelay = i * 0.08 + "s";
-    card.innerHTML = `
-      <div class="vesty__feature-icon">${f.icon}</div>
+  /* ---- SERVICIOS ---- */
+  const S = D.services;
+  $("servicesTitle").textContent = S.title;
+  $("servicesIntro").textContent = S.intro;
+  S.items.forEach((s) => {
+    const li = el("li", "service");
+    li.innerHTML = `
+      <h3 class="service__title">${s.title}</h3>
       <div>
-        <div class="vesty__feature-title">${f.title}</div>
-        <div class="vesty__feature-text">${f.text}</div>
+        <p class="service__text">${s.text}</p>
+        <div class="service__tags">${(s.tags || []).map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+      </div>
+      <div class="service__proof">
+        <div class="service__proof-value${/\d/.test(s.proofValue) ? "" : " service__proof-value--word"}">${s.proofValue}</div>
+        <p class="service__proof-text">${s.proof}</p>
       </div>`;
-    feats.appendChild(card);
+    $("servicesList").appendChild(li);
   });
 
-  // Trust + CTA
-  if (V.trust) $("vestyTrust").textContent = V.trust;
-  const vCta = $("vestyCta");
-  if (V.cta && V.cta.href) {
-    vCta.textContent = V.cta.label;
-    vCta.href = V.cta.href;
-    if (V.cta.href.startsWith("http")) { vCta.target = "_blank"; vCta.rel = "noopener"; }
-  } else {
-    vCta.style.display = "none";
-  }
+  /* ---- PROYECTOS ---- */
+  const P = D.projects;
+  $("projectsTitle").textContent = P.title;
+  $("projectsIntro").textContent = P.intro || "";
 
-  const vLinks = $("vestyLinks");
-  V.links.forEach((l) => {
-    const a = el("a", "vesty__link");
-    a.href = l.href;
-    if (l.href.startsWith("http")) { a.target = "_blank"; a.rel = "noopener"; }
-    a.innerHTML = (l.icon ? l.icon + " " : "") + l.label;
-    vLinks.appendChild(a);
-  });
+  const MOCKUPS = {
+    // Pantalla de la app Vesty
+    vesty: (m) => `
+      <div class="phone" role="img" aria-label="${U.vestyAria}"><div class="phone__screen">
+        <div class="app__top"><span class="app__hi">${m.greeting}</span><img class="app__logo" src="assets/vesty-logo.png" alt="" width="26" height="26" /></div>
+        <div class="app__label">${m.balanceLabel}</div>
+        <div class="app__value">${m.balanceValue}</div>
+        <span class="app__change">${m.change}</span>
+        <svg class="app__chart" viewBox="0 0 240 64" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="vfill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3CCBCE" stop-opacity=".35"/><stop offset="1" stop-color="#3CCBCE" stop-opacity="0"/>
+          </linearGradient></defs>
+          <path class="area" d="M0 52 L24 48 L48 50 L72 40 L96 43 L120 32 L144 36 L168 24 L192 27 L216 14 L240 8 L240 64 L0 64 Z"/>
+          <path d="M0 52 L24 48 L48 50 L72 40 L96 43 L120 32 L144 36 L168 24 L192 27 L216 14 L240 8"/>
+        </svg>
+        <div class="app__score">
+          <div class="app__score-num">${m.score}</div>
+          <div><strong>${m.scoreLabel}</strong><span>${U.vestyScoreHint}</span></div>
+        </div>
+        <div class="app__holdings">
+          ${(m.holdings || []).map((h) => `
+            <div class="app__holding"><b>${h.name}</b><em>${h.value}</em><div class="app__bar"><i style="width:${h.pct}%"></i></div></div>`).join("")}
+        </div>
+      </div></div>`,
+    // Carta de jugador de Millo Manager
+    millo: (m) => `
+      <div class="pcard" role="img" aria-label="${U.milloAria}">
+        <div class="pcard__top">
+          <div><div class="pcard__rating">${m.rating}</div><div class="pcard__pos">${m.position}</div></div>
+          <span class="pcard__rarity">${m.rarity}</span>
+        </div>
+        <div class="pcard__crest" aria-hidden="true">${m.photo ? `<img src="${m.photo}" alt="" width="128" height="128" loading="lazy" />` : '<span class="pcard__sash"></span>'}</div>
+        <div class="pcard__name">${m.name}</div>
+        <div class="pcard__years">${m.years}</div>
+        <div class="pcard__stats">
+          ${(m.stats || []).map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join("")}
+        </div>
+      </div>`,
+  };
 
-  // Phone screen — réplica simplificada de la app Vesty
-  const m = V.mockup;
-  $("phoneScreen").innerHTML = `
-    <div class="app__greeting">${m.greeting}</div>
-    <div class="app__card">
-      <div class="app__card-label">${m.balanceLabel}</div>
-      <div class="app__card-value">${m.balanceValue}</div>
-      <span class="app__card-change">${m.change}</span>
-    </div>
-    <div class="app__score">
-      <div class="app__ring" id="appRing" data-deg="${(m.score || 0) * 3.6}">
-        <div class="app__ring-inner">${m.score || ""}</div>
+  P.items.forEach((p) => {
+    const art = el("article", `product product--${p.kind}`);
+    art.id = p.kind;
+    const mark = p.logo ? `<img class="product__mark" src="${p.logo}" alt="" width="44" height="44" loading="lazy" />` : "";
+    const logo = p.kind === "millo"
+      ? `<span class="product__logo">${mark}Millo <em>Manager.</em></span>`
+      : `<span class="product__logo">${mark}${p.title}.</span>`;
+    art.innerHTML = `
+      <div class="product__copy">
+        <h3 class="product__pitch">${logo} <span>${p.pitch}</span></h3>
+        <p class="product__desc">${p.description}</p>
+        ${p.problem ? `<p class="product__problem"><s>${p.problem.before}</s>${icon("arrow")}<span>${p.problem.after}</span></p>` : ""}
+        <ul class="product__features">
+          ${p.features.map((f) => `<li class="feature">${icon(f.icon)}<span class="feature__title">${f.title}</span><span class="feature__text">${f.text}</span></li>`).join("")}
+        </ul>
+        <div class="product__ctas"></div>
+        ${p.trust ? `<p class="product__trust">${icon("lock")}<span>${p.trust}</span></p>` : ""}
       </div>
-      <div class="app__score-meta">
-        <strong>${m.scoreLabel || "Score"}</strong>
-        <span>Valuación · crecimiento · salud</span>
-      </div>
-    </div>
-    <div class="app__rows">
-      ${["📈", "🪙", "🏦"].map(
-        (ic) => `<div class="app__row"><div class="app__dot">${ic}</div>
-        <div class="app__row-text"><div class="app__row-line"></div><div class="app__row-line app__row-line--sm"></div></div></div>`
-      ).join("")}
-    </div>
-    <div class="app__brand">${m.appName}</div>`;
-
-  /* ---- EXPERIENCIA ---- */
-  $("expTitle").textContent = D.experience.title;
-  const tl = $("timeline");
-  D.experience.items.forEach((it, i) => {
-    const item = el("div", "timeline__item reveal" + (it.current ? " timeline__item--current" : ""));
-    item.style.transitionDelay = i * 0.06 + "s";
-    item.innerHTML = `
-      <div class="timeline__dot"></div>
-      <div class="timeline__period">${it.period}</div>
-      <div class="timeline__role-line">
-        <span class="timeline__role">${it.role}</span>
-        <span class="timeline__company">${it.company}</span>
-      </div>
-      <p class="timeline__desc">${it.description}</p>`;
-    tl.appendChild(item);
-  });
-
-  /* ---- EDUCACIÓN ---- */
-  if (D.education && D.education.items && D.education.items.length) {
-    $("eduTitle").textContent = D.education.title;
-    const eduList = $("eduList");
-    D.education.items.forEach((e, i) => {
-      const item = el("div", "edu__item reveal");
-      item.style.transitionDelay = i * 0.06 + "s";
-      item.innerHTML = `
-        <div class="edu__period">${e.period}</div>
-        <div class="edu__degree">${e.degree}</div>
-        <div class="edu__school">${e.school}</div>`;
-      eduList.appendChild(item);
-    });
-
-    // Chips: idiomas + certificaciones
-    const chips = $("eduChips");
-    [D.education.languages, D.education.certifications].forEach((grp) => {
-      if (!grp || !grp.items || !grp.items.length) return;
-      const block = el("div", "edu__chip-group");
-      block.appendChild(el("span", "edu__chip-label", grp.label));
-      const row = el("div", "edu__chip-row");
-      grp.items.forEach((t) => row.appendChild(el("span", "edu__chip", t)));
-      block.appendChild(row);
-      chips.appendChild(block);
-    });
-  } else {
-    const edu = $("edu");
-    if (edu) edu.style.display = "none";
-  }
-
-  /* ---- INTERESES ---- */
-  if (D.interests && D.interests.items && D.interests.items.length) {
-    $("interestsTitle").textContent = D.interests.title;
-    $("interestsIntro").textContent = D.interests.intro || "";
-    const ig = $("interestsGrid");
-    D.interests.items.forEach((it, i) => {
-      const card = el("div", "interest reveal");
-      card.style.transitionDelay = i * 0.05 + "s";
-      card.innerHTML = `
-        <div class="interest__icon">${it.icon}</div>
-        <div class="interest__label">${it.label}</div>
-        <div class="interest__text">${it.text || ""}</div>`;
-      ig.appendChild(card);
-    });
-  } else {
-    const sec = $("intereses");
-    if (sec) sec.style.display = "none";
-  }
-
-  /* ---- SKILLS ---- */
-  $("skillsTitle").textContent = D.skills.title;
-  const grid = $("skills-grid");
-  D.skills.groups.forEach((g, gi) => {
-    const group = el("div", "skill-group reveal");
-    group.style.transitionDelay = gi * 0.08 + "s";
-    let html = `<div class="skill-group__title">${g.category}</div>`;
-    g.items.forEach((s) => {
-      html += `<div class="skill">
-        <div class="skill__head"><span class="skill__name">${s.name}</span><span class="skill__pct">${s.level}%</span></div>
-        <div class="skill__bar"><div class="skill__fill" data-level="${s.level}"></div></div>
+      <div class="product__visual">
+        ${(MOCKUPS[p.kind] || (() => ""))(p.mockup || {})}
+        ${p.mockup && p.mockup.caption ? `<p class="product__caption">${p.mockup.caption}</p>` : ""}
       </div>`;
-    });
-    group.innerHTML = html;
-    grid.appendChild(group);
+    const ctas = art.querySelector(".product__ctas");
+    if (p.cta) {
+      const a = setLink(el("a", "btn btn--primary"), p.cta.href);
+      a.innerHTML = p.cta.label + icon("external");
+      ctas.appendChild(a);
+    }
+    if (p.secondary) {
+      const a = setLink(el("a", "btn btn--ghost"), p.secondary.href);
+      a.textContent = p.secondary.label;
+      ctas.appendChild(a);
+    }
+    $("projectsList").appendChild(art);
   });
 
-  /* ---- STACK ---- */
-  if (D.stack && D.stack.groups && D.stack.groups.length) {
-    $("stackTitle").textContent = D.stack.title;
-    const sg = $("stackGroups");
-    D.stack.groups.forEach((g, gi) => {
-      const block = el("div", "stack__group reveal");
-      block.style.transitionDelay = gi * 0.05 + "s";
-      const pills = g.items.map((t) => `<span class="stack__pill">${t}</span>`).join("");
-      block.innerHTML = `<div class="stack__group-title">${g.category}</div><div class="stack__pills">${pills}</div>`;
-      sg.appendChild(block);
+  /* ---- EXPERIENCIA (agrupa roles consecutivos de la misma empresa) ---- */
+  const E = D.experience;
+  $("expTitle").textContent = E.title;
+  $("expAbout").textContent = E.about || "";
+  const groups = [];
+  E.items.forEach((it) => {
+    const last = groups[groups.length - 1];
+    if (last && last.company === it.company) last.roles.push(it);
+    else groups.push({ company: it.company, roles: [it] });
+  });
+  const span = (roles) => {
+    const start = roles[roles.length - 1].period.split("—")[0].trim();
+    const end = roles[0].period.split("—").pop().trim();
+    return start === end ? start : `${start} — ${end}`;
+  };
+  groups.forEach((g) => {
+    const row = el("div", "cv__row");
+    const multi = g.roles.length > 1;
+    row.innerHTML = `
+      <div>
+        <div class="cv__org">${g.company}</div>
+        <div class="cv__org-meta">${span(g.roles)}${multi ? ` · ${g.roles.length} ${U.roles}` : ""}</div>
+      </div>
+      <div class="cv__roles${multi ? " cv__roles--track" : ""}">
+        ${g.roles.map((r) => `
+          <div class="cv__role">
+            <div class="cv__role-title">${r.role}${r.current ? `<span class="cv__now">${U.current}</span>` : ""}</div>
+            ${multi ? `<div class="cv__period">${r.period}</div>` : ""}
+            <p class="cv__desc">${r.description}</p>
+          </div>`).join("")}
+      </div>`;
+    $("cvList").appendChild(row);
+  });
+
+  /* ---- FORMACIÓN ---- */
+  const Ed = D.education;
+  if (Ed && Ed.items && Ed.items.length) {
+    $("eduTitle").textContent = Ed.title;
+    const list = $("eduList");
+    Ed.items.forEach((e) => {
+      const row = el("div", "cv__row");
+      row.innerHTML = `
+        <div><div class="cv__org-meta">${e.period}</div></div>
+        <div class="cv__role"><div class="cv__role-title">${e.degree}</div><p class="cv__desc">${e.school}</p></div>`;
+      list.appendChild(row);
+    });
+    (Ed.extra || []).forEach((x) => {
+      const row = el("div", "cv__row");
+      row.innerHTML = `
+        <div><div class="cv__label">${x.label}</div></div>
+        <div class="cv__role"><p class="cv__desc">${x.text}</p></div>`;
+      list.appendChild(row);
     });
   } else {
-    const st = $("stack");
-    if (st) st.style.display = "none";
+    $("eduTitle").style.display = "none";
   }
 
   /* ---- CONTENIDO ---- */
-  if (D.content && D.content.items && D.content.items.length) {
-    $("contentTitle").textContent = D.content.title;
-    $("contentIntro").textContent = D.content.intro || "";
-    const cl = $("contentList");
-    D.content.items.forEach((it, i) => {
-      const a = el("a", "content-item reveal");
-      a.href = it.href || "#";
-      if (a.href.startsWith("http")) { a.target = "_blank"; a.rel = "noopener"; }
-      a.style.transitionDelay = i * 0.06 + "s";
-      a.innerHTML = `
-        <span class="content-item__type">${it.type || ""}</span>
-        <span class="content-item__title">${it.title}</span>
-        ${it.date ? `<span class="content-item__date">${it.date}</span>` : ""}
-        <span class="content-item__arrow">→</span>`;
-      cl.appendChild(a);
+  const C = D.content;
+  if (C && C.items && C.items.length) {
+    $("contentTitle").textContent = C.title;
+    C.items.forEach((it) => {
+      const li = el("li", "post");
+      const a = setLink(el("a"), it.href);
+      a.innerHTML = `<span class="post__type">${it.type || ""}</span><span class="post__title">${it.title}</span>${icon("external")}`;
+      li.appendChild(a);
+      $("contentList").appendChild(li);
     });
     const cc = $("contentCta");
-    if (D.content.cta && D.content.cta.href) {
-      cc.textContent = D.content.cta.label;
-      cc.href = D.content.cta.href;
-      if (D.content.cta.href.startsWith("http")) { cc.target = "_blank"; cc.rel = "noopener"; }
-    } else { cc.style.display = "none"; }
+    if (C.cta) { setLink(cc, C.cta.href); cc.innerHTML = C.cta.label + icon("external"); }
+    else cc.style.display = "none";
   } else {
-    const cs = $("contenido");
-    if (cs) cs.style.display = "none";
+    $("contenido").style.display = "none";
   }
 
-  /* ---- CONTACTO ---- */
-  $("contactTitle").textContent = D.contact.title;
-  $("contactText").textContent = D.contact.text;
-  const email = $("contactEmail");
-  if (D.contact.email) {
-    email.textContent = D.contact.email;
-    email.href = "mailto:" + D.contact.email;
-  } else {
-    email.style.display = "none";
+  /* ---- CIERRE ---- */
+  const K = D.contact;
+  $("contactTitle").textContent = K.title;
+  $("contactText").textContent = K.text;
+  const kc = $("contactCtas");
+  if (K.cta) {
+    const a = setLink(el("a", "btn btn--primary"), K.cta.href);
+    a.innerHTML = icon("linkedin") + K.cta.label;
+    kc.appendChild(a);
   }
-  const cta = $("contactCta");
-  if (D.contact.cta && D.contact.cta.href) {
-    cta.textContent = D.contact.cta.label;
-    cta.href = D.contact.cta.href;
-    if (D.contact.cta.href.startsWith("http")) { cta.target = "_blank"; cta.rel = "noopener"; }
-  } else {
-    cta.style.display = "none";
-  }
-  const socials = $("contactSocials");
-  D.contact.socials.forEach((s) => {
-    const a = el("a", "contact__social");
-    a.href = s.href;
-    if (s.href.startsWith("http")) { a.target = "_blank"; a.rel = "noopener"; }
-    a.innerHTML = `<span class="contact__social-icon">${s.icon}</span>${s.label}`;
-    socials.appendChild(a);
+  (K.socials || []).forEach((s) => {
+    const a = setLink(el("a", "btn btn--ghost"), s.href);
+    a.innerHTML = (s.icon ? icon(s.icon) : "") + s.label;
+    kc.appendChild(a);
   });
+  $("contactPersonal").textContent = K.personal || "";
 
   /* ---- FOOTER ---- */
+  const F = D.footer || {};
   $("footerName").textContent = D.hero.name;
-  $("footerYear").textContent = new Date().getFullYear();
+  $("footerMade").textContent = [F.made, `© ${new Date().getFullYear()}`].filter(Boolean).join(" · ");
+  const fl = $("footerLinks");
+  [{ label: "LinkedIn", href: "linkedin" }, ...(K.socials || []), ...P.items.map((p) => ({ label: p.title, href: p.cta && p.cta.href }))]
+    .filter((l) => l.href)
+    .forEach((l) => { const a = setLink(el("a"), l.href); a.textContent = l.label; fl.appendChild(a); });
+  const cv = $("footerCv");
+  if (F.cv && F.cv.href) { cv.href = F.cv.href; cv.innerHTML = icon("download") + F.cv.label; }
+  else cv.remove();
+  const top = $("footerTop");
+  if (F.top) { top.innerHTML = F.top + icon("up"); top.addEventListener("click", (e) => { e.preventDefault(); scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }); }); }
+  else top.remove();
 
   /* ========================= INTERACCIONES ============================== */
 
-  // Nav scroll state
+  const finePointer = matchMedia("(pointer: fine)").matches;
+
+  // Aparición al hacer scroll (escalonada dentro de cada grupo)
+  if (!reduced && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("motion");
+    const groups = [
+      ".section__head", ".services > .service", ".projects > .product",
+      "#cvList > .cv__row", "#eduList > .cv__row", ".posts > .post", ".closing",
+    ];
+    groups.forEach((sel) =>
+      document.querySelectorAll(sel).forEach((n, i) => {
+        n.setAttribute("data-reveal", "");
+        n.style.setProperty("--d", Math.min(i, 5) * 0.08 + "s");
+      })
+    );
+    document.querySelectorAll(".cv__roles--track").forEach((t) =>
+      t.querySelectorAll(".cv__role").forEach((r, i) => r.style.setProperty("--i", i))
+    );
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("is-in");
+        e.target.querySelectorAll(".cv__roles--track").forEach((t) => t.classList.add("is-in"));
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll("[data-reveal]").forEach((n) => io.observe(n));
+
+    // Cifras que cuentan hacia arriba (81%, 8,5%, 2…)
+    const countIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        countIO.unobserve(e.target);
+        const node = e.target;
+        const raw = node.textContent;
+        const m = raw.match(/^([^\d]*)(\d+(?:[.,]\d+)?)(.*)$/);
+        if (!m) return;
+        const sep = m[2].includes(",") ? "," : ".";
+        const decimals = (m[2].split(/[.,]/)[1] || "").length;
+        const target = parseFloat(m[2].replace(",", "."));
+        const t0 = performance.now(), dur = 1400;
+        const tick = (t) => {
+          const k = Math.min(1, (t - t0) / dur);
+          const v = target * (1 - Math.pow(1 - k, 4));
+          node.textContent = m[1] + v.toFixed(decimals).replace(".", sep) + m[3];
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll(".service__proof-value:not(.service__proof-value--word)").forEach((n) => countIO.observe(n));
+  }
+
+  // Inclinación 3D siguiendo el mouse (foto del hero y mockups de proyectos)
+  const tilt = (surface, target, max) => {
+    surface.addEventListener("pointermove", (e) => {
+      const r = surface.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      surface.style.setProperty("--mx", x * 100 + "%");
+      surface.style.setProperty("--my", y * 100 + "%");
+      target.style.setProperty("--ry", (x - 0.5) * max + "deg");
+      target.style.setProperty("--rx", (0.5 - y) * max + "deg");
+      target.classList.add("is-tilting");
+    });
+    surface.addEventListener("pointerleave", () => {
+      target.classList.remove("is-tilting");
+      target.style.setProperty("--rx", "0deg");
+      target.style.setProperty("--ry", "0deg");
+    });
+  };
+  if (!reduced && finePointer) {
+    const photo = document.querySelector(".hero__photo");
+    tilt(photo, photo, 14);
+    document.querySelectorAll(".product").forEach((p) => tilt(p, p, 12));
+  }
+
+  // Barra de progreso + link activo en el menú
+  const progress = $("progress");
+  const navLinks = [...document.querySelectorAll("[data-nav]")];
+  const sections = navLinks.map((a) => document.querySelector(a.getAttribute("href")));
+  const onScrollFx = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    progress.style.setProperty("--p", h > 0 ? scrollY / h : 0);
+    let active = -1;
+    sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < innerHeight * 0.4) active = i; });
+    navLinks.forEach((a, i) => a.classList.toggle("is-active", i === active));
+  };
+  window.addEventListener("scroll", onScrollFx, { passive: true });
+  onScrollFx();
+
+  // Nav: borde al scrollear
   const nav = $("nav");
-  const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 40);
+  const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 24);
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // Reveal on scroll
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-visible");
-          io.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-  document.querySelectorAll(".reveal").forEach((n) => io.observe(n));
-
-  // Animate vesty features + phone bars + skill bars when in view
-  const animIO = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        e.target.querySelectorAll(".vesty__feature").forEach((f) => f.classList.add("is-visible"));
-        e.target.querySelectorAll(".skill__fill").forEach((f) => (f.style.width = f.dataset.level + "%"));
-        const ring = e.target.querySelector(".app__ring");
-        if (ring) ring.style.setProperty("--deg", ring.dataset.deg + "deg");
-        animIO.unobserve(e.target);
-      });
-    },
-    { threshold: 0.2 }
-  );
-  ["vesty", "skills"].forEach((id) => { const s = $(id); if (s) animIO.observe(s); });
-
-  // Cursor glow
-  const glow = document.querySelector(".cursor-glow");
-  if (window.matchMedia("(pointer: fine)").matches) {
-    window.addEventListener("mousemove", (e) => {
-      glow.style.opacity = "1";
-      glow.style.left = e.clientX + "px";
-      glow.style.top = e.clientY + "px";
-    });
-  }
-
-  // Parallax orbs
-  const orbs = document.querySelectorAll(".hero__orb");
-  window.addEventListener("scroll", () => {
-    const y = window.scrollY;
-    orbs.forEach((o, i) => (o.style.transform = `translateY(${y * (i ? 0.08 : 0.15)}px)`));
-  }, { passive: true });
-
-  // Theme toggle (recuerda preferencia)
+  // Tema (recuerda la preferencia)
   const toggle = $("themeToggle");
-  const saved = localStorage.getItem("theme");
-  if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+  const root = document.documentElement;
+  const syncLabel = () =>
+    toggle.setAttribute("aria-label", root.getAttribute("data-theme") === "dark" ? U.themeToLight : U.themeToDark);
+  syncLabel();
   toggle.addEventListener("click", () => {
-    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-    if (isDark) {
-      document.documentElement.removeAttribute("data-theme");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-      localStorage.setItem("theme", "dark");
-    }
+    const dark = root.getAttribute("data-theme") !== "dark";
+    if (dark) root.setAttribute("data-theme", "dark");
+    else root.removeAttribute("data-theme");
+    try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+    syncLabel();
   });
 })();

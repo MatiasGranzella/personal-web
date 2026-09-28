@@ -1,0 +1,38 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "barlow condensed",
+        "createdAt": "2026-09-28T19:05:39.623Z",
+        "reason": "Claude: Millo Manager guest-brand face, scoped to its player card; user asked to add Millo Manager as own project; documented in DESIGN.md Guest brands"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "4pt",
+        "createdAt": "2026-09-28T19:23:52.051Z",
+        "reason": "Claude: print-only chip radius in cv/cv.html (A4 PDF source, pt units); not a web surface"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "arial",
+        "createdAt": "2026-09-28T19:27:50.352Z",
+        "reason": "Claude: ATS-safe standard font for the print CV (cv/cv.html), user asked for ATS-compatible CV"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#1f5f4a",
+        "createdAt": "2026-09-28T19:27:50.427Z",
+        "reason": "Claude: brand forest green chosen by user; documented in DESIGN.md Brand Green Rule"
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "createdAt": "2026-09-28T19:29:42.005Z",
+        "reason": "Claude: user asked for an ATS-compatible CV; Arial is the ATS-safe standard font in cv/cv.html, not used on the web surface"
+      }
+    ]
+  }
+}

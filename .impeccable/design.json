@@ -1,0 +1,794 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-28T19:48:41+00:00",
+  "title": "Design System: Matías Granzella",
+  "extensions": {
+    "colorMeta": {
+      "forest": {
+        "role": "primary",
+        "displayName": "Forest Green",
+        "canonical": "#1F5F4A",
+        "oklch": "oklch(43.8% 0.074 167.8)",
+        "tonalRamp": [
+          "#001008",
+          "#002c1f",
+          "#034c38",
+          "#2c6b55",
+          "#4e8c75",
+          "#6fae95",
+          "#95d4bb",
+          "#c4fee6"
+        ]
+      },
+      "forest-deep": {
+        "role": "primary",
+        "displayName": "Deep Forest",
+        "canonical": "#184c3b",
+        "oklch": "oklch(37.7% 0.063 168.0)",
+        "tonalRamp": [
+          "#001008",
+          "#022c1f",
+          "#164a39",
+          "#376957",
+          "#578a76",
+          "#78ab97",
+          "#9dd2bc",
+          "#c7fde6"
+        ]
+      },
+      "forest-tint": {
+        "role": "primary",
+        "displayName": "Forest Mist",
+        "canonical": "#e6efeb",
+        "oklch": "oklch(94.4% 0.011 167.8)",
+        "tonalRamp": [
+          "#070d0a",
+          "#1f2623",
+          "#3a423f",
+          "#58605c",
+          "#777f7c",
+          "#98a19d",
+          "#bec6c3",
+          "#e8f1ed"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "stone-surface": {
+        "role": "neutral",
+        "displayName": "Stone",
+        "canonical": "#f5f5f4",
+        "oklch": "oklch(97.0% 0.001 106.4)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242423",
+          "#40403f",
+          "#5e5e5d",
+          "#7d7d7c",
+          "#9e9e9d",
+          "#c4c4c3",
+          "#eeeeed"
+        ]
+      },
+      "stone-surface-deep": {
+        "role": "neutral",
+        "displayName": "Deep Stone",
+        "canonical": "#ececea",
+        "oklch": "oklch(94.3% 0.003 106.5)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#242423",
+          "#40403e",
+          "#5e5e5c",
+          "#7d7d7b",
+          "#9e9e9d",
+          "#c4c4c2",
+          "#eeeeec"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#111111",
+        "oklch": "oklch(17.8% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#57574f",
+        "oklch": "oklch(45.4% 0.013 106.9)",
+        "tonalRamp": [
+          "#0c0c06",
+          "#25251d",
+          "#404039",
+          "#5e5e56",
+          "#7e7e75",
+          "#9f9f96",
+          "#c5c5bc",
+          "#efefe6"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "#6b6b63",
+        "oklch": "oklch(52.5% 0.012 106.8)",
+        "tonalRamp": [
+          "#0c0c06",
+          "#25241e",
+          "#404039",
+          "#5e5e56",
+          "#7e7e76",
+          "#9f9f96",
+          "#c5c5bc",
+          "#efefe6"
+        ]
+      },
+      "night-forest": {
+        "role": "primary",
+        "displayName": "Night Sage",
+        "canonical": "#6fae93",
+        "oklch": "oklch(70.0% 0.077 165.4)",
+        "tonalRamp": [
+          "#001007",
+          "#002c1d",
+          "#014c36",
+          "#2c6b53",
+          "#4d8c72",
+          "#6fae93",
+          "#94d4b8",
+          "#c4fee3"
+        ]
+      },
+      "night-forest-bright": {
+        "role": "primary",
+        "displayName": "Night Sage Bright",
+        "canonical": "#7fbfa3",
+        "oklch": "oklch(75.3% 0.077 165.2)",
+        "tonalRamp": [
+          "#001007",
+          "#002c1d",
+          "#004c35",
+          "#2b6b53",
+          "#4d8c72",
+          "#6fae93",
+          "#94d5b8",
+          "#c3fee3"
+        ]
+      },
+      "night-closing": {
+        "role": "primary",
+        "displayName": "Night Pine",
+        "canonical": "#173f33",
+        "oklch": "oklch(33.5% 0.050 170.7)",
+        "tonalRamp": [
+          "#001009",
+          "#012c21",
+          "#21483c",
+          "#3f675a",
+          "#5f8779",
+          "#7fa99a",
+          "#a4cfc0",
+          "#cefaea"
+        ]
+      },
+      "night-canvas": {
+        "role": "neutral",
+        "displayName": "Night Canvas",
+        "canonical": "#0b0b0b",
+        "oklch": "oklch(15.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "night-surface": {
+        "role": "neutral",
+        "displayName": "Night Stone",
+        "canonical": "#161615",
+        "oklch": "oklch(20.0% 0.002 106.6)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#242423",
+          "#40403f",
+          "#5e5e5c",
+          "#7d7d7c",
+          "#9e9e9d",
+          "#c4c4c3",
+          "#eeeeed"
+        ]
+      },
+      "night-surface-deep": {
+        "role": "neutral",
+        "displayName": "Night Deep Stone",
+        "canonical": "#1f1f1d",
+        "oklch": "oklch(23.9% 0.004 106.7)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403e",
+          "#5e5e5b",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c1",
+          "#efefec"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "#f2f2ef",
+        "oklch": "oklch(96.0% 0.004 106.5)",
+        "tonalRamp": [
+          "#0b0b09",
+          "#242422",
+          "#40403d",
+          "#5e5e5b",
+          "#7d7d7b",
+          "#9e9e9c",
+          "#c4c4c1",
+          "#efefec"
+        ]
+      },
+      "night-ink-soft": {
+        "role": "neutral",
+        "displayName": "Night Ink Soft",
+        "canonical": "#b3b3ab",
+        "oklch": "oklch(76.4% 0.011 106.7)",
+        "tonalRamp": [
+          "#0c0c06",
+          "#25241e",
+          "#404039",
+          "#5e5e57",
+          "#7e7e76",
+          "#9f9f97",
+          "#c5c5bd",
+          "#efefe7"
+        ]
+      },
+      "night-ink-faint": {
+        "role": "neutral",
+        "displayName": "Night Ink Faint",
+        "canonical": "#8a8a82",
+        "oklch": "oklch(63.1% 0.012 106.7)",
+        "tonalRamp": [
+          "#0c0c06",
+          "#25241e",
+          "#404039",
+          "#5e5e57",
+          "#7e7e76",
+          "#9f9f97",
+          "#c5c5bc",
+          "#efefe6"
+        ]
+      },
+      "vesty-teal": {
+        "role": "guest",
+        "displayName": "Vesty Teal",
+        "canonical": "#3CCBCE",
+        "oklch": "oklch(77.0% 0.117 197.1)",
+        "tonalRamp": [
+          "#000f10",
+          "#002b2c",
+          "#024a4b",
+          "#126b6d",
+          "#1a8e91",
+          "#0fb4b7",
+          "#51dbde",
+          "#b7feff"
+        ]
+      },
+      "vesty-purple": {
+        "role": "guest",
+        "displayName": "Vesty Purple",
+        "canonical": "#715DF2",
+        "oklch": "oklch(58.2% 0.214 283.6)",
+        "tonalRamp": [
+          "#0b002f",
+          "#23006a",
+          "#3e06a9",
+          "#573bcf",
+          "#7360f5",
+          "#938ffb",
+          "#bcbdfe",
+          "#ecedfe"
+        ]
+      },
+      "vesty-ink": {
+        "role": "guest",
+        "displayName": "Vesty Ink",
+        "canonical": "#0E0B2E",
+        "oklch": "oklch(18.0% 0.068 281.1)",
+        "tonalRamp": [
+          "#080526",
+          "#1f1f43",
+          "#3a3b63",
+          "#575983",
+          "#7679a5",
+          "#969ac8",
+          "#bcc0f0",
+          "#ebedff"
+        ]
+      },
+      "vesty-bezel": {
+        "role": "guest",
+        "displayName": "Vesty Bezel",
+        "canonical": "#0a0820",
+        "oklch": "oklch(15.5% 0.049 283.0)",
+        "tonalRamp": [
+          "#09071f",
+          "#21203b",
+          "#3c3c59",
+          "#595a79",
+          "#797a9a",
+          "#9a9bbd",
+          "#bfc1e4",
+          "#ecedfe"
+        ]
+      },
+      "millo-red": {
+        "role": "guest",
+        "displayName": "Millo Red",
+        "canonical": "#e2332b",
+        "oklch": "oklch(59.7% 0.212 28.3)",
+        "tonalRamp": [
+          "#220000",
+          "#4a0303",
+          "#790f0d",
+          "#b00d0e",
+          "#df3029",
+          "#ff6556",
+          "#ffab9f",
+          "#fee9e6"
+        ]
+      },
+      "millo-red-night": {
+        "role": "guest",
+        "displayName": "Millo Red Night",
+        "canonical": "#ff5a4f",
+        "oklch": "oklch(68.7% 0.202 27.5)",
+        "tonalRamp": [
+          "#210000",
+          "#4c0002",
+          "#7b0409",
+          "#ad1819",
+          "#dc3731",
+          "#fb685c",
+          "#fdaca2",
+          "#ffe9e6"
+        ]
+      },
+      "millo-gold": {
+        "role": "guest",
+        "displayName": "Millo Gold",
+        "canonical": "#b8862b",
+        "oklch": "oklch(65.4% 0.120 78.1)",
+        "tonalRamp": [
+          "#150800",
+          "#332000",
+          "#563900",
+          "#7b5607",
+          "#a4730b",
+          "#c7943c",
+          "#efba64",
+          "#feecd0"
+        ]
+      },
+      "millo-gold-light": {
+        "role": "guest",
+        "displayName": "Millo Gold Light",
+        "canonical": "#f3c34a",
+        "oklch": "oklch(83.9% 0.145 86.7)",
+        "tonalRamp": [
+          "#130900",
+          "#302200",
+          "#513c00",
+          "#755908",
+          "#9b770d",
+          "#c29829",
+          "#edbd43",
+          "#ffedc4"
+        ]
+      },
+      "millo-card-ink": {
+        "role": "guest",
+        "displayName": "Millo Card Ink",
+        "canonical": "#16171b",
+        "oklch": "oklch(20.5% 0.008 274.5)",
+        "tonalRamp": [
+          "#0a0b0f",
+          "#232428",
+          "#3e3f44",
+          "#5c5d62",
+          "#7c7d82",
+          "#9d9ea4",
+          "#c2c4c9",
+          "#edeef4"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(17, 17, 17, 0.09)"
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "rgba(17, 17, 17, 0.16)"
+      },
+      "night-hairline": {
+        "role": "neutral",
+        "displayName": "Night Hairline",
+        "canonical": "rgba(255, 255, 255, 0.09)"
+      },
+      "night-hairline-strong": {
+        "role": "neutral",
+        "displayName": "Night Hairline Strong",
+        "canonical": "rgba(255, 255, 255, 0.18)"
+      },
+      "night-forest-tint": {
+        "role": "primary",
+        "displayName": "Night Sage Mist",
+        "canonical": "rgba(111, 174, 147, 0.14)"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero H1 only; last line in forest green."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles."
+      },
+      "headline-closing": {
+        "displayName": "Closing Headline",
+        "purpose": "Closing card title."
+      },
+      "headline-product": {
+        "displayName": "Product Pitch",
+        "purpose": "Project card pitch line."
+      },
+      "figure": {
+        "displayName": "Proof Figure",
+        "purpose": "Service proof values in green; counts up on scroll."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Service titles; CV subtitle at 1.4rem."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Hero subtitle."
+      },
+      "intro": {
+        "displayName": "Intro",
+        "purpose": "Section intros and closing text."
+      },
+      "row-title": {
+        "displayName": "Row Title",
+        "purpose": "CV org names; post titles at weight 500."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs and descriptions."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Pill button labels."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Status line, proof captions, meta."
+      },
+      "tag": {
+        "displayName": "Tag",
+        "purpose": "Tags and captions."
+      },
+      "period-mono": {
+        "displayName": "Period Mono",
+        "purpose": "Years, periods and dated meta only."
+      },
+      "guest-millo": {
+        "displayName": "Millo Guest Face",
+        "purpose": "Millo Manager player card only (sanctioned exception)."
+      }
+    },
+    "shadows": [
+      {
+        "name": "nav-lift",
+        "value": "0 6px 24px -12px rgba(0, 0, 0, .18)",
+        "purpose": "Floating nav after scroll."
+      },
+      {
+        "name": "photo-drop",
+        "value": "0 2px 4px rgba(0, 0, 0, .06), 0 40px 60px -32px rgba(0, 0, 0, .45)",
+        "purpose": "Hero photo."
+      },
+      {
+        "name": "phone-drop",
+        "value": "0 0 0 1px rgba(0, 0, 0, .08), 0 2px 4px rgba(0, 0, 0, .08), 0 40px 60px -30px rgba(14, 11, 46, .55)",
+        "purpose": "Vesty phone mockup."
+      },
+      {
+        "name": "card-drop",
+        "value": "0 2px 4px rgba(0, 0, 0, .06), 0 36px 60px -30px rgba(120, 20, 15, .45)",
+        "purpose": "Millo player card."
+      },
+      {
+        "name": "status-halo",
+        "value": "0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent)",
+        "purpose": "Status dot only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The single easing for every transition and animation."
+      },
+      {
+        "name": "hero-settle",
+        "value": "0.9s; from opacity .6, translateY(8px), blur(3px); staggered 0.06s to 0.46s",
+        "purpose": "One-time hero entrance."
+      },
+      {
+        "name": "scroll-reveal",
+        "value": "0.9s; from opacity 0, translateY(22px), blur(6px); 0.08s stagger capped at 5",
+        "purpose": "Section heads, rows, cards, closing."
+      },
+      {
+        "name": "count-up",
+        "value": "1.4s, quartic ease-out, threshold 0.6",
+        "purpose": "Numeric proof figures."
+      },
+      {
+        "name": "pointer-tilt",
+        "value": "max 14deg (photo) / 12deg (product cards), 0.12s linear while tracking, 0.5s ease-out on release",
+        "purpose": "Hero photo and product mockups, fine pointers only."
+      },
+      {
+        "name": "spotlight",
+        "value": "radial-gradient(520px circle at pointer, guest tint), 0.4s fade",
+        "purpose": "Product card hover."
+      },
+      {
+        "name": "track-draw",
+        "value": "scaleY 1.4s after 0.2s; dots scale 0.5s at 0.3s + i*0.25s",
+        "purpose": "Career track in CV rows."
+      },
+      {
+        "name": "button-sheen",
+        "value": "105deg white 28% band, translateX(-120% to 120%) 0.8s",
+        "purpose": "Primary button hover."
+      },
+      {
+        "name": "marquee",
+        "value": "60s linear (logos), 70s reverse (capabilities), pause on hover",
+        "purpose": "Bottom stack bands."
+      },
+      {
+        "name": "progress",
+        "value": "2px fixed bar, scaleX = scroll progress",
+        "purpose": "Reading progress."
+      },
+      {
+        "name": "press",
+        "value": "scale(.97), 0.2s",
+        "purpose": "Button active state."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "xxs",
+        "value": "380px"
+      },
+      {
+        "name": "xs",
+        "value": "520px"
+      },
+      {
+        "name": "posts",
+        "value": "560px"
+      },
+      {
+        "name": "sm",
+        "value": "600px"
+      },
+      {
+        "name": "md",
+        "value": "720px"
+      },
+      {
+        "name": "lg",
+        "value": "880px"
+      },
+      {
+        "name": "product",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Forest pill for the one main action (Conectemos, Hablemos); sheen sweeps on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Conectemos <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-primary{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;font:600 .98rem/1 \"Schibsted Grotesk\",ui-sans-serif,system-ui,sans-serif;letter-spacing:-.01em;padding:14px 22px;border-radius:100px;border:1px solid transparent;background:var(--accent-strong,#1F5F4A);color:var(--accent-on,#fff);text-decoration:none;transition:background-color .2s,transform .2s cubic-bezier(.16,1,.3,1)}.ds-btn-primary svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s cubic-bezier(.16,1,.3,1)}.ds-btn-primary::after{content:\"\";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-120%)}.ds-btn-primary:hover{background:var(--accent-strong-hover,#184c3b)}.ds-btn-primary:hover::after{transform:translateX(120%);transition:transform .8s cubic-bezier(.16,1,.3,1)}.ds-btn-primary:hover svg{transform:translateX(3px)}.ds-btn-primary:active{transform:scale(.97)}.ds-btn-primary:focus-visible{outline:2px solid #1F5F4A;outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary pill on canvas with a strong hairline (Ver experiencia, Descargar CV).",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Ver experiencia</a>",
+      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;gap:8px;font:600 .98rem/1 \"Schibsted Grotesk\",ui-sans-serif,system-ui,sans-serif;letter-spacing:-.01em;padding:14px 22px;border-radius:100px;background:var(--bg,#fff);color:var(--ink,#111);border:1px solid var(--line-strong,rgba(17,17,17,.16));text-decoration:none;transition:background-color .2s,transform .2s cubic-bezier(.16,1,.3,1)}.ds-btn-ghost:hover{background:var(--surface,#f5f5f4)}.ds-btn-ghost:active{transform:scale(.97)}.ds-btn-ghost:focus-visible{outline:2px solid #1F5F4A;outline-offset:3px}"
+    },
+    {
+      "name": "Floating Pill Nav",
+      "kind": "nav",
+      "refersTo": "nav-pill",
+      "description": "Fixed centered stone pill: handle, section links with green active state, EN toggle, theme toggle, small primary CTA.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\">mgranzella</a><nav class=\"ds-nav-links\"><a href=\"#\" class=\"is-active\">Servicios</a><a href=\"#\">Proyectos</a><a href=\"#\">Experiencia</a></nav><div class=\"ds-nav-actions\"><button class=\"ds-nav-lang\">EN</button><button class=\"ds-nav-theme\" aria-label=\"Tema\"><svg viewBox=\"0 0 24 24\"><path d=\"M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z\"/></svg></button><a class=\"ds-nav-cta\" href=\"#\">Hablemos</a></div></header>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:760px;padding:7px 7px 7px 10px;background:color-mix(in srgb,#f5f5f4 88%,transparent);backdrop-filter:saturate(1.4) blur(14px);border:1px solid rgba(17,17,17,.09);border-radius:100px;box-shadow:0 6px 24px -12px rgba(0,0,0,.18);font-family:\"Schibsted Grotesk\",ui-sans-serif,system-ui,sans-serif}.ds-nav-brand{padding-left:10px;font-weight:700;letter-spacing:-.02em;color:#111;text-decoration:none}.ds-nav-links{display:flex;gap:2px}.ds-nav-links a{font-size:.92rem;font-weight:500;color:#111;padding:8px 12px;border-radius:100px;text-decoration:none;transition:color .2s,background-color .2s}.ds-nav-links a:hover{background:#ececea;color:#1F5F4A}.ds-nav-links a.is-active{color:#1F5F4A;background:#e6efeb}.ds-nav-actions{display:flex;align-items:center;gap:6px}.ds-nav-lang{height:38px;padding:0 10px;border:0;border-radius:100px;background:transparent;font:600 .82rem/1 inherit;letter-spacing:.02em;color:#57574f;cursor:pointer}.ds-nav-lang:hover,.ds-nav-theme:hover{color:#111;background:#ececea}.ds-nav-theme{width:38px;height:38px;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:#57574f;cursor:pointer}.ds-nav-theme svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}.ds-nav-cta{font:600 .9rem/1 inherit;padding:10px 16px;border-radius:100px;background:#1F5F4A;color:#fff;text-decoration:none}.ds-nav-cta:hover{background:#184c3b}.ds-nav a:focus-visible,.ds-nav button:focus-visible{outline:2px solid #1F5F4A;outline-offset:3px}"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Small forest-on-mist chip under a service.",
+      "html": "<span class=\"ds-tag\">LLM + RAG</span> <span class=\"ds-tag\">FastAPI</span>",
+      "css": ".ds-tag{display:inline-block;font:500 .8rem/1.6 \"Schibsted Grotesk\",ui-sans-serif,system-ui,sans-serif;color:#1F5F4A;background:#e6efeb;padding:4px 9px;border-radius:7px}"
+    },
+    {
+      "name": "Capability Pill",
+      "kind": "chip",
+      "refersTo": "capability-pill",
+      "description": "Full-pill capability chip in the reversed bottom marquee.",
+      "html": "<span class=\"ds-cap\">Chatbots con RAG</span>",
+      "css": ".ds-cap{display:inline-block;font:500 .95rem/1.6 \"Schibsted Grotesk\",ui-sans-serif,system-ui,sans-serif;color:#1F5F4A;background:#e6efeb;padding:8px 16px;border-radius:100px;white-space:nowrap}"
+    },
+    {
+      "name": "Service Row",
+      "kind": "custom",
+      "refersTo": "service-row",
+      "description": "Hairline row: title, text plus tags, green proof figure; stone wash and title slide on hover.",
+      "html": "<div class=\"ds-service\"><h3>IA en producción</h3><p>Chatbots con LLM y RAG integrados a sistemas reales.</p><div class=\"ds-proof\"><b>81%</b><span>accuracy de clasificación en el chatbot de CX de Ualá</span></div></div>",
+      "css": ".ds-service{position:relative;isolation:isolate;display:grid;grid-template-columns:5fr 6fr 3.4fr;gap:32px 40px;padding:36px 0;border-top:1px solid rgba(17,17,17,.09);border-bottom:1px solid rgba(17,17,17,.09);font-family:\"Schibsted Grotesk\",ui-sans-serif,system-ui,sans-serif;color:#111}.ds-service::before{content:\"\";position:absolute;inset:0 -20px;border-radius:28px;background:#f5f5f4;opacity:0;transform:scale(.98);transition:opacity .4s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.16,1,.3,1);z-index:-1}.ds-service:hover::before{opacity:1;transform:none}.ds-service h3{margin:0;font-size:1.45rem;font-weight:600;line-height:1.2;letter-spacing:-.025em;transition:transform .45s cubic-bezier(.16,1,.3,1),color .3s}.ds-service:hover h3{transform:translateX(8px);color:#1F5F4A}.ds-service p{margin:0;color:#57574f;line-height:1.6}.ds-proof{border-left:1px solid rgba(17,17,17,.09);padding-left:24px}.ds-proof b{display:block;color:#1F5F4A;font-size:2rem;font-weight:700;letter-spacing:-.04em;line-height:1}.ds-proof span{display:block;margin-top:10px;font-size:.9rem;line-height:1.45;color:#6b6b63}"
+    },
+    {
+      "name": "CV Row with Career Track",
+      "kind": "custom",
+      "refersTo": "cv-row",
+      "description": "Org column plus roles; mono periods; 1px track with the current role dot in green.",
+      "html": "<div class=\"ds-cv\"><div><div class=\"ds-org\">Ualá</div><div class=\"ds-meta\">2021 — hoy</div></div><div class=\"ds-track\"><div class=\"ds-role\"><span>AI Lead</span><span class=\"ds-period\">2025 — hoy</span></div><div class=\"ds-role\"><span>Data Platform Engineer</span><span class=\"ds-period\">2023 — 2025</span></div></div></div>",
+      "css": ".ds-cv{display:grid;grid-template-columns:200px 1fr;gap:8px 40px;padding:30px 0;border-top:1px solid rgba(17,17,17,.09);border-bottom:1px solid rgba(17,17,17,.09);font-family:\"Schibsted Grotesk\",ui-sans-serif,system-ui,sans-serif;color:#111}.ds-org{font-weight:600;font-size:1.12rem;letter-spacing:-.02em}.ds-meta,.ds-period{font-family:\"JetBrains Mono\",ui-monospace,monospace;font-size:.82rem;color:#6b6b63;font-variant-numeric:tabular-nums}.ds-track{position:relative;padding-left:22px;display:grid;gap:26px}.ds-track::before{content:\"\";position:absolute;left:3px;top:9px;bottom:9px;width:1px;background:rgba(17,17,17,.16)}.ds-role{position:relative;display:flex;justify-content:space-between;gap:20px;font-weight:600;letter-spacing:-.01em}.ds-role::before{content:\"\";position:absolute;left:-22px;top:8px;width:7px;height:7px;border-radius:50%;background:#fff;border:1px solid #6b6b63}.ds-role:first-child::before{background:#1F5F4A;border-color:#1F5F4A}"
+    },
+    {
+      "name": "Closing Card",
+      "kind": "card",
+      "refersTo": "closing-card",
+      "description": "The single forest slab: centered headline, text and inverted pill buttons.",
+      "html": "<div class=\"ds-closing\"><h2>¿Construimos algo juntos?</h2><p>Escribime por LinkedIn.</p><div><a class=\"ds-closing-primary\" href=\"#\">Conectemos</a><a class=\"ds-closing-ghost\" href=\"#\">Descargar CV</a></div></div>",
+      "css": ".ds-closing{background:#1F5F4A;color:#fff;border-radius:28px;padding:88px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;font-family:\"Schibsted Grotesk\",ui-sans-serif,system-ui,sans-serif}.ds-closing h2{margin:0;font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.02;letter-spacing:-.04em;max-width:16ch}.ds-closing p{margin:18px 0 0;font-size:1.1rem;color:rgba(255,255,255,.78);max-width:44ch}.ds-closing div{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap;justify-content:center}.ds-closing a{font:600 .98rem/1 inherit;padding:14px 22px;border-radius:100px;text-decoration:none;border:1px solid transparent;transition:background-color .2s}.ds-closing-primary{background:#fff;color:#1F5F4A}.ds-closing-primary:hover{background:#e6efeb}.ds-closing-ghost{color:#fff;border-color:rgba(255,255,255,.28)!important}.ds-closing-ghost:hover{background:rgba(255,255,255,.1)}.ds-closing a:focus-visible{outline:2px solid #fff;outline-offset:3px}"
+    },
+    {
+      "name": "Hero Photo",
+      "kind": "custom",
+      "refersTo": "hero-photo",
+      "description": "260px square portrait, 28px radius, rotated 2deg, soft long drop shadow.",
+      "html": "<figure class=\"ds-photo\"><div></div></figure>",
+      "css": ".ds-photo{margin:0;width:260px;aspect-ratio:1;transform:perspective(900px) rotate(2deg);transition:transform .5s cubic-bezier(.16,1,.3,1)}.ds-photo:hover{transform:perspective(900px) rotate(0deg) rotateX(4deg) rotateY(-6deg)}.ds-photo div{width:100%;height:100%;border-radius:28px;background:linear-gradient(160deg,#ececea,#57574f);box-shadow:0 2px 4px rgba(0,0,0,.06),0 40px 60px -32px rgba(0,0,0,.45)}"
+    },
+    {
+      "name": "Millo Player Card",
+      "kind": "custom",
+      "refersTo": "millo-player-card",
+      "description": "Guest brand: Barlow Condensed uppercase card with gold-to-red border, scoped to the Millo Manager project card.",
+      "html": "<div class=\"ds-pcard\"><div class=\"ds-pcard-top\"><div><b>89</b><small>DEL</small></div><span>LEYENDA</span></div><div class=\"ds-pcard-crest\"></div><div class=\"ds-pcard-name\">Francescoli</div></div>",
+      "css": ".ds-pcard{width:264px;padding:20px 20px 18px;border-radius:22px;color:#16171b;border:3px solid transparent;background-image:linear-gradient(#fff,#fff),linear-gradient(160deg,#f3c34a,#e2332b);background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 2px 4px rgba(0,0,0,.06),0 36px 60px -30px rgba(120,20,15,.45);font-family:\"Barlow Condensed\",\"Schibsted Grotesk\",sans-serif;text-transform:uppercase;transform:rotate(3deg);transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-pcard:hover{transform:rotate(0) translateY(-4px)}.ds-pcard-top{display:flex;justify-content:space-between;align-items:flex-start}.ds-pcard-top b{display:block;font-size:48px;line-height:.9;color:#b8862b}.ds-pcard-top small{font-size:14px;font-weight:700;color:#b8862b}.ds-pcard-top span{font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;background:#b8862b;padding:3px 8px;border-radius:6px}.ds-pcard-crest{position:relative;overflow:hidden;width:128px;height:128px;margin:6px auto 14px;border-radius:50%;background:#f4f3f0;border:3px solid #f3c34a}.ds-pcard-crest::after{content:\"\";position:absolute;left:-20%;top:38%;width:140%;height:30px;background:#e2332b;transform:rotate(-35deg)}.ds-pcard-name{text-align:center;font-size:28px;font-weight:700;letter-spacing:.01em;line-height:1}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Shipped Résumé",
+    "overview": "A CV that reads like a product site. The page is a white sheet (or a near-black one in dark mode) carrying a tight, heavy grotesk, stone-grey surfaces and hairline-ruled rows; the only color that belongs to the owner is a deep forest green, and it marks the things that matter: the action, the name, the proof figures, the \"now\" dot. Everything else is ink at three strengths. Density is calm and editorial: generous section spacing (128px), lists that are rows rather than card grids, one idea per row, a metric at the end of every service.\n\nThe owner's own products are the one place other colors are allowed in. Vesty and Millo Manager each enter as a guest brand inside a stone card: Vesty as a teal/purple phone mockup, Millo Manager as a red/gold Barlow Condensed player card with a real photo. The guests keep their identity; the host card stays neutral around them.\n\nMotion is present but quiet: a single orchestrated settle on the hero, blur-in reveals on scroll, figures that count up, a pointer tilt and spotlight on the photo and product cards, a career track that draws itself, a sheen across primary buttons, a 2px reading-progress bar. All of it disappears under reduced motion and nothing depends on JS to be visible. The site is bilingual (ES default, EN toggle in the nav) and every surface must hold both languages' lengths.",
+    "keyCharacteristics": [
+      "White / near-black canvas, stone surfaces, ink text in three strengths.",
+      "One brand color, forest green, used only for action, emphasis and proof.",
+      "Schibsted Grotesk throughout at tight negative tracking; JetBrains Mono only for years and periods.",
+      "Pills for every control (nav, buttons, toggles, capability pills); 28px for every large surface.",
+      "Hairline-ruled rows instead of card grids for services, experience and content.",
+      "Guest brands (Vesty, Millo Manager) render in their own palettes inside neutral host cards.",
+      "Soft motion with a single ease (`cubic-bezier(0.16, 1, 0.3, 1)`), fully disabled by `prefers-reduced-motion`."
+    ],
+    "rules": [
+      {
+        "name": "The One Green Rule",
+        "body": "Forest green is the only owner color. It marks action, the name, proof and state; it is never a background wash for a section, never a gradient, and never used for body text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Guest Brand Rule",
+        "body": "A product's own palette and typeface stay inside its card. Nothing outside the Vesty or Millo Manager card borrows teal, purple, red, gold or Barlow Condensed, and inside the card the host button turns ink-black so the green never competes with the guest.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark Mode Is Its Own Green Rule",
+        "body": "Dark mode does not reuse #1F5F4A; it swaps to sage (fills) and brighter sage (text), and the closing card goes to Night Pine.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Is For Time Rule",
+        "body": "JetBrains Mono appears only on years, periods and dated meta (plus the Vesty mockup's change chip). Never for headings, labels or decoration.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Heavy Rule",
+        "body": "Anything 2rem and up is 700 with -0.035em to -0.04em tracking and line-height at or under 1.04.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rows Not Cards Rule",
+        "body": "Services, experience, education and content are hairline-ruled rows on the canvas. Cards are reserved for the owner's products and the closing call to action.",
+        "section": "layout"
+      },
+      {
+        "name": "The Objects Cast Shadows Rule",
+        "body": "Only depicted objects (photo, phone, player card) and the floating nav cast shadows; rows, sections, buttons and cards stay flat. Object shadows are long, soft and negative-spread, tinted by the object's own brand.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use forest green (#1F5F4A light; sage #6fae93 fill / #7fbfa3 text in dark) for primary actions, the last line of the H1, proof figures, tags, dots, capability pills and the closing card, and nowhere else.",
+      "**Do** anchor every service row to a real figure in the proof column.",
+      "**Do** keep controls as full pills (100px) and large surfaces at 28px.",
+      "**Do** list services, roles, education and posts as hairline-ruled rows.",
+      "**Do** show the owner's products in their own brand inside a neutral Stone card, with the card's primary button in ink.",
+      "**Do** use Simple Icons marks through a `currentColor` mask in the marquee, and an outlined monogram when a tool has no public mark.",
+      "**Do** keep every animation behind `prefers-reduced-motion` and keep content visible without JS.",
+      "**Do** make every new string work in both ES and EN."
+    ],
+    "donts": [
+      "**Don't** add a second owner accent, a gradient in the owner's green, or a green section background outside the closing card.",
+      "**Don't** let Vesty or Millo Manager colors or Barlow Condensed leak outside their cards.",
+      "**Don't** use JetBrains Mono for anything but years, periods and dated meta.",
+      "**Don't** put shadows on rows, buttons, sections or product cards; shadows belong to depicted objects and the scrolled nav.",
+      "**Don't** add skill bars, emoji, glow orbs or decorative blobs; the thesis rejects the dev-portfolio template.",
+      "**Don't** add small uppercase labels above section titles; section heads are a headline and an intro.",
+      "**Don't** use filled or emoji icons; extend the 1.6-stroke line set instead.",
+      "**Don't** fabricate testimonials, client logos, prices or user numbers to fill a surface."
+    ]
+  }
+}

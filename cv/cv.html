@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--
+  CV en formato ATS (una columna, títulos estándar, sin tablas ni gráficos).
+  Para regenerar los PDFs desde la raíz del repo:
+    C="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    "$C" --headless --no-pdf-header-footer --print-to-pdf=assets/cv-matias-granzella-es.pdf "file://$PWD/cv/cv.html?lang=es"
+    "$C" --headless --no-pdf-header-footer --print-to-pdf=assets/cv-matias-granzella-en.pdf "file://$PWD/cv/cv.html?lang=en"
+  Versión con mail (para postularte, NO se publica): agregá &email=TU_MAIL a la URL y guardala en cv/private/
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Matías Granzella - CV</title>
+<style>
+  @page { size: A4; margin: 13mm 16mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #111; font-size: 9.6pt; line-height: 1.33; }
+  a { color: inherit; text-decoration: none; }
+  h1 { font-size: 20pt; font-weight: bold; }
+  .headline { margin-top: 2pt; font-size: 11pt; }
+  .contact { margin-top: 4pt; font-size: 9.5pt; }
+  h2 {
+    font-size: 11pt; font-weight: bold; text-transform: uppercase; letter-spacing: .04em;
+    color: #1F5F4A; border-bottom: 1px solid #1F5F4A;
+    margin: 11pt 0 5pt; padding-bottom: 2pt;
+    break-after: avoid;
+  }
+  p { margin-bottom: 4pt; }
+  .entry { margin-bottom: 6pt; break-inside: avoid; }
+  .entry__line { display: flex; justify-content: space-between; gap: 12pt; }
+  .entry__title { font-weight: bold; }
+  .entry__sub { font-style: italic; }
+  ul { margin: 2pt 0 0 14pt; }
+  li { margin-bottom: 1pt; }
+  .skills p { margin-bottom: 2pt; }
+</style>
+</head>
+<body>
+  <h1>Matías Granzella</h1>
+  <p class="headline" id="headline"></p>
+  <p class="contact" id="contact"></p>
+
+  <h2 id="summaryTitle"></h2>
+  <p id="summary"></p>
+
+  <h2 id="expTitle"></h2>
+  <div id="jobs"></div>
+
+  <h2 id="projectsTitle"></h2>
+  <div id="projects"></div>
+
+  <h2 id="eduTitle"></h2>
+  <div id="edu"></div>
+
+  <h2 id="skillsTitle"></h2>
+  <div class="skills" id="skills"></div>
+
+  <h2 id="langTitle"></h2>
+  <p id="langs"></p>
+
+  <h2 id="certTitle"></h2>
+  <p id="certs"></p>
+
+<script>
+const T = {
+  es: {
+    headline: "AI Lead | Desarrollador Fullstack | Founder de Vesty y Millo Manager",
+    location: "Buenos Aires, Argentina",
+    summaryTitle: "Perfil", expTitle: "Experiencia", projectsTitle: "Proyectos propios", eduTitle: "Educación",
+    skillsTitle: "Habilidades", langTitle: "Idiomas", certTitle: "Certificaciones",
+    summary: "AI Lead y desarrollador fullstack con más de 8 años de experiencia en software, datos e inteligencia artificial. Diseño y construyo sistemas a medida de punta a punta: frontend web (Next.js, React), backend y APIs (Python/FastAPI, Go), bases de datos, infraestructura cloud e integración de IA. En Ualá lidero el desarrollo de chatbots y asistentes basados en LLMs en producción (RAG, monitoreo y evaluación), con foco en impacto medible en métricas de negocio. Experiencia previa en Business Intelligence, Analytics Engineering y Data Platform Engineering.",
+    jobs: [
+      { title: "AI Lead", org: "Ualá", place: "Buenos Aires, Argentina", when: "05/2026 - Actualidad", items: [
+        "Lidero el desarrollo de soluciones de IA generativa para procesos y áreas críticas del negocio.",
+      ]},
+      { title: "Sr AI Engineer", org: "Ualá", place: "Buenos Aires, Argentina", when: "05/2024 - 06/2026", items: [
+        "Desarrollé el chatbot de Atención al Cliente con un LLM (OpenAI) y RAG que clasifica consultas por producto y problema, alcanzando 81% de accuracy.",
+        "Desarrollé un chatbot conversacional de Cobranzas para el área de Créditos que resuelve de forma autónoma la mayoría de las gestiones y deriva casos críticos a un agente humano.",
+        "Tecnologías: Python, OpenAI API, LangChain, LangGraph, RAG, Langfuse, PostgreSQL (pgvector), Google Cloud.",
+      ]},
+      { title: "Sr Data Platform Engineer", org: "Ualá", place: "Buenos Aires, Argentina", when: "02/2023 - 05/2024", items: [
+        "Lideré el análisis de costos de Google Cloud con un tablero en Looker, generando un ahorro del 8,5% sobre la facturación total.",
+        "Implementé Terraform y Terragrunt para versionar toda la infraestructura de Google Cloud, con despliegue centralizado mediante CI/CD.",
+        "Desarrollé Hub Integrator, una solución event-driven (publisher/subscriber) para automatizar procesos ETL a partir de eventos clave.",
+        "Desarrollé un generador automático de features que crea y almacena features en el Feature Store a partir de una query.",
+        "Contribuí a Chronos, el ETL interno, para publicar data marts productivos disponibles para todas las áreas.",
+      ]},
+      { title: "Sr Analytics Engineer", org: "Ualá", place: "Buenos Aires, Argentina", when: "01/2022 - 01/2023", items: [
+        "Lideré la implementación de dbt como herramienta de ETL para BI, definiendo metodologías y buenas prácticas.",
+        "Migré procesos ETL desde Qlik, Pentaho y Power BI a dbt; desarrollé macros, tests y DAGs en Airflow sobre Google Cloud (BigQuery, Composer, Storage).",
+        "Capacité al equipo en dbt, Airflow y GitHub.",
+      ]},
+      { title: "Ssr BI Analyst", org: "Ualá", place: "Buenos Aires, Argentina", when: "11/2020 - 12/2021", items: [
+        "Desarrollé soluciones de datos de punta a punta: relevamiento de requerimientos, ETLs en Redshift (SQL) y Qlik, y dashboards en Qlik y Power BI.",
+        "Proyectos: conversión de campañas, lanzamiento de fondo común de inversión y dólar MEP, rentabilidad de clientes y cartera de créditos.",
+      ]},
+      { title: "Ssr BI Analyst", org: "Data IQ (Qlik Select Master Reseller)", place: "Buenos Aires, Argentina", when: "04/2020 - 11/2020", items: [
+        "Desarrollo de tableros en QlikSense y QlikView para clientes como OSDE y Loma Negra.",
+      ]},
+      { title: "Jr BI Analyst", org: "Data IQ (Qlik Select Master Reseller)", place: "Buenos Aires, Argentina", when: "07/2019 - 03/2020", items: [
+        "Desarrollo de tableros en QlikSense y QlikView de punta a punta: requerimientos, modelado de datos, ETL y visualización.",
+        "Clientes: Farmalink, Western Union y Banco Ciudad. Buddy de 2 nuevos analistas.",
+      ]},
+      { title: "Pasante RPA", org: "IBM", place: "Buenos Aires, Argentina", when: "08/2018 - 06/2019", items: [
+        "Desarrollo de robots para automatizar procesos en web, SAP y Excel para cuentas internas de la región (WinAutomation, Automation Anywhere).",
+      ]},
+    ],
+    projects: [
+      ["Vesty (vestyapp.io) | Founder | 2026 - Actualidad", "App que unifica las inversiones del inversor argentino (brokers, bancos y exchanges) en una sola pantalla: multimoneda real (oficial, blue, CCL, MEP), rendimiento neto de comisiones, importación de extractos con IA y un asistente que analiza la cartera. Desarrollo fullstack con React, Python (FastAPI) y Supabase (PostgreSQL)."],
+      ["Millo Manager (millomanager.com.ar) | Founder", "Juego web tipo football manager, gratuito, dedicado a la historia de River Plate. Desarrollo fullstack con Next.js, React y Supabase."],
+    ],
+    edu: [
+      ["Maestría en Management & Analytics", "Universidad Torcuato Di Tella", "2022 - 2023"],
+      ["Licenciatura en Sistemas de Información", "Universidad de Buenos Aires", "2014 - 2019"],
+    ],
+    skills: [
+      ["IA y LLMs", "OpenAI API, LangChain, LangGraph, RAG, embeddings, pgvector, Langfuse, evaluación y monitoreo de LLMs"],
+      ["Lenguajes", "Python, Go, SQL"],
+      ["Desarrollo fullstack", "Next.js, React, FastAPI, APIs REST, Supabase, Vercel"],
+      ["Cloud", "Google Cloud Platform: BigQuery, Cloud Run, Cloud SQL, Cloud Functions, Pub/Sub, Composer, Storage, Artifact Registry, IAM"],
+      ["Arquitectura", "Diseño de sistemas, APIs REST, arquitecturas event-driven, load balancing"],
+      ["Datos", "dbt, Airflow, PostgreSQL, Redshift, modelado de datos, ETL/ELT"],
+      ["DevOps", "Docker, Terraform, Terragrunt, CI/CD, GitHub Actions, Git"],
+      ["BI", "Looker, Power BI, QlikSense, QlikView"],
+    ],
+    langs: "Español (nativo), Inglés (profesional, B2 First Certificate)",
+    certs: "Data Developer; Data Science; B2 First Certificate in English (FCE)",
+  },
+  en: {
+    headline: "AI Lead | Full-Stack Developer | Founder of Vesty and Millo Manager",
+    location: "Buenos Aires, Argentina",
+    summaryTitle: "Summary", expTitle: "Experience", projectsTitle: "Projects", eduTitle: "Education",
+    skillsTitle: "Skills", langTitle: "Languages", certTitle: "Certifications",
+    summary: "AI Lead and full-stack developer with 8+ years of experience in software, data and artificial intelligence. I design and build custom systems end to end: web frontend (Next.js, React), backend and APIs (Python/FastAPI, Go), databases, cloud infrastructure and AI integration. At Ualá I lead the development of LLM-based chatbots and assistants in production (RAG, monitoring and evaluation), focused on measurable business impact. Background in Business Intelligence, Analytics Engineering and Data Platform Engineering.",
+    jobs: [
+      { title: "AI Lead", org: "Ualá", place: "Buenos Aires, Argentina", when: "05/2026 - Present", items: [
+        "Lead the development of Generative AI solutions for critical business processes and areas.",
+      ]},
+      { title: "Senior AI Engineer", org: "Ualá", place: "Buenos Aires, Argentina", when: "05/2024 - 06/2026", items: [
+        "Built the customer-support chatbot with an LLM (OpenAI) and RAG that classifies queries by product and issue, reaching 81% accuracy.",
+        "Built a conversational collections chatbot for the Credit area that resolves most cases autonomously and escalates critical cases to a human agent.",
+        "Technologies: Python, OpenAI API, LangChain, LangGraph, RAG, Langfuse, PostgreSQL (pgvector), Google Cloud.",
+      ]},
+      { title: "Senior Data Platform Engineer", org: "Ualá", place: "Buenos Aires, Argentina", when: "02/2023 - 05/2024", items: [
+        "Led a Google Cloud cost analysis with a Looker dashboard, saving 8.5% of the total cloud bill.",
+        "Implemented Terraform and Terragrunt to version all Google Cloud infrastructure, with centralized CI/CD deployment.",
+        "Built Hub Integrator, an event-driven (publisher/subscriber) solution that automates ETL processes on key events.",
+        "Built an automatic feature generator that creates and stores Feature Store features from a query.",
+        "Contributed to Chronos, the internal ETL, enabling production data marts available to every business area.",
+      ]},
+      { title: "Senior Analytics Engineer", org: "Ualá", place: "Buenos Aires, Argentina", when: "01/2022 - 01/2023", items: [
+        "Led the implementation of dbt as the ETL tool for BI, defining methodologies and best practices.",
+        "Migrated ETL processes from Qlik, Pentaho and Power BI to dbt; built macros, tests and Airflow DAGs on Google Cloud (BigQuery, Composer, Storage).",
+        "Trained the team on dbt, Airflow and GitHub.",
+      ]},
+      { title: "BI Analyst", org: "Ualá", place: "Buenos Aires, Argentina", when: "11/2020 - 12/2021", items: [
+        "Built end-to-end data solutions: requirements gathering, ETLs on Redshift (SQL) and Qlik, and dashboards in Qlik and Power BI.",
+        "Projects: campaign conversion, mutual fund and MEP dollar launches, customer profitability and loan portfolio.",
+      ]},
+      { title: "BI Analyst", org: "Data IQ (Qlik Select Master Reseller)", place: "Buenos Aires, Argentina", when: "04/2020 - 11/2020", items: [
+        "Built QlikSense and QlikView dashboards for clients such as OSDE and Loma Negra.",
+      ]},
+      { title: "Junior BI Analyst", org: "Data IQ (Qlik Select Master Reseller)", place: "Buenos Aires, Argentina", when: "07/2019 - 03/2020", items: [
+        "Built end-to-end QlikSense and QlikView dashboards: requirements, data modeling, ETL and visualization.",
+        "Clients: Farmalink, Western Union and Banco Ciudad. Onboarding buddy for 2 new analysts.",
+      ]},
+      { title: "RPA Intern", org: "IBM", place: "Buenos Aires, Argentina", when: "08/2018 - 06/2019", items: [
+        "Built bots to automate processes across web, SAP and Excel for internal accounts in the region (WinAutomation, Automation Anywhere).",
+      ]},
+    ],
+    projects: [
+      ["Vesty (vestyapp.io) | Founder | 2026 - Present", "App that brings Argentine investors' brokers, banks and exchanges into a single screen: real multi-currency (official, blue, CCL, MEP rates), returns net of fees, AI-powered statement import and a portfolio assistant. Full-stack build with React, Python (FastAPI) and Supabase (PostgreSQL)."],
+      ["Millo Manager (millomanager.com.ar) | Founder", "Free web football manager game built around River Plate's history. Full-stack build with Next.js, React and Supabase."],
+    ],
+    edu: [
+      ["Master's Degree in Management & Analytics", "Universidad Torcuato Di Tella", "2022 - 2023"],
+      ["Bachelor's Degree in Information Systems", "Universidad de Buenos Aires", "2014 - 2019"],
+    ],
+    skills: [
+      ["AI and LLMs", "OpenAI API, LangChain, LangGraph, RAG, embeddings, pgvector, Langfuse, LLM evaluation and monitoring"],
+      ["Programming", "Python, Go, SQL"],
+      ["Full-stack development", "Next.js, React, FastAPI, REST APIs, Supabase, Vercel"],
+      ["Cloud", "Google Cloud Platform: BigQuery, Cloud Run, Cloud SQL, Cloud Functions, Pub/Sub, Composer, Storage, Artifact Registry, IAM"],
+      ["Architecture", "System design, REST APIs, event-driven architecture, load balancing"],
+      ["Data", "dbt, Airflow, PostgreSQL, Redshift, data modeling, ETL/ELT"],
+      ["DevOps", "Docker, Terraform, Terragrunt, CI/CD, GitHub Actions, Git"],
+      ["BI", "Looker, Power BI, QlikSense, QlikView"],
+    ],
+    langs: "Spanish (native), English (professional working proficiency, B2 First Certificate)",
+    certs: "Data Developer; Data Science; B2 First Certificate in English (FCE)",
+  },
+};
+
+const params = new URLSearchParams(location.search);
+const lang = params.get("lang") === "en" ? "en" : "es";
+const t = T[lang];
+document.documentElement.lang = lang;
+const set = (id, v) => (document.getElementById(id).textContent = v);
+["headline", "summaryTitle", "summary", "expTitle", "projectsTitle", "eduTitle", "skillsTitle", "langTitle", "certTitle", "langs", "certs"]
+  .forEach((k) => set(k, t[k]));
+
+const contact = [
+  params.get("email") || null,
+  "linkedin.com/in/matias-federico-granzella",
+  "matiasgranzella.com",
+  t.location,
+].filter(Boolean);
+set("contact", contact.join(" | "));
+
+document.getElementById("jobs").innerHTML = t.jobs.map((j) => `
+  <div class="entry">
+    <div class="entry__line"><span class="entry__title">${j.title}</span><span>${j.when}</span></div>
+    <div class="entry__line"><span class="entry__sub">${j.org}</span><span>${j.place}</span></div>
+    <ul>${j.items.map((i) => `<li>${i}</li>`).join("")}</ul>
+  </div>`).join("");
+
+document.getElementById("projects").innerHTML = t.projects.map(([n, d]) =>
+  `<p><b>${n}</b>: ${d}</p>`).join("");
+
+document.getElementById("edu").innerHTML = t.edu.map(([d, s, w]) => `
+  <div class="entry">
+    <div class="entry__line"><span class="entry__title">${d}</span><span>${w}</span></div>
+    <div class="entry__sub">${s}</div>
+  </div>`).join("");
+
+document.getElementById("skills").innerHTML = t.skills.map(([g, v]) => `<p><b>${g}:</b> ${v}</p>`).join("");
+</script>
+</body>
+</html>

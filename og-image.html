@@ -1,106 +1,70 @@
 <!DOCTYPE html>
+<!--
+  Fuente de la imagen para compartir (1200x630). Para regenerarla desde la raíz del repo:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --hide-scrollbars \
+      --window-size=1200,630 --virtual-time-budget=6000 --screenshot=assets/og-image-v3.png "file://$PWD/og-image.html"
+  Si la cambiás, usá un nombre nuevo (v4, v5…) para que LinkedIn no muestre la vieja en caché.
+-->
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { width: 1200px; height: 630px; }
     body {
-      font-family: "Inter", system-ui, sans-serif;
-      background: #faf9f6;
-      color: #1a1a18;
-      position: relative;
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
+      background: #ffffff;
+      color: #111111;
       overflow: hidden;
     }
-    /* orbs verdes difuminados, igual que el hero */
-    .orb { position: absolute; border-radius: 50%; filter: blur(90px); }
-    .orb--1 { width: 540px; height: 540px; background: rgba(15,157,111,.16); top: -180px; left: -120px; }
-    .orb--2 { width: 600px; height: 600px; background: rgba(15,157,111,.08); bottom: -240px; right: -160px; }
-    .frame {
-      position: absolute; inset: 0;
-      border: 1px solid rgba(15,157,111,.16);
-      margin: 22px; border-radius: 28px;
-    }
     .wrap {
-      position: relative; z-index: 2;
       height: 100%;
-      display: flex; align-items: center;
-      padding: 0 80px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
       gap: 64px;
+      padding: 0 88px;
     }
-    .left { flex: 1; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 18px; font-weight: 600; letter-spacing: .02em;
-      color: #0F9D6F;
-      background: rgba(15,157,111,.12);
-      border: 1px solid rgba(15,157,111,.28);
-      padding: 10px 20px; border-radius: 100px;
-      margin-bottom: 30px;
-    }
-    .badge::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #0F9D6F; }
     .name {
-      font-family: "Fraunces", serif;
-      font-size: 82px; font-weight: 600; line-height: .96;
-      letter-spacing: -.02em;
-      color: #1a1a18;
-      margin-bottom: 22px;
+      font-size: 88px; font-weight: 700; line-height: .98;
+      letter-spacing: -.045em;
     }
-    .headline {
-      font-size: 30px; font-weight: 600; line-height: 1.25;
-      color: #1a1a18;
-      margin-bottom: 16px;
+    .name span { color: #1F5F4A; }
+    .sub {
+      margin-top: 28px;
+      font-size: 28px; line-height: 1.35; color: #57574f;
+      max-width: 24ch;
     }
-    .headline .accent { color: #0F9D6F; }
-    .tagline { font-size: 21px; color: #5b5a54; line-height: 1.4; max-width: 22ch; margin-bottom: 40px; }
-    .foot { display: flex; align-items: center; gap: 22px; font-size: 19px; font-weight: 600; color: #1a1a18; }
-    .foot .dot { width: 5px; height: 5px; border-radius: 50%; background: #8d8b83; }
-    .foot .vesty { color: #0F9D6F; }
-    .foot .muted { color: #5b5a54; }
-
-    .right { flex-shrink: 0; }
-    .photo-wrap {
-      width: 320px; height: 380px;
-      border-radius: 28px;
-      padding: 4px;
-      background: linear-gradient(140deg, #0F9D6F, rgba(15,157,111,.45));
-      box-shadow: 0 30px 80px rgba(15,157,111,.28);
+    .foot {
+      margin-top: 40px;
+      display: flex; align-items: center; gap: 14px;
+      font-size: 22px; font-weight: 500;
     }
+    .pill { background: #1F5F4A; color: #fff; padding: 12px 22px; border-radius: 100px; }
+    .url { color: #57574f; }
     .photo {
-      width: 100%; height: 100%;
-      border-radius: 24px;
-      object-fit: cover;
-      display: block;
+      width: 330px; height: 330px;
+      border-radius: 36px;
+      object-fit: cover; object-position: 50% 30%;
+      transform: rotate(2deg);
+      box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 40px 60px -32px rgba(0,0,0,.45);
     }
   </style>
 </head>
 <body>
-  <div class="orb orb--1"></div>
-  <div class="orb orb--2"></div>
-  <div class="frame"></div>
-
   <div class="wrap">
-    <div class="left">
-      <span class="badge">Buenos Aires, Argentina</span>
-      <div class="name">Matías<br/>Granzella</div>
-      <div class="headline">
-        <span class="accent">AI Lead</span> @ Ualá · <span class="accent">Founder</span> de Vesty
-      </div>
-      <div class="tagline">Construyo IA en producción — y la app que unifica tus inversiones.</div>
+    <div>
+      <div class="name">Matías<br /><span>Granzella.</span></div>
+      <p class="sub">AI Lead en Ualá y desarrollador fullstack. Founder de Vesty y Millo Manager.</p>
       <div class="foot">
-        <span class="vesty">vestyapp.io</span>
-        <span class="dot"></span>
-        <span class="muted">in/matias-federico-granzella</span>
+        <span class="pill">IA en producción, no en demos.</span>
+        <span class="url">matiasgranzella.com</span>
       </div>
     </div>
-    <div class="right">
-      <div class="photo-wrap">
-        <img class="photo" src="assets/foto_perfil.jpeg" alt="Matías Granzella" />
-      </div>
-    </div>
+    <img class="photo" src="assets/foto_perfil.jpeg" alt="" />
   </div>
 </body>
 </html>

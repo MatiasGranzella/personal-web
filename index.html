@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matías Granzella — AI Lead @ Ualá · Founder de Vesty</title>
-  <meta name="description" content="AI Lead en Ualá y Founder de Vesty. Construyo aplicaciones de IA en producción y la app que unifica tus inversiones en una sola pantalla." />
+  <meta name="description" content="AI Lead en Ualá y desarrollador fullstack. Construyo sistemas a medida con IA en producción. Founder de Vesty y Millo Manager." />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b0b0b" media="(prefers-color-scheme: dark)" />
 
   <!-- PREVIEW AL COMPARTIR (LinkedIn / X / WhatsApp) -->
   <link rel="canonical" href="https://matiasgranzella.com" />
@@ -12,209 +14,172 @@
   <meta property="og:site_name" content="Matías Granzella" />
   <meta property="og:locale" content="es_AR" />
   <meta property="og:title" content="Matías Granzella — AI Lead @ Ualá · Founder de Vesty" />
-  <meta property="og:description" content="Construyo aplicaciones de IA en producción y Vesty, la app que unifica tus inversiones en una sola pantalla." />
+  <meta property="og:description" content="AI Lead en Ualá y desarrollador fullstack. Construyo sistemas a medida con IA en producción. Founder de Vesty y Millo Manager." />
   <meta property="og:url" content="https://matiasgranzella.com" />
-  <meta property="og:image" content="https://matiasgranzella.com/assets/og-image-v2.png" />
-  <meta property="og:image:secure_url" content="https://matiasgranzella.com/assets/og-image-v2.png" />
+  <meta property="og:image" content="https://matiasgranzella.com/assets/og-image-v3.png" />
+  <meta property="og:image:secure_url" content="https://matiasgranzella.com/assets/og-image-v3.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:alt" content="Matías Granzella — AI Lead @ Ualá y Founder de Vesty" />
+  <meta property="og:image:alt" content="Matías Granzella — AI Lead en Ualá, desarrollador fullstack y founder de Vesty y Millo Manager" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Matías Granzella — AI Lead @ Ualá · Founder de Vesty" />
-  <meta name="twitter:description" content="Construyo IA en producción y Vesty, la app que unifica tus inversiones." />
-  <meta name="twitter:image" content="https://matiasgranzella.com/assets/og-image-v2.png" />
+  <meta name="twitter:description" content="Sistemas a medida con IA en producción. Founder de Vesty y Millo Manager." />
+  <meta name="twitter:image" content="https://matiasgranzella.com/assets/og-image-v3.png" />
   <meta name="twitter:creator" content="@mati_granzella" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="apple-touch-icon" href="assets/favicon.svg" />
 
+  <script>
+    // Tema antes del primer paint: preferencia guardada o la del sistema
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches))
+          document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Cursor glow -->
-  <div class="cursor-glow" aria-hidden="true"></div>
+<!--
+  THESIS: Un CV que se lee como el sitio de un producto: un senior que ya shipea IA en producción, con números. Rechaza el portfolio de dev con orbs, emojis y barras de skills.
+  OWN-WORLD: Lienzo blanco (#fff) / negro (#0b0b0b), superficies gris piedra, tinta #111, verde bosque #1F5F4A como color de marca (botones principales, última línea del H1, cifras, tags, puntos, cierre). Schibsted Grotesk 700 apretado para títulos, JetBrains Mono solo para años. Nav y botones en píldora, filas con hairlines, cards de producto propio (Vesty, Millo Manager) cada una en su paleta. ES/EN.
+  STORY: Entiende en 5s quién es (AI Lead en Ualá + fullstack + founder); cree porque cada servicio trae una prueba real; escribe por LinkedIn o descarga el CV.
+  FIRST VIEWPORT: Nav píldora centrada arriba (marca, secciones, EN, tema, "Hablemos"). Dos columnas: izquierda H1 "Hola, soy / Matías Granzella." (~5rem, segunda línea en verde), subtítulo de 2-3 líneas, botón verde "Conectemos" + "Ver experiencia"; derecha foto cuadrada de 260px levemente girada. En mobile la foto va chica arriba del H1.
+  FORM: brief-pinned (referencia martincoll.dev) sobre el roll; seed 438fd746.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+-->
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- NAV -->
   <header class="nav" id="nav">
-    <a href="#top" class="nav__brand" id="navBrand">MG</a>
-    <nav class="nav__links">
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#vesty">Vesty</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#skills">Skills</a>
-      <a href="#contenido">Contenido</a>
-      <a href="#intereses">Intereses</a>
-      <a href="#contacto" class="nav__cta">Conectemos</a>
+    <a href="#top" class="nav__brand" aria-label="Inicio">
+      <span class="nav__handle" id="navHandle"></span>
+    </a>
+    <nav class="nav__links" aria-label="Secciones">
+      <a href="#servicios" data-nav="services">Servicios</a>
+      <a href="#proyectos" data-nav="projects">Proyectos</a>
+      <a href="#experiencia" data-nav="experience">Experiencia</a>
+      <a href="#contenido" data-nav="content">Contenido</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-      <span class="theme-toggle__icon">◐</span>
-    </button>
+    <div class="nav__actions">
+      <button class="lang-toggle" id="langToggle" type="button">EN</button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo oscuro">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn--primary btn--sm" id="navCta" href="#">Hablemos</a>
+    </div>
   </header>
 
-  <main id="top">
+  <main id="main">
     <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__orb hero__orb--1"></div>
-        <div class="hero__orb hero__orb--2"></div>
-      </div>
-      <div class="hero__inner container">
-        <div class="hero__content">
-          <span class="hero__badge" id="heroBadge"></span>
-          <h1 class="hero__name" id="heroName"></h1>
-          <p class="hero__tagline" id="heroTagline"></p>
-          <p class="hero__intro" id="heroIntro"></p>
+    <section class="hero" id="top">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__title" id="heroTitle"></h1>
+          <p class="hero__sub" id="heroSub"></p>
           <div class="hero__ctas" id="heroCtas"></div>
-          <div class="hero__stats" id="heroStats"></div>
+          <p class="hero__status" id="heroStatus"></p>
         </div>
-        <div class="hero__visual">
-          <div class="hero__avatar" id="heroAvatar"></div>
-        </div>
+        <figure class="hero__photo">
+          <img id="heroPhoto" src="assets/foto_perfil.jpeg" alt="Matías Granzella" width="681" height="531" />
+        </figure>
       </div>
-      <a href="#sobre-mi" class="hero__scroll" aria-label="Bajar">
-        <span></span>
-      </a>
+
     </section>
 
-    <!-- SOBRE MÍ -->
-    <section class="section" id="sobre-mi">
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__kicker">01</span>
-          <h2 class="section__title" id="aboutTitle"></h2>
-        </div>
-        <div class="about">
-          <div class="about__text reveal" id="aboutText"></div>
-          <div class="about__tags reveal" id="aboutTags"></div>
-        </div>
+        <header class="section__head">
+          <h2 class="section__title" id="servicesTitle"></h2>
+          <p class="section__intro" id="servicesIntro"></p>
+        </header>
+        <ol class="services" id="servicesList"></ol>
       </div>
     </section>
 
-    <!-- BANDA DE MÉTRICAS -->
-    <section class="metrics-band" id="metrics">
+    <!-- PROYECTOS -->
+    <section class="section" id="proyectos">
       <div class="container">
-        <div class="metrics-band__grid" id="metricsGrid"></div>
-      </div>
-    </section>
-
-    <!-- VESTY -->
-    <section class="section section--vesty" id="vesty">
-      <div class="vesty__glow" aria-hidden="true"></div>
-      <div class="container">
-        <div class="section__head reveal">
-          <span class="section__kicker">02 · Mi proyecto</span>
-          <h2 class="section__title"><span class="vesty__logo" id="vestyTitle"></span> <span class="section__sub" id="vestySubtitle"></span></h2>
-        </div>
-
-        <div class="vesty__top">
-          <p class="vesty__pitch reveal" id="vestyPitch"></p>
-          <p class="vesty__desc reveal" id="vestyDesc"></p>
-          <div class="vesty__problem reveal" id="vestyProblem"></div>
-        </div>
-
-        <div class="vesty">
-          <div class="vesty__left">
-            <div class="vesty__features" id="vestyFeatures"></div>
-          </div>
-          <div class="vesty__right reveal">
-            <div class="phone" id="phone">
-              <div class="phone__notch"></div>
-              <div class="phone__screen" id="phoneScreen"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="vesty__foot reveal">
-          <p class="vesty__trust" id="vestyTrust"></p>
-          <a class="vesty__cta" id="vestyCta" href="#"></a>
-          <div class="vesty__links" id="vestyLinks"></div>
-        </div>
+        <header class="section__head">
+          <h2 class="section__title" id="projectsTitle"></h2>
+          <p class="section__intro" id="projectsIntro"></p>
+        </header>
+        <div class="projects" id="projectsList"></div>
       </div>
     </section>
 
     <!-- EXPERIENCIA -->
     <section class="section" id="experiencia">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__kicker">03</span>
+        <header class="section__head">
           <h2 class="section__title" id="expTitle"></h2>
-        </div>
-        <div class="timeline" id="timeline"></div>
+          <p class="section__intro" id="expAbout"></p>
+        </header>
+        <div class="cv" id="cvList"></div>
 
-        <div class="edu" id="edu">
-          <h3 class="edu__title" id="eduTitle"></h3>
-          <div class="edu__list" id="eduList"></div>
-          <div class="edu__chips" id="eduChips"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <div class="container">
-        <div class="section__head reveal">
-          <span class="section__kicker">04</span>
-          <h2 class="section__title" id="skillsTitle"></h2>
-        </div>
-        <div class="skills" id="skills-grid"></div>
-
-        <div class="stack" id="stack">
-          <h3 class="stack__title" id="stackTitle"></h3>
-          <div class="stack__groups" id="stackGroups"></div>
-        </div>
+        <h3 class="cv__subtitle" id="eduTitle"></h3>
+        <div class="cv" id="eduList"></div>
       </div>
     </section>
 
     <!-- CONTENIDO -->
-    <section class="section section--content" id="contenido">
+    <section class="section" id="contenido">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__kicker">05</span>
+        <header class="section__head section__head--row">
           <h2 class="section__title" id="contentTitle"></h2>
-          <p class="section__intro" id="contentIntro"></p>
-        </div>
-        <div class="content-list" id="contentList"></div>
-        <div class="content-cta reveal"><a class="btn btn--ghost" id="contentCta" href="#"></a></div>
+          <a class="link-arrow" id="contentCta" href="#"></a>
+        </header>
+        <ul class="posts" id="contentList"></ul>
       </div>
     </section>
 
-    <!-- INTERESES -->
-    <section class="section section--interests" id="intereses">
+    <!-- CIERRE -->
+    <section class="section section--tight" id="contacto">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="section__kicker">06</span>
-          <h2 class="section__title" id="interestsTitle"></h2>
-          <p class="section__intro" id="interestsIntro"></p>
+        <div class="closing">
+          <h2 class="closing__title" id="contactTitle"></h2>
+          <p class="closing__text" id="contactText"></p>
+          <div class="closing__ctas" id="contactCtas"></div>
         </div>
-        <div class="interests" id="interestsGrid"></div>
+        <p class="closing__personal" id="contactPersonal"></p>
       </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section class="section section--contact" id="contacto">
-      <div class="container">
-        <div class="contact reveal">
-          <span class="section__kicker">07</span>
-          <h2 class="contact__title" id="contactTitle"></h2>
-          <p class="contact__text" id="contactText"></p>
-          <a class="contact__email" id="contactEmail" href="#"></a>
-          <a class="btn btn--primary contact__cta" id="contactCta" href="#"></a>
-          <div class="contact__socials" id="contactSocials"></div>
-        </div>
+    <!-- STACK -->
+    <section class="stack" aria-label="Tecnologías con las que trabajo">
+      <p class="stack__label" id="stackLabel"></p>
+      <div class="stack__viewport">
+        <ul class="stack__track" id="stackTrack"></ul>
+      </div>
+      <div class="stack__viewport">
+        <ul class="stack__track stack__track--caps" id="capsTrack"></ul>
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer__inner">
-      <span id="footerName"></span>
-      <span class="footer__made">Hecho con cariño · <span id="footerYear"></span></span>
+      <div class="footer__id">
+        <span class="footer__name" id="footerName"></span>
+        <span class="footer__made" id="footerMade"></span>
+      </div>
+      <nav class="footer__links" id="footerLinks" aria-label="Links"></nav>
+      <div class="footer__actions">
+        <a class="btn btn--ghost btn--sm footer__cv" id="footerCv" download></a>
+        <a class="footer__top" id="footerTop" href="#top"></a>
+      </div>
     </div>
   </footer>
 
