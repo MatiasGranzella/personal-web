@@ -14,7 +14,7 @@ window.PROFILE = {
      ---------------------------------------------------------------------- */
   meta: {
     siteTitle: "Matías Granzella — AI Lead y desarrollador Full Stack",
-    siteDescription: "AI Lead en Ualá y desarrollador Full Stack. Construyo sistemas a medida con IA en producción: web, backend, datos y LLMs. Founder de Vesty y Millo Manager.",
+    siteDescription: "AI Lead en Ualá especializado en IA generativa en producción: chatbots y asistentes con LLMs. Desarrollador Full Stack, founder de Vesty y Millo Manager.",
   },
 
   // Textos fijos de la interfaz (menú, botones, etiquetas)
@@ -47,8 +47,9 @@ window.PROFILE = {
     // Título principal. Usá \n para cortar la línea; la última línea va en verde.
     title: "Hola, soy\nMatías Granzella.",
     subtitle:
-      "AI Lead en Ualá y desarrollador Full Stack. Hace más de 8 años construyo sistemas " +
-      "a medida de punta a punta: web, backend, datos e IA. Founder de Vesty y Millo Manager.",
+      "AI Lead en Ualá, especializado en llevar IA generativa a producción: chatbots y " +
+      "asistentes con LLMs. También soy desarrollador Full Stack y construyo mis propios " +
+      "productos, Vesty y Millo Manager.",
     photo: "assets/foto_perfil.jpeg",
     ctas: [
       { label: "Conectemos", href: "linkedin", primary: true },
@@ -91,7 +92,8 @@ window.PROFILE = {
       { name: "Vercel", logo: "vercel" },
     ],
     capabilities: [
-      "Desarrollo Full Stack", "Sistemas a medida", "Diseño de sistemas", "Arquitecturas web",
+      "IA generativa en producción", "Chatbots con LLMs", "Desarrollo Full Stack", "Sistemas a medida",
+      "Diseño de sistemas", "Arquitecturas web",
       "APIs REST", "Arquitecturas event-driven",
       "Agentes con LLMs", "RAG y embeddings", "Evaluación y monitoreo de LLMs",
       "Infraestructura como código", "CI/CD", "Modelado de datos", "Pipelines ETL / ELT",
@@ -105,32 +107,32 @@ window.PROFILE = {
   services: {
     title: "IA en producción, no en demos.",
     intro:
-      "Desarrollo sistemas a medida de punta a punta, del frontend a la IA, y los llevo " +
-      "a producción, donde se usan y se miden.",
+      "Mi especialidad es la IA generativa en producción: sistemas que atienden usuarios " +
+      "reales y se miden todos los días. Y me gusta construir el sistema entero alrededor.",
     items: [
       {
-        title: "Desarrollo Full Stack a medida",
+        title: "Chatbots y asistentes con IA generativa",
         text:
-          "Aplicaciones web, backends y APIs, bases de datos y deploy. De la idea a un " +
-          "producto que la gente usa, con IA integrada donde suma de verdad.",
-        proofValue: "2",
-        proof: "productos propios en producción, hechos end-to-end: Vesty y Millo Manager.",
-        tags: ["Next.js", "React", "FastAPI", "Go"],
-      },
-      {
-        title: "Asistentes y chatbots con LLMs",
-        text:
-          "Atención al cliente, cobranzas, soporte interno. Diseño el flujo, integro el " +
-          "modelo con tus datos (RAG), y dejo evaluación y monitoreo andando desde el día uno.",
+          "Atención al cliente, cobranzas, soporte interno. Diseño el flujo, conecto el modelo " +
+          "a tus datos con RAG y dejo evaluación y monitoreo andando antes de salir a producción.",
         proofValue: "81%",
         proof: "de accuracy clasificando consultas en el chatbot de CX de Ualá.",
         tags: ["OpenAI", "LangGraph", "RAG", "Langfuse"],
       },
       {
+        title: "Sistemas Full Stack a medida",
+        text:
+          "Lo que más disfruto construir: frontend, backend, APIs, base de datos y deploy. " +
+          "Es como armé mis propios productos, con la IA integrada donde aporta.",
+        proofValue: "2",
+        proof: "productos propios en producción: Vesty y Millo Manager.",
+        tags: ["Next.js", "React", "FastAPI", "Go"],
+      },
+      {
         title: "Plataformas y pipelines de datos",
         text:
           "Modelado con dbt, orquestación con Airflow, infraestructura como código y " +
-          "arquitecturas event-driven en Google Cloud. Datos confiables para que la IA tenga de qué comer.",
+          "arquitecturas event-driven en Google Cloud. La base que necesita cualquier sistema de IA.",
         proofValue: "8,5%",
         proof: "de ahorro sobre la facturación total de GCP en Ualá.",
         tags: ["dbt", "Airflow", "Terraform", "GCP"],
@@ -339,7 +341,7 @@ window.PROFILE = {
 window.PROFILE_EN = {
   meta: {
     siteTitle: "Matías Granzella — AI Lead and Full Stack developer",
-    siteDescription: "AI Lead at Ualá and Full Stack developer. I build custom systems with AI in production: web, backend, data and LLMs. Founder of Vesty and Millo Manager.",
+    siteDescription: "AI Lead at Ualá specialized in generative AI in production: LLM chatbots and assistants. Full Stack developer, founder of Vesty and Millo Manager.",
   },
   ui: {
     lang: "en",
@@ -360,8 +362,9 @@ window.PROFILE_EN = {
   hero: {
     title: "Hi, I’m\nMatías Granzella.",
     subtitle:
-      "AI Lead at Ualá and Full Stack developer. For 8+ years I’ve built custom systems " +
-      "end to end: web, backend, data and AI. Founder of Vesty and Millo Manager.",
+      "AI Lead at Ualá, specialized in taking generative AI to production: LLM chatbots " +
+      "and assistants. I’m also a Full Stack developer and build my own products, " +
+      "Vesty and Millo Manager.",
     ctas: [
       { label: "Let’s connect" },
       { label: "See experience" },
@@ -370,7 +373,8 @@ window.PROFILE_EN = {
   stack: {
     label: "Tools and capabilities",
     capabilities: [
-      "Full Stack development", "Custom systems", "System design", "Web architecture",
+      "Generative AI in production", "LLM chatbots", "Full Stack development", "Custom systems",
+      "System design", "Web architecture",
       "REST APIs", "Event-driven architecture",
       "LLM agents", "RAG and embeddings", "LLM evaluation and monitoring",
       "Infrastructure as code", "CI/CD", "Data modeling", "ETL / ELT pipelines",
@@ -380,28 +384,28 @@ window.PROFILE_EN = {
   services: {
     title: "AI in production, not in demos.",
     intro:
-      "I build custom systems end to end, from the frontend to the AI, and take them " +
-      "to production, where they get used and measured.",
+      "My specialty is generative AI in production: systems that serve real users and get " +
+      "measured every day. And I enjoy building the whole system around it.",
     items: [
       {
-        title: "Custom Full Stack development",
-        text:
-          "Web applications, backends and APIs, databases and deployment. From idea to a " +
-          "product people use, with AI built in where it actually helps.",
-        proof: "products of my own in production, built end-to-end: Vesty and Millo Manager.",
-      },
-      {
-        title: "LLM assistants and chatbots",
+        title: "Generative AI chatbots and assistants",
         text:
           "Customer support, collections, internal help desks. I design the flow, connect the " +
-          "model to your data (RAG), and ship evaluation and monitoring from day one.",
+          "model to your data with RAG, and get evaluation and monitoring running before launch.",
         proof: "accuracy classifying queries in Ualá’s customer-experience chatbot.",
+      },
+      {
+        title: "Custom Full Stack systems",
+        text:
+          "What I enjoy building most: frontend, backend, APIs, database and deployment. " +
+          "It’s how I built my own products, with AI built in where it adds value.",
+        proof: "products of my own in production: Vesty and Millo Manager.",
       },
       {
         title: "Data platforms and pipelines",
         text:
           "Modeling with dbt, orchestration with Airflow, infrastructure as code and " +
-          "event-driven architectures on Google Cloud. Reliable data so the AI has something to work with.",
+          "event-driven architectures on Google Cloud. The foundation any AI system needs.",
         proofValue: "8.5%",
         proof: "savings on Ualá’s total GCP bill.",
       },
