@@ -13,8 +13,8 @@ window.PROFILE = {
      DATOS BÁSICOS
      ---------------------------------------------------------------------- */
   meta: {
-    siteTitle: "Matías Granzella — AI Lead y desarrollador fullstack",
-    siteDescription: "AI Lead en Ualá y desarrollador fullstack. Construyo sistemas a medida con IA en producción: web, backend, datos y LLMs. Founder de Vesty y Millo Manager.",
+    siteTitle: "Matías Granzella — AI Lead y desarrollador Full Stack",
+    siteDescription: "AI Lead en Ualá y desarrollador Full Stack. Construyo sistemas a medida con IA en producción: web, backend, datos y LLMs. Founder de Vesty y Millo Manager.",
   },
 
   // Textos fijos de la interfaz (menú, botones, etiquetas)
@@ -47,7 +47,7 @@ window.PROFILE = {
     // Título principal. Usá \n para cortar la línea; la última línea va en verde.
     title: "Hola, soy\nMatías Granzella.",
     subtitle:
-      "AI Lead en Ualá y desarrollador fullstack. Hace más de 8 años construyo sistemas " +
+      "AI Lead en Ualá y desarrollador Full Stack. Hace más de 8 años construyo sistemas " +
       "a medida de punta a punta: web, backend, datos e IA. Founder de Vesty y Millo Manager.",
     photo: "assets/foto_perfil.jpeg",
     ctas: [
@@ -91,7 +91,7 @@ window.PROFILE = {
       { name: "Vercel", logo: "vercel" },
     ],
     capabilities: [
-      "Desarrollo fullstack", "Sistemas a medida", "Diseño de sistemas", "Arquitecturas web",
+      "Desarrollo Full Stack", "Sistemas a medida", "Diseño de sistemas", "Arquitecturas web",
       "APIs REST", "Arquitecturas event-driven",
       "Agentes con LLMs", "RAG y embeddings", "Evaluación y monitoreo de LLMs",
       "Infraestructura como código", "CI/CD", "Modelado de datos", "Pipelines ETL / ELT",
@@ -109,7 +109,7 @@ window.PROFILE = {
       "a producción, donde se usan y se miden.",
     items: [
       {
-        title: "Desarrollo fullstack a medida",
+        title: "Desarrollo Full Stack a medida",
         text:
           "Aplicaciones web, backends y APIs, bases de datos y deploy. De la idea a un " +
           "producto que la gente usa, con IA integrada donde suma de verdad.",
@@ -338,8 +338,8 @@ window.PROFILE = {
    ========================================================================== */
 window.PROFILE_EN = {
   meta: {
-    siteTitle: "Matías Granzella — AI Lead and full-stack developer",
-    siteDescription: "AI Lead at Ualá and full-stack developer. I build custom systems with AI in production: web, backend, data and LLMs. Founder of Vesty and Millo Manager.",
+    siteTitle: "Matías Granzella — AI Lead and Full Stack developer",
+    siteDescription: "AI Lead at Ualá and Full Stack developer. I build custom systems with AI in production: web, backend, data and LLMs. Founder of Vesty and Millo Manager.",
   },
   ui: {
     lang: "en",
@@ -360,7 +360,7 @@ window.PROFILE_EN = {
   hero: {
     title: "Hi, I’m\nMatías Granzella.",
     subtitle:
-      "AI Lead at Ualá and full-stack developer. For 8+ years I’ve built custom systems " +
+      "AI Lead at Ualá and Full Stack developer. For 8+ years I’ve built custom systems " +
       "end to end: web, backend, data and AI. Founder of Vesty and Millo Manager.",
     ctas: [
       { label: "Let’s connect" },
@@ -370,7 +370,7 @@ window.PROFILE_EN = {
   stack: {
     label: "Tools and capabilities",
     capabilities: [
-      "Full-stack development", "Custom systems", "System design", "Web architecture",
+      "Full Stack development", "Custom systems", "System design", "Web architecture",
       "REST APIs", "Event-driven architecture",
       "LLM agents", "RAG and embeddings", "LLM evaluation and monitoring",
       "Infrastructure as code", "CI/CD", "Data modeling", "ETL / ELT pipelines",
@@ -384,7 +384,7 @@ window.PROFILE_EN = {
       "to production, where they get used and measured.",
     items: [
       {
-        title: "Custom full-stack development",
+        title: "Custom Full Stack development",
         text:
           "Web applications, backends and APIs, databases and deployment. From idea to a " +
           "product people use, with AI built in where it actually helps.",
