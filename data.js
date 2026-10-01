@@ -214,6 +214,17 @@ window.PROFILE = {
     cta: { label: "Jugar Millo Manager", href: "https://millomanager.com.ar" },
   },
     ],
+    // Otros proyectos: listado simple debajo de las tarjetas
+    othersTitle: "Otros proyectos",
+    others: [
+      {
+        type: "Sitio web",
+        title: "GV Convertidores de Par",
+        text: "Sitio para un taller de convertidores de torque en Villa Crespo",
+        href: "https://gvconvertidores.com.ar",
+        preview: "assets/gv-preview.jpg",
+      },
+    ],
   },
 
   /* -------------------------------------------------------------------------
@@ -461,6 +472,10 @@ window.PROFILE_EN = {
         mockup: { caption: "In-game card", rarity: "Legend" },
         cta: { label: "Play Millo Manager" },
       },
+    ],
+    othersTitle: "Other projects",
+    others: [
+      { type: "Website", text: "Website for a torque converter repair shop in Buenos Aires" },
     ],
   },
   experience: {

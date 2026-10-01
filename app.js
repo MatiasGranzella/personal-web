@@ -242,6 +242,24 @@
     $("projectsList").appendChild(art);
   });
 
+  if (P.others && P.others.length) {
+    $("otherProjectsTitle").textContent = P.othersTitle;
+    P.others.forEach((it) => {
+      const li = el("li", it.preview ? "post post--preview" : "post");
+      const a = setLink(el("a"), it.href);
+      // Preview: captura de la página completa que se desplaza sola dentro de una ventana
+      const preview = it.preview
+        ? `<span class="site-preview" aria-hidden="true"><span class="site-preview__bar"><i></i><i></i><i></i></span><span class="site-preview__screen"><img src="${it.preview}" alt="" width="720" height="2952" loading="lazy" /></span></span>`
+        : "";
+      a.innerHTML = `<span class="post__type">${it.type || ""}</span><span class="post__title">${it.title}${it.text ? `<span class="post__note">${it.text}</span>` : ""}</span>${preview}${icon("external")}`;
+      li.appendChild(a);
+      $("otherProjectsList").appendChild(li);
+    });
+  } else {
+    $("otherProjectsTitle").style.display = "none";
+    $("otherProjectsList").style.display = "none";
+  }
+
   /* ---- EXPERIENCIA (agrupa roles consecutivos de la misma empresa) ---- */
   const E = D.experience;
   $("expTitle").textContent = E.title;
