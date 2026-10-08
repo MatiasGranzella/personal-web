@@ -431,7 +431,7 @@ Confident, pill-shaped, fast.
 A single inline SVG line set: 24px grid, 1.6 stroke, round caps and joins, `currentColor`, rendered at 15 to 18px. No icon fonts, no filled glyphs.
 
 ### Hero (signature)
-The name is giant Schibsted 700 (clamp(2.9rem, 8.4vw, 7.4rem), -0.055em), left-aligned, with only the final period in green; it rises line by line. The photo is a square card (28px radius, Photo drop shadow) rotated 4deg in the top-right, next to the first line; it swings in after the name and follows the pointer up to 14deg.
+The name is giant Schibsted 700 (clamp(2.9rem, 8.4vw, 7.4rem), -0.055em), left-aligned, with only the final period in green; it rises line by line. The photo is a circle (Photo drop shadow) rotated 4deg in the top-right, next to the first line; it swings in after the name and follows the pointer up to 14deg.
 
 ### Guest brand cards (signature)
 - **Vesty phone:** 276px, 9:19, bezel Vesty Bezel, screen Vesty Ink with purple and teal radial glows, balance, teal change chip (mono), teal chart line, purple score chip, gradient holdings bars. Official logo beside the wordmark.
