@@ -32,24 +32,13 @@ Poné la imagen en `assets/` (ej: `assets/foto.jpg`) y en `data.js` cambiá
 `hero.photo: "assets/foto.jpg"`. Si lo dejás vacío, se muestran tus iniciales.
 
 ### Imagen para compartir en LinkedIn / X (preview)
-Ya está hecha en `assets/og-image.png` (tu nombre, rol y foto, con la marca de Vesty).
+La imagen actual es `assets/og-image-v6.png` (1200x630), generada desde `og-image.html`.
+Para cambiarla, editá `og-image.html`, generala con un nombre nuevo (v7, v8…) usando el
+comando que está en el comentario de ese archivo, y actualizá las meta `og:image` y
+`twitter:image` de `index.html`. El nombre nuevo evita que LinkedIn muestre la vieja.
 
-**Para que la preview funcione al compartir, hacé 1 cosa después de publicar:**
-abrí `index.html` y reemplazá `https://tu-dominio.com` por tu URL real (ej:
-`https://matiasgranzella.netlify.app`) en las **4 líneas marcadas con `← cambiá esto`**.
-LinkedIn necesita la URL **absoluta** de la imagen, por eso este paso.
-
-> Tip: si actualizaste la imagen, LinkedIn cachea la vieja. Limpiá el caché en
-> el [Post Inspector de LinkedIn](https://www.linkedin.com/post-inspector/).
-
-**¿Querés regenerar la imagen** (porque cambiaste la foto o el texto)? Editá
-`og-image.html` y corré:
-```bash
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
-  --disable-gpu --force-device-scale-factor=2 --window-size=1200,630 \
-  --virtual-time-budget=3000 --screenshot="assets/og-image.png" \
-  "file://$(pwd)/og-image.html"
-```
+> Tip: después de publicar, pegá la URL en el
+> [Post Inspector de LinkedIn](https://www.linkedin.com/post-inspector/) para refrescar la preview.
 
 ## 🌐 Publicar (gratis) y compartir en LinkedIn
 

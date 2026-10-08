@@ -465,6 +465,6 @@ One ease for everything (`cubic-bezier(0.16, 1, 0.3, 1)`). Hero pieces settle in
 ## Separate surfaces
 
 - **Print CV** (`cv/cv.html` to `assets/cv-matias-granzella-{es,en}.pdf`): ATS-safe, Arial at 9.6pt, #111 ink, pt units with 4pt chip radii. Deliberately outside the web system; its Arial and 4pt are sanctioned detector exceptions.
-- **OG image** (`og-image.html` to `assets/og-image-v3.png`): the light hero restated at 1200x630: Schibsted Grotesk, forest pill (#1F5F4A, 100px), 36px photo radius.
+- **OG image** (`og-image.html` to `assets/og-image-v6.png`): cream ground, giant name with green period, "Backend & AI Engineer" in forest and the three offers in ink-soft, photo filling the right 470px.
 
 Sanctioned detector exceptions (in `.impeccable/config.json`): Barlow Condensed (Millo card only), Arial and 4pt (print CV only), #1F5F4A (brand).

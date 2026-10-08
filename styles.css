@@ -269,7 +269,7 @@ p { text-wrap: pretty; }
 
 @media (max-width: 720px) {
   .hero { padding-top: 120px; }
-  .hero__photo { position: static; width: 112px; margin-bottom: 24px; transform: rotate(-3deg); }
+  .hero__photo { position: static; width: clamp(120px, 36vw, 160px); margin-bottom: 28px; transform: rotate(4deg); }
 }
 
 /* STACK (cintas al final) -------------------------------------------------- */
@@ -818,8 +818,9 @@ p { text-wrap: pretty; }
 /* MOBILE ------------------------------------------------------------------- */
 @media (max-width: 600px) {
   :root { --gutter: 20px; }
-  .hero__ctas { width: 100%; }
-  .hero__ctas .btn { flex: 1 1 100%; }
+  .hero__ctas, .product__ctas, .closing__ctas { width: 100%; }
+  /* En el celular todos los botones de acción ocupan el ancho completo */
+  .hero__ctas .btn, .product__ctas .btn, .closing__ctas .btn { flex: 1 1 100%; }
   .stack { margin-top: 64px; }
   .section { padding-top: 96px; }
   .section--tight { padding-top: 72px; }
