@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matías Granzella — AI Lead y desarrollador Full Stack</title>
-  <meta name="description" content="AI Lead en Ualá especializado en IA generativa en producción: chatbots y asistentes con LLMs. Desarrollador Full Stack, founder de Vesty y Millo Manager." />
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <title>Matías Granzella — Backend & AI Engineer · Landings, sistemas a medida e IA</title>
+  <meta name="description" content="Backend & AI Engineer. Lidero IA generativa en Ualá y armo proyectos de punta a punta: landings, sistemas a medida con backend propio e integraciones y chatbots con IA." />
+  <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0b0b0b" media="(prefers-color-scheme: dark)" />
 
   <!-- PREVIEW AL COMPARTIR (LinkedIn / X / WhatsApp) -->
@@ -13,21 +13,21 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Matías Granzella" />
   <meta property="og:locale" content="es_AR" />
-  <meta property="og:title" content="Matías Granzella — AI Lead y desarrollador Full Stack" />
-  <meta property="og:description" content="AI Lead en Ualá especializado en IA generativa en producción: chatbots y asistentes con LLMs. Desarrollador Full Stack, founder de Vesty y Millo Manager." />
+  <meta property="og:title" content="Matías Granzella — Backend & AI Engineer · Landings, sistemas a medida e IA" />
+  <meta property="og:description" content="Backend & AI Engineer. Lidero IA generativa en Ualá y armo proyectos de punta a punta: landings, sistemas a medida con backend propio e integraciones y chatbots con IA." />
   <meta property="og:url" content="https://matiasgranzella.com" />
-  <meta property="og:image" content="https://matiasgranzella.com/assets/og-image-v5.png" />
-  <meta property="og:image:secure_url" content="https://matiasgranzella.com/assets/og-image-v5.png" />
+  <meta property="og:image" content="https://matiasgranzella.com/assets/og-image-v6.png" />
+  <meta property="og:image:secure_url" content="https://matiasgranzella.com/assets/og-image-v6.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:alt" content="Matías Granzella — AI Lead en Ualá, IA generativa en producción y desarrollador Full Stack" />
+  <meta property="og:image:alt" content="Matías Granzella — Backend &amp; AI Engineer: landings, sistemas a medida y chatbots con IA" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Matías Granzella — AI Lead y desarrollador Full Stack" />
-  <meta name="twitter:description" content="IA generativa en producción y desarrollo Full Stack. Founder de Vesty y Millo Manager." />
-  <meta name="twitter:image" content="https://matiasgranzella.com/assets/og-image-v5.png" />
+  <meta name="twitter:title" content="Matías Granzella — Backend & AI Engineer · Landings, sistemas a medida e IA" />
+  <meta name="twitter:description" content="Landings, sistemas a medida con backend propio e integraciones y chatbots con IA." />
+  <meta name="twitter:image" content="https://matiasgranzella.com/assets/og-image-v6.png" />
   <meta name="twitter:creator" content="@mati_granzella" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -77,17 +77,15 @@
     <!-- HERO -->
     <section class="hero" id="top">
       <div class="container hero__inner">
-        <div class="hero__copy">
-          <h1 class="hero__title" id="heroTitle"></h1>
-          <p class="hero__sub" id="heroSub"></p>
-          <div class="hero__ctas" id="heroCtas"></div>
-          <p class="hero__status" id="heroStatus"></p>
-        </div>
+        <!-- Foto como tarjeta inclinada, al lado del primer renglón del nombre -->
         <figure class="hero__photo">
-          <img id="heroPhoto" src="assets/foto_perfil.jpeg" alt="Matías Granzella" width="681" height="531" />
+          <img id="heroPhoto" src="assets/foto_perfil.jpeg" alt="Matías Granzella" width="681" height="531" fetchpriority="high" />
         </figure>
+        <h1 class="hero__title" id="heroTitle"></h1>
+        <p class="hero__sub" id="heroSub"></p>
+        <div class="hero__ctas" id="heroCtas"></div>
+        <p class="hero__status" id="heroStatus"></p>
       </div>
-
     </section>
 
     <!-- SERVICIOS -->
@@ -110,8 +108,8 @@
         </header>
         <div class="projects" id="projectsList"></div>
 
-        <h3 class="cv__subtitle" id="otherProjectsTitle"></h3>
-        <ul class="posts" id="otherProjectsList"></ul>
+        <h3 class="section__subtitle" id="otherProjectsTitle"></h3>
+        <ul class="others" id="otherProjectsList"></ul>
       </div>
     </section>
 
@@ -122,9 +120,9 @@
           <h2 class="section__title" id="expTitle"></h2>
           <p class="section__intro" id="expAbout"></p>
         </header>
-        <div class="cv" id="cvList"></div>
+        <ol class="tl" id="cvList"></ol>
 
-        <h3 class="cv__subtitle" id="eduTitle"></h3>
+        <h3 class="section__subtitle" id="eduTitle"></h3>
         <div class="cv" id="eduList"></div>
       </div>
     </section>
@@ -145,8 +143,10 @@
       <div class="container">
         <div class="closing">
           <h2 class="closing__title" id="contactTitle"></h2>
-          <p class="closing__text" id="contactText"></p>
-          <div class="closing__ctas" id="contactCtas"></div>
+          <div class="closing__side">
+            <p class="closing__text" id="contactText"></p>
+            <div class="closing__ctas" id="contactCtas"></div>
+          </div>
         </div>
         <p class="closing__personal" id="contactPersonal"></p>
       </div>

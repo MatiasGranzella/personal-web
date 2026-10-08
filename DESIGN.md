@@ -1,13 +1,13 @@
 ---
 name: Matías Granzella
-description: Personal site and CV of an AI Lead, read like a product site. White canvas, tight bold grotesk, hairline rows, pill controls, one forest green as the brand, own products shown in their own brands.
+description: Personal site and CV of an AI Lead, read like a product site. Warm cream canvas, one tight bold grotesk, no boxes around text (timeline and other projects sit on the canvas), hairline rows, pill controls, one forest green as the brand, own products shown in their own brands.
 colors:
   forest: "#1F5F4A"
   forest-deep: "#184c3b"
   forest-tint: "#e6efeb"
-  canvas: "#ffffff"
-  stone-surface: "#f5f5f4"
-  stone-surface-deep: "#ececea"
+  canvas: "#f6f4ef"
+  stone-surface: "#eeebe3"
+  stone-surface-deep: "#e5e1d7"
   ink: "#111111"
   ink-soft: "#57574f"
   ink-faint: "#6b6b63"
@@ -37,28 +37,33 @@ colors:
 typography:
   display:
     fontFamily: "Schibsted Grotesk, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
-    fontSize: "clamp(2.6rem, 7.2vw, 5rem)"
+    fontSize: "clamp(2.9rem, 8.4vw, 7.4rem)"
     fontWeight: 700
-    lineHeight: 1
-    letterSpacing: "-0.04em"
+    lineHeight: 0.94
+    letterSpacing: "-0.055em"
   headline:
     fontFamily: "Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2rem, 4.4vw, 3rem)"
+    fontSize: "clamp(2.2rem, 4.8vw, 3.3rem)"
     fontWeight: 700
     lineHeight: 1.04
-    letterSpacing: "-0.035em"
+    letterSpacing: "-0.04em"
   headline-closing:
     fontFamily: "Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2rem, 5vw, 3.4rem)"
+    fontSize: "clamp(2.6rem, 6.2vw, 5rem)"
     fontWeight: 700
-    lineHeight: 1.02
-    letterSpacing: "-0.04em"
+    lineHeight: 0.98
+    letterSpacing: "-0.05em"
+  subheadline:
+    fontFamily: "Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "1.5rem"
+    fontWeight: 700
+    letterSpacing: "-0.03em"
   headline-product:
     fontFamily: "Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2rem, 4.2vw, 2.9rem)"
-    fontWeight: 700
-    lineHeight: 1.04
-    letterSpacing: "-0.04em"
+    fontSize: "clamp(1.75rem, 3vw, 2.2rem)"
+    fontWeight: 600
+    lineHeight: 1.08
+    letterSpacing: "-0.03em"
   figure:
     fontFamily: "Schibsted Grotesk, ui-sans-serif, system-ui, sans-serif"
     fontSize: "2rem"
@@ -124,7 +129,8 @@ rounded:
   pill: "100px"
   circle: "50%"
   lg: "28px"
-  photo-sm: "26px"
+  card: "20px"
+  photo-sm: "24px"
   guest-card: "22px"
   phone: "46px"
   phone-screen: "37px"
@@ -249,7 +255,7 @@ components:
     padding: "88px 32px"
   hero-photo:
     rounded: "{rounded.lg}"
-    size: "260px"
+    size: "clamp(150px, 19vw, 220px)"
   vesty-phone:
     backgroundColor: "{colors.vesty-bezel}"
     rounded: "{rounded.phone}"
@@ -270,18 +276,18 @@ components:
 
 **Creative North Star: "The Shipped Résumé"**
 
-A CV that reads like a product site. The page is a white sheet (or a near-black one in dark mode) carrying a tight, heavy grotesk, stone-grey surfaces and hairline-ruled rows; the only color that belongs to the owner is a deep forest green, and it marks the things that matter: the action, the name, the proof figures, the "now" dot. Everything else is ink at three strengths. Density is calm and editorial: generous section spacing (128px), lists that are rows rather than card grids, one idea per row, a metric at the end of every service.
+A CV that reads like a product site. The page is a white sheet (or a near-black one in dark mode) carrying a tight, heavy grotesk, stone-grey surfaces and hairline-ruled rows; the only color that belongs to the owner is a deep forest green, and it marks the things that matter: the action, the name, the proof figures, the "now" dot. Everything else is ink at three strengths. Density is calm and editorial, with lots of air: generous section spacing (160px), rows for services, education and content, unboxed text along the timeline, a metric at the end of every service.
 
 The owner's own products are the one place other colors are allowed in. Vesty and Millo Manager each enter as a guest brand inside a stone card: Vesty as a teal/purple phone mockup, Millo Manager as a red/gold Barlow Condensed player card with a real photo. The guests keep their identity; the host card stays neutral around them.
 
 Motion is present but quiet: a single orchestrated settle on the hero, blur-in reveals on scroll, figures that count up, a pointer tilt and spotlight on the photo and product cards, a career track that draws itself, a sheen across primary buttons, a 2px reading-progress bar. All of it disappears under reduced motion and nothing depends on JS to be visible. The site is bilingual (ES default, EN toggle in the nav) and every surface must hold both languages' lengths.
 
 **Key Characteristics:**
-- White / near-black canvas, stone surfaces, ink text in three strengths.
+- Warm cream / near-black canvas (relaxed, lots of air), stone surfaces, ink text in three strengths.
 - One brand color, forest green, used only for action, emphasis and proof.
-- Schibsted Grotesk throughout at tight negative tracking; JetBrains Mono only for years and periods.
+- Schibsted Grotesk for UI, body and the giant hero name; Newsreader (serif, 400) for section, subsection and closing titles; JetBrains Mono only for years and periods.
 - Pills for every control (nav, buttons, toggles, capability pills); 28px for every large surface.
-- Hairline-ruled rows instead of card grids for services, experience and content.
+- Hairline-ruled rows for services, education and content; experience is a centered timeline with alternating cards.
 - Guest brands (Vesty, Millo Manager) render in their own palettes inside neutral host cards.
 - Soft motion with a single ease (`cubic-bezier(0.16, 1, 0.3, 1)`), fully disabled by `prefers-reduced-motion`.
 
@@ -325,7 +331,8 @@ A near-monochrome paper-and-ink palette with a single deep forest green, plus tw
 **Character:** One grotesk carries the whole site, heavy and tightly tracked at display sizes, plain at body size. The mono appears only where numbers need to line up in time (org meta, role periods).
 
 ### Hierarchy
-- **Display** (700, clamp(2.6rem, 7.2vw, 5rem), 1, -0.04em): the hero H1 only, max 14ch, two lines with the last line in green.
+- **Display** (700, clamp(2.9rem, 8.4vw, 7.4rem), 0.94, -0.055em): the hero H1 only, left-aligned, one span per line, final period in green.
+- **Serif Title** (Newsreader 400, clamp(2.3rem, 5vw, 3.6rem), 1.02, -0.025em): section titles; also the closing title and the "Otros proyectos" / "Formación" subtitles at smaller sizes.
 - **Headline** (700, clamp(2rem, 4.4vw, 3rem), 1.04, -0.035em): section titles. Variants at the same weight and tracking: product pitch (clamp(2rem, 4.2vw, 2.9rem)) and closing title (clamp(2rem, 5vw, 3.4rem), 1.02, max 16ch).
 - **Figure** (700, 2rem, 1, -0.04em; 1.5rem under 880px; word-figures 1.35rem): service proof values, in green, count up on scroll.
 - **Title** (600, 1.45rem, 1.2, -0.025em): service titles; CV subtitle at 1.4rem.
@@ -347,11 +354,11 @@ The literal ramp in use is: 5rem (clamp) / 3.4 / 3 / 2.9 / 2 / 1.5 / 1.45 / 1.4 
 
 ## Layout
 
-A single centered column (1080px container, 24px gutter, 20px under 600px). Sections are separated by space, not boxes: 128px top padding (96px on mobile), 96px/72px for the tight closing section, and a 48px gap below each section head (max 640px wide).
+A single centered column (1080px container, 24px gutter, 20px under 600px). Sections are separated by space, not boxes: 160px top padding (96px on mobile), 112px/72px for the tight closing section, and a 56px gap below each section head (max 680px wide).
 
-- **Hero:** two columns, text `1fr` and photo `auto`, 64px gap, 152px top padding (132px mobile). The 260px square photo sits at the right, rotated 2deg. Under 880px it collapses to one column and the photo shrinks to 112px, moves above the H1, rotates -2deg; under 600px the CTAs go full-width.
+- **Hero:** single left-aligned column, 200px top padding (120px mobile). The photo card is absolutely positioned top-right, filling the empty space beside "Hola, soy". Under 720px it becomes a static 112px card above the H1, rotated -3deg; under 600px the CTAs go full-width.
 - **Service rows:** three-column grid (5fr / 6fr / 3.4fr, gaps 32px/40px, 36px vertical padding): title, text plus tags, proof column separated by a left hairline. Collapses to one column under 880px with the proof inline.
-- **Product cards:** two-column grid inside a 56px-padded card (1.15fr/0.85fr, 48px gap); Millo Manager mirrors the order so the visual leads. Under 900px: one column, 36px 24px padding, the Vesty phone cropped at 400px with a bottom fade.
+- **Product cards:** two-column grid inside a 56px-padded card (1.15fr/0.85fr, 48px gap); Millo Manager mirrors the order so the visual leads. Under 900px: one column, 36px 24px padding, the Vesty browser window cropped at 400px with a bottom fade.
 - **CV rows:** 200px org column plus roles, 30px vertical padding; multi-role companies get a career track (a 1px line with 7px dots, the current role dot in green). One column under 720px.
 - **Post rows:** 110px type / title / arrow, 22px padding; two-column under 560px.
 - **Stack marquees:** full-bleed band after the closing, 88px above, two masked tracks (60s forward logos, 70s reverse capability pills), paused on hover, wrapped statically under reduced motion.
@@ -360,7 +367,11 @@ A single centered column (1080px container, 24px gutter, 20px under 600px). Sect
 Breakpoints in use: 380, 520, 560, 600, 720, 880, 900px. Spacing in use (px): 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 40, 44, 48, 56, 64, 72, 88, 96, 128, 152.
 
 ### Named Rules
-**The Rows Not Cards Rule.** Services, experience, education and content are hairline-ruled rows on the canvas. Cards are reserved for the owner's products and the closing call to action.
+**The Green Period Rule.** Every section-level title ends in a green punctuation mark, echoing the hero's green period: section titles and subtitles get a green "." (added if the copy has none), the closing keeps its green "?". Done by `accentTitle()` in app.js, so copy in data.js stays plain.
+
+**The One Voice Rule.** Schibsted Grotesk carries every heading and all text; JetBrains Mono only for years, periods and URLs. The owner rejected a serif for section titles: it did not match the body. Hierarchy comes from size and weight, never from a second family.
+
+**The No Boxes Rule.** Text sits on the canvas, never inside a decorative rounded box: the experience timeline is text aligned toward the line, other projects are a preview window with text below, and the closing is a giant statement plus a CTA column, not a green card. Boxes are reserved for the owner's product cards (Stone, 28px), which frame real product mockups.
 
 ## Elevation & Depth
 
@@ -369,18 +380,18 @@ Flat by default. Depth comes from tonal layering (canvas, stone, deep stone) and
 ### Shadow Vocabulary
 - **Nav lift** (`box-shadow: 0 6px 24px -12px rgba(0,0,0,.18)`): the nav pill after scroll, together with a hairline border.
 - **Photo drop** (`box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 40px 60px -32px rgba(0,0,0,.45)`): the hero photo.
-- **Phone drop** (`box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.08), 0 40px 60px -30px rgba(14,11,46,.55)`): the Vesty phone, shadow tinted with Vesty Ink.
+- **Phone drop** (`box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.08), 0 40px 60px -30px rgba(14,11,46,.55)`): the Vesty browser window, shadow tinted with Vesty Ink.
 - **Card drop** (`box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 36px 60px -30px rgba(120,20,15,.45)`): the Millo player card, shadow tinted red.
 - **Status halo** (`box-shadow: 0 0 0 4px` green at 18%): the status dot only.
 
 ### Named Rules
-**The Objects Cast Shadows Rule.** Only depicted objects (photo, phone, player card) and the floating nav cast shadows; rows, sections, buttons and cards stay flat. Object shadows are long, soft and negative-spread, tinted by the object's own brand.
+**The Objects Cast Shadows Rule.** Only depicted objects (photo, phone, player card) and the floating nav cast shadows; rows, sections, buttons and every card (timeline, other projects, products) stay flat. Site previews inside cards are inset with a 1px hairline ring, never a drop shadow. Object shadows are long, soft and negative-spread, tinted by the object's own brand.
 
 ## Shapes
 
 Two radii carry the site: full pill (100px) for every control and chip-like element, and 28px for every large surface (product cards, closing card, hero photo, service hover wash). Small shapes use 7px (tags) and 6px (focus ring, monogram, guest chips). Circles are for dots and the theme toggle.
 
-Objects are the only things that tilt: the hero photo rests at 2deg, the Vesty phone at -3deg, the Millo card at 3deg; all straighten or follow the pointer on hover. Guest mockups keep their own geometry (phone 46px outer / 37px screen; player card 22px with a 3px gold-to-red gradient border; crest circle with a diagonal sash).
+Objects are the only things that tilt: the hero photo rests at 2deg, the Vesty browser window at -3deg, the Millo card at 3deg; all straighten or follow the pointer on hover. Guest mockups keep their own geometry (phone 46px outer / 37px screen; player card 22px with a 3px gold-to-red gradient border; crest circle with a diagonal sash).
 
 The stack marquee shows real tool logos as Simple Icons SVGs painted through a CSS mask in `currentColor` (22px); tools without a public mark get a monogram: the initial in a 22px, 6px-radius, 1.6px outlined square, so the row reads as one family.
 
@@ -401,23 +412,26 @@ Confident, pill-shaped, fast.
 
 ### Cards / Containers
 - **Product card:** Stone fill, 28px radius, 56px padding, no border, no shadow. On hover a 520px radial spotlight follows the pointer, tinted by the guest brand (Vesty purple at 16%, Millo red at 12%; stronger in dark), and the mockup tilts up to 12deg.
-- **Closing card:** forest fill (Night Pine in dark), white centered text, 28px radius, 88px 32px padding (64px 24px mobile).
+- **Closing:** no card. Hairline top, two columns (stacked under 820px): a giant grotesk question (clamp(2.6rem, 6.2vw, 5rem), 700, -0.05em) whose final "?" is green like the hero period, and a column with the short text, the green primary LinkedIn button and the X ghost button.
 
 ### Navigation
 - **Floating pill nav:** fixed 16px from top, centered, up to 760px wide, Stone at 88% with `saturate(1.4) blur(14px)`, pill radius. Gains a hairline and the Nav lift shadow after scroll.
+- **Active pill:** one Forest Mist pill sits behind the active section link and slides (transform + width, 0.55s ease-out) to the next one; on click it moves straight to the target and holds there during the smooth scroll.
 - **Contents:** handle as brand (700), four section links (0.92rem 500, 8px 12px pills; hover Deep Stone with green text; active section in green on Forest Mist, tracked by scroll), an "EN"/"ES" text toggle, a 38px round theme toggle (moon/sun line icons), and a small primary "Hablemos" button.
 - **Mobile:** section links hide under 720px; the handle hides under 380px.
 
 ### Rows
 - **Service row:** hairline top/bottom, three columns ending in a green proof figure with a faint caption. On hover a Stone wash (28px radius, bleeding 20px past the column) fades in, the title slides 8px and turns green, the figure scales to 1.08.
-- **CV row:** org plus mono meta on the left; roles on the right with mono periods, "now" marker (6px green dot plus green label), and the career track that draws top-down on reveal with dots popping in sequence.
+- **Education row:** period on the left, degree and school on the right.
+- **Experience timeline (signature):** one item per role around a centered vertical line (single column with the line on the left under 760px). Unboxed text (role 1.02rem/600 plus description, max 46ch; left-side items right-aligned toward the line) alternates left/right; on the other side sits the company name (1.3rem/700, outranking the role) plus mono period. The first role of each company gets a 44px square node with the company logo (white tile, 12px radius, from `experience.logos` in data.js; `bleed` logos fill the tile; falls back to the initial), and a green ring once the line passes it; later roles of the same company get an 11px dot. A green line fills down to 60% of the viewport as you scroll and nodes turn green as they are passed; the current role's node pulses (no "Actual" label). Periods read "may. 2024 — jun. 2026" (ES) / "May 2024 — Jun 2026" (EN), formatted in app.js from `start`/`end` (YYYY-MM) in data.js; an open end shows "Hoy"/"Now" in green. Impact figures inside descriptions (81%, 8,5%) are auto-highlighted green 600. Cards enter from their own side.
 - **Post row:** type, title, external arrow; on hover content slides 10px right and the arrow turns green and lifts.
+- **Other-project item:** 2-up grid (1-up under 720px), no container. A 280px window (220px mobile, 20px radius, Stone fill, hairline inset ring, lifts 3px on hover) where the full-page capture scrolls itself over 26s and pauses on hover; below, title with external arrow, a note, and the type as a Tag pinned to the card bottom.
 
 ### Icons
 A single inline SVG line set: 24px grid, 1.6 stroke, round caps and joins, `currentColor`, rendered at 15 to 18px. No icon fonts, no filled glyphs.
 
-### Hero photo (signature)
-260px square, 28px radius, rotated 2deg, Photo drop shadow, follows the pointer up to 14deg. Enters with the hero's settle animation.
+### Hero (signature)
+The name is giant Schibsted 700 (clamp(2.9rem, 8.4vw, 7.4rem), -0.055em), left-aligned, with only the final period in green; it rises line by line. The photo is a square card (28px radius, Photo drop shadow) rotated 4deg in the top-right, next to the first line; it swings in after the name and follows the pointer up to 14deg.
 
 ### Guest brand cards (signature)
 - **Vesty phone:** 276px, 9:19, bezel Vesty Bezel, screen Vesty Ink with purple and teal radial glows, balance, teal change chip (mono), teal chart line, purple score chip, gradient holdings bars. Official logo beside the wordmark.

@@ -63,7 +63,7 @@
   // Solo en modo claro: el modo oscuro usa su propia variante más luminosa
   if (D.accent) {
     const st = document.createElement("style");
-    st.textContent = `:root:not([data-theme="dark"]){--accent:${D.accent};--accent-ink:${D.accent};--accent-strong:${D.accent};--accent-display:${D.accent};--closing-bg:${D.accent}}`;
+    st.textContent = `:root:not([data-theme="dark"]){--accent:${D.accent};--accent-ink:${D.accent};--accent-strong:${D.accent};--accent-display:${D.accent}}`;
     document.head.appendChild(st);
   }
   document.title = D.meta.siteTitle;
@@ -92,11 +92,15 @@
   if (D.hero.photo) {
     $("heroPhoto").src = D.hero.photo;
   }
-  // La última línea del título va en verde
-  const tl = D.hero.title.split("\n");
-  const last = tl.pop();
-  $("heroTitle").textContent = tl.length ? tl.join("\n") + "\n" : "";
-  $("heroTitle").appendChild(el("span", "hero__accent")).textContent = last;
+  // Una línea por renglón (entran escalonadas); el punto final va en verde
+  D.hero.title.split("\n").forEach((line, i) => {
+    const ln = el("span", "hero__line");
+    ln.style.setProperty("--i", i);
+    const dot = line.endsWith(".");
+    ln.textContent = dot ? line.slice(0, -1) : line;
+    if (dot) ln.appendChild(el("span", "hero__accent", "."));
+    $("heroTitle").appendChild(ln);
+  });
   $("heroSub").textContent = D.hero.subtitle;
 
   const ctas = $("heroCtas");
@@ -142,9 +146,16 @@
   });
   fillTrack($("capsTrack"), D.stack.capabilities || [], (t) => el("li", "stack__cap", t));
 
+  // Escribe un título y deja su signo final ("." "?" "!") en verde; si no tiene, suma un punto
+  const accentTitle = (node, text) => {
+    const end = /[.?!]$/.test(text);
+    node.textContent = end ? text.slice(0, -1) : text;
+    node.appendChild(el("span", "hero__accent", end ? text.slice(-1) : "."));
+  };
+
   /* ---- SERVICIOS ---- */
   const S = D.services;
-  $("servicesTitle").textContent = S.title;
+  accentTitle($("servicesTitle"), S.title);
   $("servicesIntro").textContent = S.intro;
   S.items.forEach((s) => {
     const li = el("li", "service");
@@ -153,6 +164,7 @@
       <div>
         <p class="service__text">${s.text}</p>
         <div class="service__tags">${(s.tags || []).map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+        ${s.link ? `<a class="link-arrow service__link" href="${s.link.href}">${s.link.label}${icon("arrow", "i--arrow")}</a>` : ""}
       </div>
       <div class="service__proof">
         <div class="service__proof-value${/\d/.test(s.proofValue) ? "" : " service__proof-value--word"}">${s.proofValue}</div>
@@ -163,14 +175,17 @@
 
   /* ---- PROYECTOS ---- */
   const P = D.projects;
-  $("projectsTitle").textContent = P.title;
+  accentTitle($("projectsTitle"), P.title);
   $("projectsIntro").textContent = P.intro || "";
 
   const MOCKUPS = {
     // Pantalla de la app Vesty
     vesty: (m) => `
-      <div class="phone" role="img" aria-label="${U.vestyAria}"><div class="phone__screen">
+      <div class="browser" role="img" aria-label="${U.vestyAria}">
+        <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">vestyapp.io</span></div>
+        <div class="browser__screen">
         <div class="app__top"><span class="app__hi">${m.greeting}</span><img class="app__logo" src="assets/vesty-logo.png" alt="" width="26" height="26" /></div>
+        <div class="app__grid"><div class="app__main">
         <div class="app__label">${m.balanceLabel}</div>
         <div class="app__value">${m.balanceValue}</div>
         <span class="app__change">${m.change}</span>
@@ -181,6 +196,7 @@
           <path class="area" d="M0 52 L24 48 L48 50 L72 40 L96 43 L120 32 L144 36 L168 24 L192 27 L216 14 L240 8 L240 64 L0 64 Z"/>
           <path d="M0 52 L24 48 L48 50 L72 40 L96 43 L120 32 L144 36 L168 24 L192 27 L216 14 L240 8"/>
         </svg>
+        </div><div class="app__side">
         <div class="app__score">
           <div class="app__score-num">${m.score}</div>
           <div><strong>${m.scoreLabel}</strong><span>${U.vestyScoreHint}</span></div>
@@ -189,6 +205,7 @@
           ${(m.holdings || []).map((h) => `
             <div class="app__holding"><b>${h.name}</b><em>${h.value}</em><div class="app__bar"><i style="width:${h.pct}%"></i></div></div>`).join("")}
         </div>
+        </div></div>
       </div></div>`,
     // Carta de jugador de Millo Manager
     millo: (m) => `
@@ -243,15 +260,22 @@
   });
 
   if (P.others && P.others.length) {
-    $("otherProjectsTitle").textContent = P.othersTitle;
+    accentTitle($("otherProjectsTitle"), P.othersTitle);
+    // Tarjetas: captura de la página completa que se desplaza sola, y debajo el título
     P.others.forEach((it) => {
-      const li = el("li", it.preview ? "post post--preview" : "post");
-      const a = setLink(el("a"), it.href);
-      // Preview: captura de la página completa que se desplaza sola dentro de una ventana
-      const preview = it.preview
-        ? `<span class="site-preview" aria-hidden="true"><span class="site-preview__bar"><i></i><i></i><i></i></span><span class="site-preview__screen"><img src="${it.preview}" alt="" width="720" height="2952" loading="lazy" /></span></span>`
+      const li = el("li", "other");
+      const a = setLink(el("a", "other__link"), it.href);
+      const shot = it.preview
+        ? `<span class="other__shot" aria-hidden="true"><img src="${it.preview}" alt="" width="720" loading="lazy" /></span>`
         : "";
-      a.innerHTML = `<span class="post__type">${it.type || ""}</span><span class="post__title">${it.title}${it.text ? `<span class="post__note">${it.text}</span>` : ""}</span>${preview}${icon("external")}`;
+      a.innerHTML = `${shot}
+        <span class="other__body">
+          <span class="other__head">
+            <span class="other__title">${it.title}${icon("external")}</span>
+            ${it.type ? `<span class="tag">${it.type}</span>` : ""}
+          </span>
+          ${it.text ? `<span class="other__note">${it.text}</span>` : ""}
+        </span>`;
       li.appendChild(a);
       $("otherProjectsList").appendChild(li);
     });
@@ -260,44 +284,44 @@
     $("otherProjectsList").style.display = "none";
   }
 
-  /* ---- EXPERIENCIA (agrupa roles consecutivos de la misma empresa) ---- */
+  /* ---- EXPERIENCIA: recorrido con línea central y tarjetas alternadas ----
+     El primer rol de cada empresa lleva el nodo con la inicial y el nombre;
+     los siguientes de la misma empresa, un punto y el período. */
   const E = D.experience;
-  $("expTitle").textContent = E.title;
+  accentTitle($("expTitle"), E.title);
   $("expAbout").textContent = E.about || "";
-  const groups = [];
-  E.items.forEach((it) => {
-    const last = groups[groups.length - 1];
-    if (last && last.company === it.company) last.roles.push(it);
-    else groups.push({ company: it.company, roles: [it] });
-  });
-  const span = (roles) => {
-    const start = roles[roles.length - 1].period.split("—")[0].trim();
-    const end = roles[0].period.split("—").pop().trim();
-    return start === end ? start : `${start} — ${end}`;
+  // Nodo de empresa: su logo si está en data.js, si no la inicial
+  const mark = (company) => {
+    const logo = (E.logos || {})[company];
+    return logo
+      ? `<span class="tl__mark tl__mark--logo${logo.bleed ? " tl__mark--bleed" : ""}"><img src="${logo.src}" alt="" width="44" height="44" loading="lazy" /></span>`
+      : `<span class="tl__mark">${company[0]}</span>`;
   };
-  groups.forEach((g) => {
-    const row = el("div", "cv__row");
-    const multi = g.roles.length > 1;
-    row.innerHTML = `
-      <div>
-        <div class="cv__org">${g.company}</div>
-        <div class="cv__org-meta">${span(g.roles)}${multi ? ` · ${g.roles.length} ${U.roles}` : ""}</div>
+  // "2024-05" → "may. 2024"; sin fin → "Hoy" (en verde)
+  const ym = (v) => { const [y, m] = v.split("-"); return `${U.months[+m - 1]} ${y}`; };
+  const period = (r) => `${ym(r.start)} — ${r.end ? ym(r.end) : `<span class="tl__present">${U.present}</span>`}`;
+  // Cifras de impacto (81%, 8,5%) en verde dentro de la descripción
+  const figures = (t) => t.replace(/\d+(?:[.,]\d+)?%/g, (f) => `<strong class="tl__fig">${f}</strong>`);
+  E.items.forEach((r, i) => {
+    const first = i === 0 || E.items[i - 1].company !== r.company;
+    const li = el("li", `tl__item tl__item--${i % 2 ? "right" : "left"}${first ? " tl__item--org" : ""}${r.current ? " tl__item--now" : ""}`);
+    li.innerHTML = `
+      <div class="tl__card">
+        <h3 class="tl__role">${r.role}</h3>
+        <p class="tl__desc">${figures(r.description)}</p>
       </div>
-      <div class="cv__roles${multi ? " cv__roles--track" : ""}">
-        ${g.roles.map((r) => `
-          <div class="cv__role${r.current ? " cv__role--now" : ""}">
-            <div class="cv__role-title">${r.role}${r.current ? `<span class="cv__now">${U.current}</span>` : ""}</div>
-            ${multi ? `<div class="cv__period">${r.period}</div>` : ""}
-            <p class="cv__desc">${r.description}</p>
-          </div>`).join("")}
+      <div class="tl__node" aria-hidden="true">${first ? mark(r.company) : '<span class="tl__dot"></span>'}</div>
+      <div class="tl__meta">
+        ${first ? `<span class="tl__org">${r.company}</span>` : ""}
+        <span class="tl__period">${period(r)}</span>
       </div>`;
-    $("cvList").appendChild(row);
+    $("cvList").appendChild(li);
   });
 
   /* ---- FORMACIÓN ---- */
   const Ed = D.education;
   if (Ed && Ed.items && Ed.items.length) {
-    $("eduTitle").textContent = Ed.title;
+    accentTitle($("eduTitle"), Ed.title);
     const list = $("eduList");
     Ed.items.forEach((e) => {
       const row = el("div", "cv__row");
@@ -320,7 +344,7 @@
   /* ---- CONTENIDO ---- */
   const C = D.content;
   if (C && C.items && C.items.length) {
-    $("contentTitle").textContent = C.title;
+    accentTitle($("contentTitle"), C.title);
     C.items.forEach((it) => {
       const li = el("li", "post");
       const a = setLink(el("a"), it.href);
@@ -337,7 +361,7 @@
 
   /* ---- CIERRE ---- */
   const K = D.contact;
-  $("contactTitle").textContent = K.title;
+  accentTitle($("contactTitle"), K.title);
   $("contactText").textContent = K.text;
   const kc = $("contactCtas");
   if (K.cta) {
@@ -376,7 +400,7 @@
     document.documentElement.classList.add("motion");
     const groups = [
       ".section__head", ".services > .service", ".projects > .product",
-      "#cvList > .cv__row", "#eduList > .cv__row", ".posts > .post", ".closing",
+      "#eduList > .cv__row", ".posts > .post", ".others > .other", ".closing",
     ];
     groups.forEach((sel) =>
       document.querySelectorAll(sel).forEach((n, i) => {
@@ -384,10 +408,7 @@
         n.style.setProperty("--d", Math.min(i, 5) * 0.08 + "s");
       })
     );
-    document.querySelectorAll(".cv__roles").forEach((t) =>
-      t.querySelectorAll(".cv__role").forEach((r, i) => r.style.setProperty("--i", i))
-    );
-    // Cada rol entra por su cuenta cuando llega a la pantalla
+    // Cada rol entra por su cuenta (desde su lado) cuando llega a la pantalla
     const roleIO = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
@@ -395,12 +416,11 @@
         roleIO.unobserve(e.target);
       });
     }, { threshold: 0.3, rootMargin: "0px 0px -10% 0px" });
-    document.querySelectorAll(".cv__role").forEach((r) => roleIO.observe(r));
+    document.querySelectorAll(".tl__item").forEach((r) => roleIO.observe(r));
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
         e.target.classList.add("is-in");
-        e.target.querySelectorAll(".cv__roles--track").forEach((t) => t.classList.add("is-in"));
         io.unobserve(e.target);
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
@@ -458,22 +478,48 @@
   const progress = $("progress");
   const navLinks = [...document.querySelectorAll("[data-nav]")];
   const sections = navLinks.map((a) => document.querySelector(a.getAttribute("href")));
-  const tracks = [...document.querySelectorAll(".cv__roles--track")];
+  // Pastilla del menú: una sola, que se traslada de un link al otro
+  const navWrap = document.querySelector(".nav__links");
+  const navPill = el("span", "nav__pill");
+  navPill.setAttribute("aria-hidden", "true");
+  navWrap.prepend(navPill);
+  let current = -1, navLock = -1, lockTimer = 0;
+  const setActive = (i) => {
+    if (i === current) return;
+    navLinks.forEach((a, j) => a.classList.toggle("is-active", j === i));
+    if (i >= 0) {
+      const a = navLinks[i];
+      // La primera vez aparece en su lugar; después se desliza
+      if (current < 0) navPill.classList.add("is-instant");
+      navPill.style.setProperty("--x", a.offsetLeft + "px");
+      navPill.style.setProperty("--w", a.offsetWidth + "px");
+      navPill.offsetWidth; // aplica la posición antes de volver a animar
+      navPill.classList.remove("is-instant");
+    }
+    navPill.classList.toggle("is-on", i >= 0);
+    current = i;
+  };
+  navLinks.forEach((a, i) => a.addEventListener("click", () => {
+    navLock = i;
+    setActive(i);
+    clearTimeout(lockTimer);
+    lockTimer = setTimeout(() => { navLock = -1; onScrollFx(); }, reduced ? 50 : 1100);
+  }));
+  const timeline = $("cvList");
   const onScrollFx = () => {
     // Línea verde del recorrido: se llena hasta la altura de lectura (60% de la pantalla)
     const mark = innerHeight * 0.6;
-    tracks.forEach((t) => {
-      const r = t.getBoundingClientRect();
-      t.style.setProperty("--fill", Math.max(0, Math.min(1, (mark - r.top) / r.height)).toFixed(3));
-      t.querySelectorAll(".cv__role").forEach((role) =>
-        role.classList.toggle("is-passed", role.getBoundingClientRect().top + 8 < mark)
-      );
-    });
+    const r = timeline.getBoundingClientRect();
+    timeline.style.setProperty("--fill", Math.max(0, Math.min(1, (mark - r.top) / r.height)).toFixed(3));
+    timeline.querySelectorAll(".tl__item").forEach((it) =>
+      it.classList.toggle("is-passed", it.querySelector(".tl__node").getBoundingClientRect().top + 12 < mark)
+    );
     const h = document.documentElement.scrollHeight - innerHeight;
     progress.style.setProperty("--p", h > 0 ? scrollY / h : 0);
     let active = -1;
     sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < innerHeight * 0.4) active = i; });
-    navLinks.forEach((a, i) => a.classList.toggle("is-active", i === active));
+    // Mientras dura el scroll de un click, la pastilla se queda en la sección elegida
+    if (navLock < 0) setActive(active);
   };
   window.addEventListener("scroll", onScrollFx, { passive: true });
   onScrollFx();

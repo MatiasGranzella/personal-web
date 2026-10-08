@@ -13,8 +13,8 @@ window.PROFILE = {
      DATOS BÁSICOS
      ---------------------------------------------------------------------- */
   meta: {
-    siteTitle: "Matías Granzella — AI Lead y desarrollador Full Stack",
-    siteDescription: "AI Lead en Ualá especializado en IA generativa en producción: chatbots y asistentes con LLMs. Desarrollador Full Stack, founder de Vesty y Millo Manager.",
+    siteTitle: "Matías Granzella — Backend & AI Engineer · Landings, sistemas a medida e IA",
+    siteDescription: "Backend & AI Engineer. Lidero IA generativa en Ualá y armo proyectos de punta a punta: landings, sistemas a medida con backend propio e integraciones y chatbots con IA.",
   },
 
   // Textos fijos de la interfaz (menú, botones, etiquetas)
@@ -28,6 +28,8 @@ window.PROFILE = {
     themeToDark: "Cambiar a modo oscuro",
     themeToLight: "Cambiar a modo claro",
     current: "Actual",
+    present: "Hoy",
+    months: ["ene.", "feb.", "mar.", "abr.", "may.", "jun.", "jul.", "ago.", "sep.", "oct.", "nov.", "dic."],
     roles: "roles",
     stackAria: "Tecnologías con las que trabajo",
     vestyScoreHint: "Valuación · crecimiento · salud",
@@ -47,13 +49,12 @@ window.PROFILE = {
     // Título principal. Usá \n para cortar la línea; la última línea va en verde.
     title: "Hola, soy\nMatías Granzella.",
     subtitle:
-      "AI Lead en Ualá, especializado en llevar IA generativa a producción: chatbots y " +
-      "asistentes con LLMs. También soy desarrollador Full Stack y construyo mis propios " +
-      "productos, Vesty y Millo Manager.",
+      "Backend & AI Engineer. Lidero IA generativa en Ualá, y por fuera armo proyectos de " +
+      "punta a punta: desde tu landing hasta un sistema a medida con IA adentro.",
     photo: "assets/foto_perfil.jpeg",
     ctas: [
-      { label: "Conectemos", href: "linkedin", primary: true },
-      { label: "Ver experiencia", href: "#experiencia", primary: false },
+      { label: "Contame tu proyecto", href: "linkedin", primary: true },
+      { label: "Ver qué hago", href: "#servicios", primary: false },
     ],
     // Línea de estado debajo de los botones. Dejala en "" para ocultarla.
     availability: "",
@@ -92,7 +93,7 @@ window.PROFILE = {
       { name: "Vercel", logo: "vercel" },
     ],
     capabilities: [
-      "IA generativa en producción", "Chatbots con LLMs", "Desarrollo Full Stack", "Sistemas a medida",
+      "IA generativa en producción", "Chatbots con LLMs", "Landings y sitios web", "Desarrollo Full Stack", "Sistemas a medida",
       "Diseño de sistemas", "Arquitecturas web",
       "APIs REST", "Arquitecturas event-driven",
       "Agentes con LLMs", "RAG y embeddings", "Evaluación y monitoreo de LLMs",
@@ -105,37 +106,41 @@ window.PROFILE = {
      SERVICIOS (freelance). "proof" = algo real que ya hiciste.
      ---------------------------------------------------------------------- */
   services: {
-    title: "IA en producción, no en demos.",
+    title: "Qué puedo armarte.",
     intro:
-      "Mi especialidad es la IA generativa en producción: sistemas que atienden usuarios " +
-      "reales y se miden todos los días. Y me gusta construir el sistema entero alrededor.",
+      "Tres formas de trabajar juntos, de lo más simple a lo más completo. " +
+      "Cada una con algo real detrás.",
+    // link: lleva a la prueba de cada servicio dentro de la página
     items: [
       {
-        title: "Chatbots y asistentes con IA generativa",
+        title: "Tu landing o el rediseño de tu sitio",
         text:
-          "Atención al cliente, cobranzas, soporte interno. Diseño el flujo, conecto el modelo " +
-          "a tus datos con RAG y dejo evaluación y monitoreo andando antes de salir a producción.",
-        proofValue: "81%",
-        proof: "de accuracy clasificando consultas en el chatbot de CX de Ualá.",
-        tags: ["OpenAI", "LangGraph", "RAG", "Langfuse"],
+          "Una web rápida, que se vea bien en el celular y esté pensada para que te escriban. " +
+          "Desde cero o rediseñando la que ya tenés.",
+        proofValue: "2",
+        proof: "sitios recientes: GV Convertidores (cliente) y 3gen Padel (concepto).",
+        tags: ["Diseño", "HTML / CSS", "Next.js", "SEO"],
+        link: { label: "Ver sitios", href: "#otherProjectsTitle" },
       },
       {
-        title: "Sistemas Full Stack a medida",
+        title: "Un sistema completo a medida",
         text:
-          "Lo que más disfruto construir: frontend, backend, APIs, base de datos y deploy. " +
-          "Es como armé mis propios productos, con la IA integrada donde aporta.",
+          "Frontend, backend, base de datos y deploy: el sistema entero, hecho para tu negocio. " +
+          "Es como armé mis propios productos.",
         proofValue: "2",
         proof: "productos propios en producción: Vesty y Millo Manager.",
         tags: ["Next.js", "React", "FastAPI", "Go"],
+        link: { label: "Ver productos", href: "#proyectos" },
       },
       {
-        title: "Plataformas y pipelines de datos",
+        title: "Integraciones y chatbots con IA",
         text:
-          "Modelado con dbt, orquestación con Airflow, infraestructura como código y " +
-          "arquitecturas event-driven en Google Cloud. La base que necesita cualquier sistema de IA.",
-        proofValue: "8,5%",
-        proof: "de ahorro sobre la facturación total de GCP en Ualá.",
-        tags: ["dbt", "Airflow", "Terraform", "GCP"],
+          "Para procesos internos o para atender a tus clientes: la IA conectada a tus datos y " +
+          "sistemas, con evaluación y monitoreo antes de salir a producción.",
+        proofValue: "81%",
+        proof: "de accuracy clasificando consultas en el chatbot de CX de Ualá.",
+        tags: ["OpenAI", "LangGraph", "RAG", "Langfuse"],
+        link: { label: "Ver experiencia", href: "#experiencia" },
       },
     ],
   },
@@ -215,7 +220,7 @@ window.PROFILE = {
   },
     ],
     // Otros proyectos: listado simple debajo de las tarjetas
-    othersTitle: "Otros proyectos",
+    othersTitle: "Sitios y landings",
     others: [
       {
         type: "Sitio web",
@@ -223,6 +228,13 @@ window.PROFILE = {
         text: "Sitio para un taller de convertidores de torque en Villa Crespo",
         href: "https://gvconvertidores.com.ar",
         preview: "assets/gv-preview.jpg",
+      },
+      {
+        type: "Rediseño · concepto",
+        title: "3gen Padel Academy",
+        text: "Rediseño por mi cuenta del sitio de una academia de pádel en Palermo",
+        href: "https://matiasgranzella.github.io/3genpadel-redesign/",
+        preview: "assets/3gen-preview.jpg",
       },
     ],
   },
@@ -232,13 +244,19 @@ window.PROFILE = {
      ---------------------------------------------------------------------- */
   experience: {
     title: "Experiencia",
+    // Logo de cada empresa (va en el nodo del recorrido). "bleed": el logo ya es un cuadrado de color.
+    logos: {
+      "Ualá": { src: "assets/companies/uala.png" },
+      "Data IQ": { src: "assets/companies/dataiq.png", bleed: true },
+      "IBM": { src: "assets/companies/ibm.svg" },
+    },
     about:
-      "Licenciado en Sistemas (UBA) con un Magíster en Management & Analytics (Di Tella). " +
-      "Pasé por Business Intelligence, Analytics Engineering y Data Platform antes de " +
-      "enfocarme 100% en IA, así que construyo el sistema entero, no solo el prompt.",
+      "Backend e IA en producción. 6 años en Ualá pasando por BI, Analytics Engineering y " +
+      "Data Platform hasta liderar IA generativa: por eso construyo el sistema entero, no solo " +
+      "el prompt. Licenciado en Sistemas (UBA) y Magíster en Management & Analytics (Di Tella).",
     items: [
       {
-        period: "2026 — Hoy",
+        start: "2026-05", end: null, // null = hoy
         role: "AI Lead",
         company: "Ualá",
         description:
@@ -246,7 +264,7 @@ window.PROFILE = {
         current: true,
       },
       {
-        period: "2024 — 2026",
+        start: "2024-05", end: "2026-06",
         role: "Sr AI Engineer",
         company: "Ualá",
         description:
@@ -254,7 +272,7 @@ window.PROFILE = {
           "y un chatbot de Cobranzas que automatiza gestiones y deriva casos sensibles a un humano.",
       },
       {
-        period: "2023 — 2024",
+        start: "2023-02", end: "2024-05",
         role: "Sr Data Platform Engineer",
         company: "Ualá",
         description:
@@ -262,7 +280,7 @@ window.PROFILE = {
           "event-driven con Pub/Sub y un análisis de costos de GCP que ahorró 8,5% de la facturación.",
       },
       {
-        period: "2022 — 2023",
+        start: "2022-01", end: "2023-01",
         role: "Sr Analytics Engineer",
         company: "Ualá",
         description:
@@ -270,7 +288,7 @@ window.PROFILE = {
           "buenas prácticas, tests y orquestación con Airflow en Google Cloud.",
       },
       {
-        period: "2020 — 2021",
+        start: "2020-11", end: "2021-12",
         role: "Ssr BI Analyst",
         company: "Ualá",
         description:
@@ -278,14 +296,14 @@ window.PROFILE = {
           "rentabilidad de clientes y cartera de créditos.",
       },
       {
-        period: "2019 — 2020",
+        start: "2019-07", end: "2020-11",
         role: "BI Analyst",
         company: "Data IQ",
         description:
           "Tableros QlikSense y QlikView de punta a punta para OSDE, Loma Negra, Western Union y Banco Ciudad.",
       },
       {
-        period: "2018 — 2019",
+        start: "2018-08", end: "2019-06",
         role: "Pasante RPA",
         company: "IBM",
         description: "Robots para automatizar procesos en web, SAP y Excel (WinAutomation, Automation Anywhere).",
@@ -322,8 +340,8 @@ window.PROFILE = {
      CIERRE / CONTACTO
      ---------------------------------------------------------------------- */
   contact: {
-    title: "¿Tenés un proyecto de IA en mente?",
-    text: "Una conversación de 30 minutos, sin compromiso. Escribime por LinkedIn y lo vemos.",
+    title: "¿Tenés un proyecto en mente?",
+    text: "Una landing, un sistema o un chatbot: 30 minutos, sin compromiso. Escribime por LinkedIn y lo vemos.",
     cta: { label: "Escribime por LinkedIn", href: "linkedin" },
     socials: [
       { label: "@mati_granzella", href: "https://twitter.com/mati_granzella", icon: "x" },
@@ -351,8 +369,8 @@ window.PROFILE = {
    ========================================================================== */
 window.PROFILE_EN = {
   meta: {
-    siteTitle: "Matías Granzella — AI Lead and Full Stack developer",
-    siteDescription: "AI Lead at Ualá specialized in generative AI in production: LLM chatbots and assistants. Full Stack developer, founder of Vesty and Millo Manager.",
+    siteTitle: "Matías Granzella — Backend & AI Engineer · Landing pages, custom systems and AI",
+    siteDescription: "Backend & AI Engineer. I lead generative AI at Ualá and build projects end to end: landing pages, custom systems with their own backend, and AI integrations and chatbots.",
   },
   ui: {
     lang: "en",
@@ -364,6 +382,8 @@ window.PROFILE_EN = {
     themeToDark: "Switch to dark mode",
     themeToLight: "Switch to light mode",
     current: "Current",
+    present: "Now",
+    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     roles: "roles",
     stackAria: "Technologies I work with",
     vestyScoreHint: "Valuation · growth · health",
@@ -373,18 +393,17 @@ window.PROFILE_EN = {
   hero: {
     title: "Hi, I’m\nMatías Granzella.",
     subtitle:
-      "AI Lead at Ualá, specialized in taking generative AI to production: LLM chatbots " +
-      "and assistants. I’m also a Full Stack developer and build my own products, " +
-      "Vesty and Millo Manager.",
+      "Backend & AI Engineer. I lead generative AI at Ualá, and on the side I build projects " +
+      "end to end: from your landing page to a custom system with AI built in.",
     ctas: [
-      { label: "Let’s connect" },
-      { label: "See experience" },
+      { label: "Tell me about your project" },
+      { label: "See what I do" },
     ],
   },
   stack: {
     label: "Tools and capabilities",
     capabilities: [
-      "Generative AI in production", "LLM chatbots", "Full Stack development", "Custom systems",
+      "Generative AI in production", "LLM chatbots", "Landing pages and websites", "Full Stack development", "Custom systems",
       "System design", "Web architecture",
       "REST APIs", "Event-driven architecture",
       "LLM agents", "RAG and embeddings", "LLM evaluation and monitoring",
@@ -393,32 +412,33 @@ window.PROFILE_EN = {
     ],
   },
   services: {
-    title: "AI in production, not in demos.",
-    intro:
-      "My specialty is generative AI in production: systems that serve real users and get " +
-      "measured every day. And I enjoy building the whole system around it.",
+    title: "What I can build for you.",
+    intro: "Three ways to work together, from the simplest to the most complete. Each one with something real behind it.",
     items: [
       {
-        title: "Generative AI chatbots and assistants",
+        title: "Your landing page or a redesign of your site",
         text:
-          "Customer support, collections, internal help desks. I design the flow, connect the " +
-          "model to your data with RAG, and get evaluation and monitoring running before launch.",
-        proof: "accuracy classifying queries in Ualá’s customer-experience chatbot.",
+          "A fast site that looks good on mobile and is built to get people to reach out. " +
+          "From scratch or redesigning the one you have.",
+        proof: "recent sites: GV Convertidores (client) and 3gen Padel (concept).",
+        tags: ["Design", "HTML / CSS", "Next.js", "SEO"],
+        link: { label: "See sites" },
       },
       {
-        title: "Custom Full Stack systems",
+        title: "A complete custom system",
         text:
-          "What I enjoy building most: frontend, backend, APIs, database and deployment. " +
-          "It’s how I built my own products, with AI built in where it adds value.",
+          "Frontend, backend, database and deployment: the whole system, built for your business. " +
+          "It’s how I built my own products.",
         proof: "products of my own in production: Vesty and Millo Manager.",
+        link: { label: "See products" },
       },
       {
-        title: "Data platforms and pipelines",
+        title: "AI integrations and chatbots",
         text:
-          "Modeling with dbt, orchestration with Airflow, infrastructure as code and " +
-          "event-driven architectures on Google Cloud. The foundation any AI system needs.",
-        proofValue: "8.5%",
-        proof: "savings on Ualá’s total GCP bill.",
+          "For internal processes or to serve your customers: AI connected to your data and " +
+          "systems, with evaluation and monitoring in place before launch.",
+        proof: "accuracy classifying queries in Ualá’s customer-experience chatbot.",
+        link: { label: "See experience" },
       },
     ],
   },
@@ -473,20 +493,20 @@ window.PROFILE_EN = {
         cta: { label: "Play Millo Manager" },
       },
     ],
-    othersTitle: "Other projects",
+    othersTitle: "Sites and landing pages",
     others: [
       { type: "Website", text: "Website for a torque converter repair shop in Buenos Aires" },
+      { type: "Redesign · concept", text: "Self-initiated redesign of a padel academy’s website in Buenos Aires" },
     ],
   },
   experience: {
     title: "Experience",
     about:
-      "BSc in Information Systems (University of Buenos Aires) and a Master’s in Management & " +
-      "Analytics (Universidad Torcuato Di Tella). I went through Business Intelligence, Analytics " +
-      "Engineering and Data Platform before focusing fully on AI, so I build the whole system, not just the prompt.",
+      "Backend and AI in production. 6 years at Ualá going from BI through Analytics Engineering " +
+      "and Data Platform to leading generative AI: that’s why I build the whole system, not just " +
+      "the prompt. BSc in Information Systems (UBA) and Master’s in Management & Analytics (UTDT).",
     items: [
       {
-        period: "2026 — Now",
         description: "I lead the development of Generative AI solutions for critical business processes and areas.",
       },
       {
@@ -545,8 +565,8 @@ window.PROFILE_EN = {
     top: "Back to top",
   },
   contact: {
-    title: "Got an AI project in mind?",
-    text: "A 30-minute conversation, no strings attached. Message me on LinkedIn and let’s see.",
+    title: "Got a project in mind?",
+    text: "A landing page, a system or a chatbot: 30 minutes, no strings attached. Message me on LinkedIn and let’s see.",
     cta: { label: "Message me on LinkedIn" },
   },
 };
