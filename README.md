@@ -5,14 +5,11 @@ y promocionar tu app **Vesty**. Sin build, sin dependencias: HTML/CSS/JS puro.
 
 ## 🚀 Ver la web localmente
 
-Opción rápida: hacé **doble clic en `index.html`** y se abre en el navegador.
-
-Opción recomendada (para que carguen bien las fuentes/animaciones):
+Las rutas son absolutas (`/assets/...`, `/en/`), así que hay que servirla (doble clic en `index.html` ya no anda):
 
 ```bash
-cd profile-web
 python3 -m http.server 8000
-# abrí http://localhost:8000
+# abrí http://localhost:8000 (español) o http://localhost:8000/en/ (inglés)
 ```
 
 ## ✏️ Cómo editar tu contenido
@@ -57,6 +54,20 @@ Cualquiera de estas te da un link público para pegar en tu perfil/post:
 1. Subí la carpeta a un repo.
 2. Settings → Pages → Branch `main` / carpeta raíz → Save.
 
+## 🔎 SEO: páginas de servicios, home en inglés y sitemap
+
+Las páginas de servicios (`/servicios/...` y `/en/services/...`), la home en inglés (`en/index.html`),
+el `sitemap.xml` y el título y la descripción de la home **se generan** con:
+
+```bash
+node scripts/build.mjs
+```
+
+- El contenido de los servicios está en `scripts/servicios.mjs` (español e inglés).
+- El título y la descripción de la home, en `HOME` de `scripts/build.mjs`.
+- Corré el script **cada vez que cambies `index.html` o `scripts/servicios.mjs`** y commiteá lo generado.
+- `robots.txt` y `llms.txt` (para buscadores con IA) se editan a mano.
+
 ## 📁 Archivos
 
 | Archivo       | Qué es                                            |
@@ -66,3 +77,6 @@ Cualquiera de estas te da un link público para pegar en tu perfil/post:
 | `styles.css`  | Diseño y animaciones.                              |
 | `app.js`      | Render + interacciones (no hace falta tocar).     |
 | `assets/`     | Tu foto, imagen de preview, etc.                  |
+| `scripts/`    | Generador de las páginas estáticas (ver SEO).     |
+| `page.js`     | Tema y nav de las páginas de servicios.           |
+| `servicios/`, `en/` | Generadas por `scripts/build.mjs`, no editar. |

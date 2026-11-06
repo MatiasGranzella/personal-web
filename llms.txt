@@ -1,0 +1,29 @@
+# Matías Granzella
+
+> Backend & AI Engineer en Buenos Aires, Argentina. AI Lead en Ualá y desarrollador freelance: landings y sitios web, sistemas a medida con backend propio, e integraciones y chatbots con IA generativa.
+
+Más de 8 años en software, datos e inteligencia artificial. En Ualá lleva IA generativa a producción (chatbots y asistentes con LLMs, RAG, evaluación y monitoreo). El chatbot de atención al cliente que desarrolló clasifica consultas con 81% de accuracy. Trabaja en español e inglés, con clientes de Argentina y de forma remota.
+
+## Servicios freelance
+
+- [Landing pages y rediseño de sitios web](https://matiasgranzella.com/servicios/landing-pages/): webs rápidas, pensadas para el celular y para que te escriban. Ejemplo: gvconvertidores.com.ar (cliente).
+- [Sistemas a medida](https://matiasgranzella.com/servicios/sistemas-a-medida/): frontend, backend, base de datos y deploy (Next.js, React, Python/FastAPI, Go, PostgreSQL/Supabase). Ejemplos: sus productos Vesty y Gran Manager, en producción.
+- [Integraciones y chatbots con IA](https://matiasgranzella.com/servicios/chatbots-con-ia/): IA conectada a los datos y sistemas de la empresa, para procesos internos o atención al cliente (OpenAI, LangChain, LangGraph, RAG, Langfuse).
+
+## In English
+
+- [AI chatbots](https://matiasgranzella.com/en/services/ai-chatbots/) · [Custom software](https://matiasgranzella.com/en/services/custom-software/) · [Landing pages](https://matiasgranzella.com/en/services/landing-pages/)
+
+## Proyectos
+
+- [Vesty](https://vestyapp.io): app que unifica las inversiones del inversor argentino (brokers, bancos y exchanges) en una sola pantalla, con importación de extractos con IA.
+- [Gran Manager](https://granmanager.com.ar): juego web de manager de los 5 grandes del fútbol argentino (antes Millo Manager).
+- [GV Convertidores](https://gvconvertidores.com.ar): sitio para un taller de convertidores de torque en Buenos Aires.
+
+## Contacto
+
+- Mail: hola@matiasgranzella.com
+- [LinkedIn](https://www.linkedin.com/in/matias-federico-granzella)
+- [Sitio](https://matiasgranzella.com/) · [English](https://matiasgranzella.com/en/)
+- [CV en español (PDF)](https://matiasgranzella.com/assets/cv-matias-granzella-es.pdf)
+- [CV in English (PDF)](https://matiasgranzella.com/assets/cv-matias-granzella-en.pdf)

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cv/private/
+
+Sitemap: https://matiasgranzella.com/sitemap.xml

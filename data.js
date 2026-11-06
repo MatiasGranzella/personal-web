@@ -11,11 +11,8 @@ window.PROFILE = {
 
   /* -------------------------------------------------------------------------
      DATOS BÁSICOS
+     (El título y la descripción para Google están en scripts/build.mjs → HOME.)
      ---------------------------------------------------------------------- */
-  meta: {
-    siteTitle: "Matías Granzella — Backend & AI Engineer · Landings, sistemas a medida e IA",
-    siteDescription: "Backend & AI Engineer. Lidero IA generativa en Ualá y armo proyectos de punta a punta: landings, sistemas a medida con backend propio e integraciones y chatbots con IA.",
-  },
 
   // Textos fijos de la interfaz (menú, botones, etiquetas)
   ui: {
@@ -39,6 +36,8 @@ window.PROFILE = {
 
   // Link principal de contacto (lo usan la nav, el hero y el cierre)
   linkedin: "https://www.linkedin.com/in/matias-federico-granzella",
+  // Mail de contacto (reenvía a la casilla personal)
+  email: "hola@matiasgranzella.com",
 
   /* -------------------------------------------------------------------------
      HERO
@@ -51,7 +50,7 @@ window.PROFILE = {
     subtitle:
       "Backend & AI Engineer. Lidero IA generativa en Ualá, y por fuera armo proyectos de " +
       "punta a punta: desde tu landing hasta un sistema a medida con IA adentro.",
-    photo: "assets/foto_perfil.jpeg",
+    photo: "/assets/foto_perfil.jpeg",
     ctas: [
       { label: "Contame tu proyecto", href: "linkedin", primary: true },
       { label: "Ver qué hago", href: "#servicios", primary: false },
@@ -120,7 +119,8 @@ window.PROFILE = {
         proofValue: "2",
         proof: "sitios recientes: GV Convertidores (cliente) y 3gen Padel (concepto).",
         tags: ["Diseño", "HTML / CSS", "Next.js", "SEO"],
-        link: { label: "Ver sitios", href: "#otherProjectsTitle" },
+        page: "/servicios/landing-pages/",
+        link: { label: "Cómo trabajo una landing", href: "/servicios/landing-pages/" },
       },
       {
         title: "Un sistema completo a medida",
@@ -130,7 +130,8 @@ window.PROFILE = {
         proofValue: "2",
         proof: "productos propios en producción: Vesty y Gran Manager.",
         tags: ["Next.js", "React", "FastAPI", "Go"],
-        link: { label: "Ver productos", href: "#proyectos" },
+        page: "/servicios/sistemas-a-medida/",
+        link: { label: "Cómo trabajo un sistema a medida", href: "/servicios/sistemas-a-medida/" },
       },
       {
         title: "Integraciones y chatbots con IA",
@@ -140,7 +141,8 @@ window.PROFILE = {
         proofValue: "81%",
         proof: "de accuracy clasificando consultas en el chatbot de CX de Ualá.",
         tags: ["OpenAI", "LangGraph", "RAG", "Langfuse"],
-        link: { label: "Ver experiencia", href: "#experiencia" },
+        page: "/servicios/chatbots-con-ia/",
+        link: { label: "Cómo trabajo un chatbot con IA", href: "/servicios/chatbots-con-ia/" },
       },
     ],
   },
@@ -156,7 +158,7 @@ window.PROFILE = {
   {
     kind: "vesty",
     title: "Vesty",
-    logo: "assets/vesty-logo.png",
+    logo: "/assets/vesty-logo.png",
     pitch: "Tu portfolio, unificado.",
     description:
       "Tu plata está en 5 lugares. Tu visión, no. Vesty reúne brokers, bancos y exchanges " +
@@ -193,8 +195,8 @@ window.PROFILE = {
   {
     kind: "gran",
     title: "Gran Manager",
-    logo: "assets/gran-manager/gm-azul.png",
-    logoDark: "assets/gran-manager/gm-blanco.png",
+    logo: "/assets/gran-manager/gm-azul.png",
+    logoDark: "/assets/gran-manager/gm-blanco.png",
     pitch: "La historia de los 5 grandes, ahora se juega.",
     description:
       "Un football manager de los 5 grandes del fútbol argentino: River, Boca, " +
@@ -212,11 +214,11 @@ window.PROFILE = {
     mockup: {
       caption: "Cartas del juego · una leyenda por club",
       cards: [
-        { name: "Francescoli", club: "River", rating: 93, position: "MP", photo: "assets/gran-manager/enzo-francescoli.webp", stats: [84, 89, 90, 93, 42, 76] },
-        { name: "Riquelme", club: "Boca", rating: 93, position: "MP", photo: "assets/gran-manager/juan-roman-riquelme.webp", stats: [91, 89, 96, 96, 87, 91] },
-        { name: "Bochini", club: "Independiente", rating: 93, position: "MP", photo: "assets/gran-manager/ricardo-bochini.webp", stats: [91, 89, 96, 96, 87, 91] },
-        { name: "Milito", club: "Racing", rating: 91, position: "DC", photo: "assets/gran-manager/diego-milito.webp", stats: [96, 96, 88, 96, 71, 89] },
-        { name: "Romagnoli", club: "San Lorenzo", rating: 92, position: "MP", photo: "assets/gran-manager/leandro-romagnoli.webp", stats: [90, 88, 96, 96, 86, 90] },
+        { name: "Francescoli", club: "River", rating: 93, position: "MP", photo: "/assets/gran-manager/enzo-francescoli.webp", stats: [84, 89, 90, 93, 42, 76] },
+        { name: "Riquelme", club: "Boca", rating: 93, position: "MP", photo: "/assets/gran-manager/juan-roman-riquelme.webp", stats: [91, 89, 96, 96, 87, 91] },
+        { name: "Bochini", club: "Independiente", rating: 93, position: "MP", photo: "/assets/gran-manager/ricardo-bochini.webp", stats: [91, 89, 96, 96, 87, 91] },
+        { name: "Milito", club: "Racing", rating: 91, position: "DC", photo: "/assets/gran-manager/diego-milito.webp", stats: [96, 96, 88, 96, 71, 89] },
+        { name: "Romagnoli", club: "San Lorenzo", rating: 92, position: "MP", photo: "/assets/gran-manager/leandro-romagnoli.webp", stats: [90, 88, 96, 96, 86, 90] },
       ],
     },
     cta: { label: "Jugar Gran Manager", href: "https://granmanager.com.ar" },
@@ -230,14 +232,14 @@ window.PROFILE = {
         title: "GV Convertidores de Par",
         text: "Sitio para un taller de convertidores de torque en Villa Crespo",
         href: "https://gvconvertidores.com.ar",
-        preview: "assets/gv-preview.jpg",
+        preview: "/assets/gv-preview.jpg",
       },
       {
         type: "Rediseño · concepto",
         title: "3gen Padel Academy",
         text: "Rediseño por mi cuenta del sitio de una academia de pádel en Palermo",
         href: "https://matiasgranzella.github.io/3genpadel-redesign/",
-        preview: "assets/3gen-preview.jpg",
+        preview: "/assets/3gen-preview.jpg",
       },
     ],
   },
@@ -249,9 +251,9 @@ window.PROFILE = {
     title: "Experiencia",
     // Logo de cada empresa (va en el nodo del recorrido). "bleed": el logo ya es un cuadrado de color.
     logos: {
-      "Ualá": { src: "assets/companies/uala.png" },
-      "Data IQ": { src: "assets/companies/dataiq.png", bleed: true },
-      "IBM": { src: "assets/companies/ibm.svg" },
+      "Ualá": { src: "/assets/companies/uala.png" },
+      "Data IQ": { src: "/assets/companies/dataiq.png", bleed: true },
+      "IBM": { src: "/assets/companies/ibm.svg" },
     },
     about:
       "Backend e IA en producción. 6 años en Ualá pasando por BI, Analytics Engineering y " +
@@ -344,9 +346,10 @@ window.PROFILE = {
      ---------------------------------------------------------------------- */
   contact: {
     title: "¿Tenés un proyecto en mente?",
-    text: "Una landing, un sistema o un chatbot: 30 minutos, sin compromiso. Escribime por LinkedIn y lo vemos.",
-    cta: { label: "Escribime por LinkedIn", href: "linkedin" },
+    text: "Una landing, un sistema o un chatbot: contame qué necesitás y en 30 minutos lo vemos. Escribime por mail o por LinkedIn.",
+    cta: { label: "hola@matiasgranzella.com", href: "email" },
     socials: [
+      { label: "LinkedIn", href: "linkedin", icon: "linkedin" },
       { label: "@mati_granzella", href: "https://twitter.com/mati_granzella", icon: "x" },
     ],
     // Una línea humana al pie del cierre. Dejala en "" para ocultarla.
@@ -358,7 +361,7 @@ window.PROFILE = {
      ---------------------------------------------------------------------- */
   footer: {
     made: "Hecho en Buenos Aires",
-    cv: { label: "Descargar CV", href: "assets/cv-matias-granzella-es.pdf" },
+    cv: { label: "Descargar CV", href: "/assets/cv-matias-granzella-es.pdf" },
     top: "Volver arriba",
   },
 
@@ -371,10 +374,6 @@ window.PROFILE = {
    traduce posición por posición.
    ========================================================================== */
 window.PROFILE_EN = {
-  meta: {
-    siteTitle: "Matías Granzella — Backend & AI Engineer · Landing pages, custom systems and AI",
-    siteDescription: "Backend & AI Engineer. I lead generative AI at Ualá and build projects end to end: landing pages, custom systems with their own backend, and AI integrations and chatbots.",
-  },
   ui: {
     lang: "en",
     switchTo: "ES",
@@ -425,7 +424,8 @@ window.PROFILE_EN = {
           "From scratch or redesigning the one you have.",
         proof: "recent sites: GV Convertidores (client) and 3gen Padel (concept).",
         tags: ["Design", "HTML / CSS", "Next.js", "SEO"],
-        link: { label: "See sites" },
+        page: "/en/services/landing-pages/",
+        link: { label: "How I build a landing page", href: "/en/services/landing-pages/" },
       },
       {
         title: "A complete custom system",
@@ -433,7 +433,8 @@ window.PROFILE_EN = {
           "Frontend, backend, database and deployment: the whole system, built for your business. " +
           "It’s how I built my own products.",
         proof: "products of my own in production: Vesty and Gran Manager.",
-        link: { label: "See products" },
+        page: "/en/services/custom-software/",
+        link: { label: "How I build custom software", href: "/en/services/custom-software/" },
       },
       {
         title: "AI integrations and chatbots",
@@ -441,7 +442,8 @@ window.PROFILE_EN = {
           "For internal processes or to serve your customers: AI connected to your data and " +
           "systems, with evaluation and monitoring in place before launch.",
         proof: "accuracy classifying queries in Ualá’s customer-experience chatbot.",
-        link: { label: "See experience" },
+        page: "/en/services/ai-chatbots/",
+        link: { label: "How I build an AI chatbot", href: "/en/services/ai-chatbots/" },
       },
     ],
   },
@@ -565,12 +567,11 @@ window.PROFILE_EN = {
   },
   footer: {
     made: "Made in Buenos Aires",
-    cv: { label: "Download CV", href: "assets/cv-matias-granzella-en.pdf" },
+    cv: { label: "Download CV", href: "/assets/cv-matias-granzella-en.pdf" },
     top: "Back to top",
   },
   contact: {
     title: "Got a project in mind?",
-    text: "A landing page, a system or a chatbot: 30 minutes, no strings attached. Message me on LinkedIn and let’s see.",
-    cta: { label: "Message me on LinkedIn" },
+    text: "A landing page, a system or a chatbot: tell me what you need and we’ll go over it in 30 minutes. Email me or message me on LinkedIn.",
   },
 };
