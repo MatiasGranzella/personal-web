@@ -33,7 +33,7 @@
     return n;
   };
   // "linkedin" en data.js apunta al link principal de LinkedIn
-  const resolve = (href) => (href === "linkedin" ? D.linkedin : href === "email" ? "mailto:" + D.email : href || "#");
+  const resolve = (href) => (href === "linkedin" ? D.linkedin : href || "#");
   const setLink = (a, href) => {
     a.href = resolve(href);
     if (a.href.startsWith("http")) { a.target = "_blank"; a.rel = "noopener"; }
@@ -46,7 +46,6 @@
     download: '<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
     up: '<path d="M12 19V5M6 11l6-6 6 6"/>',
     external: '<path d="M7 17 17 7M8 7h9v9"/>',
-    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
     linkedin: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
     x: '<path d="M4 4h4.5L20 20h-4.5zM20 4l-6.6 7.2M4 20l6.6-7.2"/>',
     lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
@@ -369,7 +368,7 @@
   const kc = $("contactCtas");
   if (K.cta) {
     const a = setLink(el("a", "btn btn--primary"), K.cta.href);
-    a.innerHTML = icon(K.cta.href === "email" ? "mail" : "linkedin") + K.cta.label;
+    a.innerHTML = icon("linkedin") + K.cta.label;
     kc.appendChild(a);
   }
   (K.socials || []).forEach((s) => {
@@ -384,7 +383,7 @@
   $("footerName").textContent = D.hero.name;
   $("footerMade").textContent = [F.made, `© ${new Date().getFullYear()}`].filter(Boolean).join(" · ");
   const fl = $("footerLinks");
-  [{ label: D.email, href: "email" }, { label: "LinkedIn", href: "linkedin" }, ...(K.socials || []).filter((l) => l.href !== "linkedin"), ...P.items.map((p) => ({ label: p.title, href: p.cta && p.cta.href }))]
+  [{ label: "LinkedIn", href: "linkedin" }, ...(K.socials || []), ...P.items.map((p) => ({ label: p.title, href: p.cta && p.cta.href }))]
     .filter((l) => l.href)
     .forEach((l) => { const a = setLink(el("a"), l.href); a.textContent = l.label; fl.appendChild(a); });
   const cv = $("footerCv");

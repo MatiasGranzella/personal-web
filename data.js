@@ -36,8 +36,6 @@ window.PROFILE = {
 
   // Link principal de contacto (lo usan la nav, el hero y el cierre)
   linkedin: "https://www.linkedin.com/in/matias-federico-granzella",
-  // Mail de contacto (reenvía a la casilla personal)
-  email: "hola@matiasgranzella.com",
 
   /* -------------------------------------------------------------------------
      HERO
@@ -346,10 +344,9 @@ window.PROFILE = {
      ---------------------------------------------------------------------- */
   contact: {
     title: "¿Tenés un proyecto en mente?",
-    text: "Una landing, un sistema o un chatbot: contame qué necesitás y en 30 minutos lo vemos. Escribime por mail o por LinkedIn.",
-    cta: { label: "hola@matiasgranzella.com", href: "email" },
+    text: "Una landing, un sistema o un chatbot: contame qué necesitás y en 30 minutos lo vemos. Escribime por LinkedIn.",
+    cta: { label: "Escribime por LinkedIn", href: "linkedin" },
     socials: [
-      { label: "LinkedIn", href: "linkedin", icon: "linkedin" },
       { label: "@mati_granzella", href: "https://twitter.com/mati_granzella", icon: "x" },
     ],
     // Una línea humana al pie del cierre. Dejala en "" para ocultarla.
@@ -572,6 +569,7 @@ window.PROFILE_EN = {
   },
   contact: {
     title: "Got a project in mind?",
-    text: "A landing page, a system or a chatbot: tell me what you need and we’ll go over it in 30 minutes. Email me or message me on LinkedIn.",
+    text: "A landing page, a system or a chatbot: tell me what you need and we’ll go over it in 30 minutes. Message me on LinkedIn.",
+    cta: { label: "Message me on LinkedIn" },
   },
 };

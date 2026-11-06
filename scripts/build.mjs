@@ -14,7 +14,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { SITE, EMAIL, LINKEDIN, UI, SERVICES } from "./servicios.mjs";
+import { SITE, LINKEDIN, UI, SERVICES } from "./servicios.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -49,7 +49,6 @@ const HOME = {
 
 /* ---- Íconos (los mismos trazos que app.js) ---- */
 const ICON = {
-  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
   linkedin: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
   arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
@@ -92,7 +91,6 @@ function servicePage(svc, lang) {
         name: "Matías Granzella",
         url: `${SITE}/`,
         jobTitle: "Backend & AI Engineer",
-        email: `mailto:${EMAIL}`,
         sameAs: [LINKEDIN],
       },
       {
@@ -125,8 +123,7 @@ function servicePage(svc, lang) {
         <h1 class="page-hero__title">${esc(t.h1)}<span class="hero__accent">.</span></h1>
         <p class="page-hero__lede">${esc(t.lede)}</p>
         <div class="hero__ctas page-hero__ctas">
-          <a class="btn btn--primary" href="mailto:${EMAIL}">${icon("mail")}${esc(u.mailCta)}</a>
-          <a class="btn btn--ghost" href="${LINKEDIN}" target="_blank" rel="noopener">${icon("linkedin")}${esc(u.linkedinCta)}</a>
+          <a class="btn btn--primary" href="${LINKEDIN}" target="_blank" rel="noopener">${icon("linkedin")}${esc(u.contactCta)}</a>
         </div>
       </div>
     </section>
@@ -184,8 +181,7 @@ function servicePage(svc, lang) {
           <div class="closing__side">
             <p class="closing__text">${esc(u.closingText)}</p>
             <div class="closing__ctas">
-              <a class="btn btn--primary" href="mailto:${EMAIL}">${icon("mail")}${esc(EMAIL)}</a>
-              <a class="btn btn--ghost" href="${LINKEDIN}" target="_blank" rel="noopener">${icon("linkedin")}LinkedIn</a>
+              <a class="btn btn--primary" href="${LINKEDIN}" target="_blank" rel="noopener">${icon("linkedin")}${esc(u.contactCta)}</a>
             </div>
           </div>
         </div>
@@ -272,7 +268,7 @@ function layout({ lang, title, description, url, alternates, langHref, jsonld, b
         <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <a class="btn btn--primary btn--sm" href="mailto:${EMAIL}">${esc(u.navCta)}</a>
+      <a class="btn btn--primary btn--sm" href="${LINKEDIN}" target="_blank" rel="noopener">${esc(u.navCta)}</a>
     </div>
   </header>
 ${body}
@@ -284,7 +280,6 @@ ${body}
         <span class="footer__made">${esc(u.footerMade)} · © ${new Date().getFullYear()}</span>
       </div>
       <nav class="footer__links" aria-label="Links">
-        <a href="mailto:${EMAIL}">${EMAIL}</a>
         <a href="${LINKEDIN}" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://twitter.com/mati_granzella" target="_blank" rel="noopener">@mati_granzella</a>
       </nav>

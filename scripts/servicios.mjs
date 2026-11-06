@@ -7,7 +7,6 @@
    ========================================================================== */
 
 export const SITE = "https://matiasgranzella.com";
-export const EMAIL = "hola@matiasgranzella.com";
 export const LINKEDIN = "https://www.linkedin.com/in/matias-federico-granzella";
 
 // Textos comunes de la plantilla
@@ -15,13 +14,12 @@ export const UI = {
   es: {
     home: "/",
     nav: [["Servicios", "/#servicios"], ["Proyectos", "/#proyectos"], ["Experiencia", "/#experiencia"]],
-    navCta: "Escribime",
+    navCta: "Hablemos",
     langSwitch: "EN",
     langLabel: "Read in English",
     themeToDark: "Cambiar a modo oscuro",
     breadcrumb: "Servicios",
-    mailCta: "Escribime",
-    linkedinCta: "LinkedIn",
+    contactCta: "Escribime por LinkedIn",
     useCasesTitle: "Para qué sirve",
     proofTitle: "Lo que ya hice",
     processTitle: "Cómo trabajo",
@@ -36,13 +34,12 @@ export const UI = {
   en: {
     home: "/en/",
     nav: [["Services", "/en/#servicios"], ["Projects", "/en/#proyectos"], ["Experience", "/en/#experiencia"]],
-    navCta: "Email me",
+    navCta: "Let’s talk",
     langSwitch: "ES",
     langLabel: "Leer en español",
     themeToDark: "Switch to dark mode",
     breadcrumb: "Services",
-    mailCta: "Email me",
-    linkedinCta: "LinkedIn",
+    contactCta: "Message me on LinkedIn",
     useCasesTitle: "What it’s for",
     proofTitle: "What I’ve already built",
     processTitle: "How I work",
