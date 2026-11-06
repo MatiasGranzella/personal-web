@@ -207,28 +207,34 @@
         </div>
         </div></div>
       </div></div>`,
-    // Carta de jugador de Millo Manager
-    millo: (m) => `
-      <div class="pcard" role="img" aria-label="${U.milloAria}">
-        <div class="pcard__top">
-          <div><div class="pcard__rating">${m.rating}</div><div class="pcard__pos">${m.position}</div></div>
-          <span class="pcard__rarity">${m.rarity}</span>
-        </div>
-        <div class="pcard__crest" aria-hidden="true">${m.photo ? `<img src="${m.photo}" alt="" width="128" height="128" loading="lazy" />` : '<span class="pcard__sash"></span>'}</div>
-        <div class="pcard__name">${m.name}</div>
-        <div class="pcard__years">${m.years}</div>
-        <div class="pcard__stats">
-          ${(m.stats || []).map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join("")}
-        </div>
+    // Carta de Gran Manager (escudo Leyenda, como en el juego): una a la vez, va pasando sola
+    gran: (m) => `
+      <div class="gstack" role="img" aria-label="${U.granAria}">
+        ${(m.cards || []).map((c, i) => `
+          <div class="gcard${i === 0 ? " is-on" : ""}" aria-hidden="true">
+            <div class="gcard__in">
+              <div class="gcard__top">
+                <div class="gcard__rt"><b>${c.rating}</b><span>${c.position}</span></div>
+                <div class="gcard__ph"><img src="${c.photo}" alt="" width="128" height="128" loading="lazy" /></div>
+              </div>
+              <div class="gcard__name">${c.name}</div>
+              <dl class="gcard__stats">
+                ${["RIT", "TIR", "PAS", "REG", "DEF", "FÍS"].map((k, j) => `<div><dd>${c.stats[j]}</dd><dt>${k}</dt></div>`).join("")}
+              </dl>
+            </div>
+          </div>`).join("")}
       </div>`,
   };
 
   P.items.forEach((p) => {
     const art = el("article", `product product--${p.kind}`);
     art.id = p.kind;
-    const mark = p.logo ? `<img class="product__mark" src="${p.logo}" alt="" width="44" height="44" loading="lazy" />` : "";
-    const logo = p.kind === "millo"
-      ? `<span class="product__logo">${mark}Millo <em>Manager.</em></span>`
+    const mark = p.logo
+      ? `<img class="product__mark${p.logoDark ? " product__mark--light" : ""}" src="${p.logo}" alt="" width="44" height="44" loading="lazy" />` +
+        (p.logoDark ? `<img class="product__mark product__mark--dark" src="${p.logoDark}" alt="" width="44" height="44" loading="lazy" />` : "")
+      : "";
+    const logo = p.kind === "gran"
+      ? `<span class="product__logo">${mark}Gran <em>Manager.</em></span>`
       : `<span class="product__logo">${mark}${p.title}.</span>`;
     art.innerHTML = `
       <div class="product__copy">
@@ -468,6 +474,22 @@
       target.style.setProperty("--ry", "0deg");
     });
   };
+  // Carta de Gran Manager: pasa sola de un ídolo al siguiente mientras está a la vista
+  const gstack = document.querySelector(".gstack");
+  if (gstack && !reduced) {
+    const cards = [...gstack.querySelectorAll(".gcard")];
+    let at = 0, timer = null;
+    const next = () => {
+      cards[at].classList.remove("is-on");
+      at = (at + 1) % cards.length;
+      cards[at].classList.add("is-on");
+    };
+    new IntersectionObserver(([e]) => {
+      clearInterval(timer);
+      if (e.isIntersecting) timer = setInterval(next, 2600);
+    }).observe(gstack);
+  }
+
   if (!reduced && finePointer) {
     const photo = document.querySelector(".hero__photo");
     tilt(photo, photo, 14);

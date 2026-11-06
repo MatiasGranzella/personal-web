@@ -34,7 +34,7 @@ window.PROFILE = {
     stackAria: "Tecnologías con las que trabajo",
     vestyScoreHint: "Valuación · crecimiento · salud",
     vestyAria: "Pantalla de ejemplo de la app Vesty",
-    milloAria: "Carta de jugador en Millo Manager",
+    granAria: "Cartas de jugador de Gran Manager: una leyenda de cada uno de los 5 grandes",
   },
 
   // Link principal de contacto (lo usan la nav, el hero y el cierre)
@@ -128,7 +128,7 @@ window.PROFILE = {
           "Frontend, backend, base de datos y deploy: el sistema entero, hecho para tu negocio. " +
           "Es como armé mis propios productos.",
         proofValue: "2",
-        proof: "productos propios en producción: Vesty y Millo Manager.",
+        proof: "productos propios en producción: Vesty y Gran Manager.",
         tags: ["Next.js", "React", "FastAPI", "Go"],
         link: { label: "Ver productos", href: "#proyectos" },
       },
@@ -147,7 +147,7 @@ window.PROFILE = {
 
   /* -------------------------------------------------------------------------
      PROYECTOS PROPIOS — cada uno es una tarjeta con su propia identidad.
-     kind: "vesty" (pantalla de la app) | "millo" (carta de jugador)
+     kind: "vesty" (pantalla de la app) | "gran" (carta de jugador que va rotando)
      ---------------------------------------------------------------------- */
   projects: {
     title: "Proyectos propios",
@@ -191,32 +191,35 @@ window.PROFILE = {
     secondary: { label: "Así nace Vesty", href: "https://vestyapp.io/blog/asi-nace-vesty" },
   },
   {
-    kind: "millo",
-    title: "Millo Manager",
-    logo: "assets/millo-logo.png",
-    pitch: "La historia de River, ahora se juega.",
+    kind: "gran",
+    title: "Gran Manager",
+    logo: "assets/gran-manager/gm-azul.png",
+    logoDark: "assets/gran-manager/gm-blanco.png",
+    pitch: "La historia de los 5 grandes, ahora se juega.",
     description:
-      "Un football manager gratis y sin descargas dedicado a River Plate. Coleccionás a los " +
-      "ídolos de todas las épocas, armás tu mejor XI y dirigís al club en la liga y las copas.",
+      "Un football manager de los 5 grandes del fútbol argentino: River, Boca, " +
+      "Independiente, Racing y San Lorenzo. Elegís tu club, coleccionás a sus ídolos de todas las épocas, " +
+      "armás tu mejor XI y lo dirigís en la liga y las copas.",
     // icon: cards | formation | trophy | whistle
     features: [
-      { icon: "cards", title: "+550 cartas", text: "Ídolos de toda la historia del club, en cinco rarezas." },
+      { icon: "cards", title: "+2.000 cartas", text: "Ídolos de toda la historia de cada club, en cinco rarezas." },
       { icon: "formation", title: "Tu mejor XI", text: "8 formaciones y química por posición." },
       { icon: "trophy", title: "8 competiciones", text: "Liga, Copa Argentina, Libertadores, Mundial de Clubes y más." },
       { icon: "whistle", title: "Partidos en vivo", text: "Cambios, penales y ajustes tácticos durante el partido." },
     ],
-    trust: "Proyecto independiente hecho por hinchas. Gratis y sin compras dentro del juego.",
+    trust: "Proyecto independiente hecho por hinchas, sin relación oficial con los clubes. Gratis para jugar.",
+    // Cartas Leyenda, una por club (las de la imagen para compartir del juego); se muestran de a una y van pasando
     mockup: {
-      caption: "Carta del juego",
-      rating: 93,
-      position: "MP · DC",
-      rarity: "Leyenda",
-      name: "Francescoli",
-      photo: "assets/millo-francescoli.jpg",
-      years: "’83 — ’97",
-      stats: [["RIT", 84], ["TIR", 89], ["PAS", 90], ["REG", 93], ["DEF", 42], ["FÍS", 76]],
+      caption: "Cartas del juego · una leyenda por club",
+      cards: [
+        { name: "Francescoli", club: "River", rating: 93, position: "MP", photo: "assets/gran-manager/enzo-francescoli.webp", stats: [84, 89, 90, 93, 42, 76] },
+        { name: "Riquelme", club: "Boca", rating: 93, position: "MP", photo: "assets/gran-manager/juan-roman-riquelme.webp", stats: [91, 89, 96, 96, 87, 91] },
+        { name: "Bochini", club: "Independiente", rating: 93, position: "MP", photo: "assets/gran-manager/ricardo-bochini.webp", stats: [91, 89, 96, 96, 87, 91] },
+        { name: "Milito", club: "Racing", rating: 91, position: "DC", photo: "assets/gran-manager/diego-milito.webp", stats: [96, 96, 88, 96, 71, 89] },
+        { name: "Romagnoli", club: "San Lorenzo", rating: 92, position: "MP", photo: "assets/gran-manager/leandro-romagnoli.webp", stats: [90, 88, 96, 96, 86, 90] },
+      ],
     },
-    cta: { label: "Jugar Millo Manager", href: "https://millomanager.com.ar" },
+    cta: { label: "Jugar Gran Manager", href: "https://granmanager.com.ar" },
   },
     ],
     // Otros proyectos: listado simple debajo de las tarjetas
@@ -388,7 +391,7 @@ window.PROFILE_EN = {
     stackAria: "Technologies I work with",
     vestyScoreHint: "Valuation · growth · health",
     vestyAria: "Example screen of the Vesty app",
-    milloAria: "Player card in Millo Manager",
+    granAria: "Gran Manager player cards: one legend from each of the Big Five",
   },
   hero: {
     title: "Hi, I’m\nMatías Granzella.",
@@ -429,7 +432,7 @@ window.PROFILE_EN = {
         text:
           "Frontend, backend, database and deployment: the whole system, built for your business. " +
           "It’s how I built my own products.",
-        proof: "products of my own in production: Vesty and Millo Manager.",
+        proof: "products of my own in production: Vesty and Gran Manager.",
         link: { label: "See products" },
       },
       {
@@ -478,19 +481,20 @@ window.PROFILE_EN = {
         secondary: { label: "How Vesty started" },
       },
       {
-        pitch: "River Plate’s history, now playable.",
+        pitch: "The history of Argentina’s Big Five, now playable.",
         description:
-          "A free, no-download football manager dedicated to River Plate. Collect legends " +
-          "from every era, build your best XI and lead the club through the league and cups.",
+          "A football manager for the Big Five of Argentine football: River, Boca, " +
+          "Independiente, Racing and San Lorenzo. Pick your club, collect its legends from every era, " +
+          "build your best XI and lead it through the league and cups.",
         features: [
-          { title: "550+ cards", text: "Legends from the club’s entire history, in five rarities." },
+          { title: "2,000+ cards", text: "Legends from each club’s entire history, in five rarities." },
           { title: "Your best XI", text: "8 formations and positional chemistry." },
           { title: "8 competitions", text: "League, Copa Argentina, Libertadores, Club World Cup and more." },
           { title: "Live matches", text: "Subs, penalties and tactical changes during the game." },
         ],
-        trust: "An independent project made by fans. Free, with no in-game purchases.",
-        mockup: { caption: "In-game card", rarity: "Legend" },
-        cta: { label: "Play Millo Manager" },
+        trust: "An independent project made by fans, not affiliated with any club. Free to play.",
+        mockup: { caption: "In-game cards · one legend per club" },
+        cta: { label: "Play Gran Manager" },
       },
     ],
     othersTitle: "Sites and landing pages",

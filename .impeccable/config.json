@@ -7,7 +7,7 @@
         "rule": "design-system-font",
         "value": "barlow condensed",
         "createdAt": "2026-09-28T19:05:39.623Z",
-        "reason": "Claude: Millo Manager guest-brand face, scoped to its player card; user asked to add Millo Manager as own project; documented in DESIGN.md Guest brands"
+        "reason": "Claude: Gran Manager (formerly Millo Manager) guest-brand face, scoped to its player card; user asked to add the game as own project; documented in DESIGN.md Guest brands"
       },
       {
         "rule": "design-system-radius",

@@ -16,7 +16,7 @@ Personal site of Matías Granzella: works as an online CV and as the entry point
 
 ## Positioning
 Headline identity: **Backend & AI Engineer** (AI Lead at Ualá is the proof, not the label). Two audiences, two framings:
-- **Freelance offer (top of page, "Qué puedo armarte"):** a ladder from simplest to most complete. 1) landing page or site redesign (proof: GV Convertidores, client; 3gen Padel, concept), 2) complete custom system with its own backend (proof: Vesty and Millo Manager in production), 3) AI integrations and chatbots for internal processes or customer-facing (proof: 81% accuracy on Ualá's CX chatbot). Each service links to its proof section. Data platforms are no longer sold as a service.
+- **Freelance offer (top of page, "Qué puedo armarte"):** a ladder from simplest to most complete. 1) landing page or site redesign (proof: GV Convertidores, client; 3gen Padel, concept), 2) complete custom system with its own backend (proof: Vesty and Gran Manager in production), 3) AI integrations and chatbots for internal processes or customer-facing (proof: 81% accuracy on Ualá's CX chatbot). Each service links to its proof section. Data platforms are no longer sold as a service.
 - **Corporate experience (timeline):** framed as Backend/AI in production; 6 years at Ualá from BI → Analytics Eng → Data Platform → leading generative AI, so he builds the whole system, not just the prompt. The 8,5% GCP saving lives in the role description.
 
 ## Operating Context
@@ -30,14 +30,14 @@ Static site (index.html + styles.css + app.js), all content edited in `data.js` 
 ## Brand Commitments
 - Brand green: forest #1F5F4A (buttons, H1 accent, favicon, OG image), chosen by the user over the earlier bright #0F9D6F.
 - Vesty keeps its own brand (teal #3CCBCE / purple #715DF2, official logo `assets/vesty-logo.png`) inside its card.
-- Millo Manager keeps its own brand (red #e2332b / gold #b8862b, Barlow Condensed, official logo `assets/millo-logo.png`) inside its card.
+- Gran Manager (formerly Millo Manager, renamed in 2026 when it went from River only to the 5 grandes) keeps its own brand inside its card: the game's Leyenda shield card rotating through one idol per club, Barlow Condensed, and the transparent GM mark (navy letters in light mode, white in dark; `assets/gran-manager/`).
 - Profile photo: `assets/foto_perfil.jpeg`, shown as a tilted card in the hero (the owner rejected the photo as a faded background behind the name).
 - Visual direction: relaxed and light (warm cream ground, lots of air, one grotesk family), with a giant name and a tilted photo card in the hero and an alternating timeline for experience. The owner rejects anything that reads "AI-made": no serif/grotesk mix, no rounded boxes around text, no centered green CTA card.
 - Vesty is a web app: always shown in a browser window, never a phone.
 - Company logos for the experience timeline live in `assets/companies/` (Ualá symbol cropped from its official horizontal logo, Data IQ app icon, IBM from Simple Icons).
 
 ## Evidence on Hand
-Real: metrics and roles in `data.js`, 3gen Padel Academy redesign (self-initiated concept, not a client job), Vesty (vestyapp.io), Millo Manager (millomanager.com.ar, player-card photo `assets/millo-francescoli.jpg` from the game), 3 content links (LinkedIn post, DataTalk en Ualá, blog "Así nace Vesty"), education (UBA, UTDT).
+Real: metrics and roles in `data.js`, 3gen Padel Academy redesign (self-initiated concept, not a client job), Vesty (vestyapp.io), Gran Manager (granmanager.com.ar, card portraits in `assets/gran-manager/` from the game), 3 content links (LinkedIn post, DataTalk en Ualá, blog "Así nace Vesty"), education (UBA, UTDT).
 Absent — must not be fabricated: client testimonials, client logos, prices, freelance case studies, Vesty user numbers.
 
 ## Product Principles

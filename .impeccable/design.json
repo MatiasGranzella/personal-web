@@ -356,85 +356,25 @@
           "#ecedfe"
         ]
       },
-      "millo-red": {
+      "gran-leyenda-ink": {
         "role": "guest",
-        "displayName": "Millo Red",
-        "canonical": "#e2332b",
-        "oklch": "oklch(59.7% 0.212 28.3)",
-        "tonalRamp": [
-          "#220000",
-          "#4a0303",
-          "#790f0d",
-          "#b00d0e",
-          "#df3029",
-          "#ff6556",
-          "#ffab9f",
-          "#fee9e6"
-        ]
+        "displayName": "Gran Leyenda Ink",
+        "canonical": "#2a0e05"
       },
-      "millo-red-night": {
+      "gran-leyenda-face": {
         "role": "guest",
-        "displayName": "Millo Red Night",
-        "canonical": "#ff5a4f",
-        "oklch": "oklch(68.7% 0.202 27.5)",
-        "tonalRamp": [
-          "#210000",
-          "#4c0002",
-          "#7b0409",
-          "#ad1819",
-          "#dc3731",
-          "#fb685c",
-          "#fdaca2",
-          "#ffe9e6"
-        ]
+        "displayName": "Gran Leyenda Face",
+        "canonical": "#f8c75a"
       },
-      "millo-gold": {
+      "gran-gold-wordmark": {
         "role": "guest",
-        "displayName": "Millo Gold",
-        "canonical": "#b8862b",
-        "oklch": "oklch(65.4% 0.120 78.1)",
-        "tonalRamp": [
-          "#150800",
-          "#332000",
-          "#563900",
-          "#7b5607",
-          "#a4730b",
-          "#c7943c",
-          "#efba64",
-          "#feecd0"
-        ]
+        "displayName": "Gran Gold Wordmark",
+        "canonical": "#a87c1e"
       },
-      "millo-gold-light": {
+      "gran-gold-light": {
         "role": "guest",
-        "displayName": "Millo Gold Light",
-        "canonical": "#f3c34a",
-        "oklch": "oklch(83.9% 0.145 86.7)",
-        "tonalRamp": [
-          "#130900",
-          "#302200",
-          "#513c00",
-          "#755908",
-          "#9b770d",
-          "#c29829",
-          "#edbd43",
-          "#ffedc4"
-        ]
-      },
-      "millo-card-ink": {
-        "role": "guest",
-        "displayName": "Millo Card Ink",
-        "canonical": "#16171b",
-        "oklch": "oklch(20.5% 0.008 274.5)",
-        "tonalRamp": [
-          "#0a0b0f",
-          "#232428",
-          "#3e3f44",
-          "#5c5d62",
-          "#7c7d82",
-          "#9d9ea4",
-          "#c2c4c9",
-          "#edeef4"
-        ]
+        "displayName": "Gran Gold Light",
+        "canonical": "#e6b94e"
       },
       "hairline": {
         "role": "neutral",
@@ -519,9 +459,9 @@
         "displayName": "Period Mono",
         "purpose": "Years, periods and dated meta only."
       },
-      "guest-millo": {
-        "displayName": "Millo Guest Face",
-        "purpose": "Millo Manager player card only (sanctioned exception)."
+      "guest-gran": {
+        "displayName": "Gran Manager Guest Face",
+        "purpose": "Gran Manager player card only (sanctioned exception)."
       }
     },
     "shadows": [
@@ -542,8 +482,8 @@
       },
       {
         "name": "card-drop",
-        "value": "0 2px 4px rgba(0, 0, 0, .06), 0 36px 60px -30px rgba(120, 20, 15, .45)",
-        "purpose": "Millo player card."
+        "value": "0 2px 4px rgba(0, 0, 0, .06), 0 36px 60px -30px rgba(20, 33, 58, .3)",
+        "purpose": "Gran Manager player card."
       },
       {
         "name": "status-halo",
@@ -713,24 +653,24 @@
       "css": ".ds-photo{margin:0;width:260px;aspect-ratio:1;transform:perspective(900px) rotate(2deg);transition:transform .5s cubic-bezier(.16,1,.3,1)}.ds-photo:hover{transform:perspective(900px) rotate(0deg) rotateX(4deg) rotateY(-6deg)}.ds-photo div{width:100%;height:100%;border-radius:28px;background:linear-gradient(160deg,#ececea,#57574f);box-shadow:0 2px 4px rgba(0,0,0,.06),0 40px 60px -32px rgba(0,0,0,.45)}"
     },
     {
-      "name": "Millo Player Card",
+      "name": "Gran Manager Player Card",
       "kind": "custom",
-      "refersTo": "millo-player-card",
-      "description": "Guest brand: Barlow Condensed uppercase card with gold-to-red border, scoped to the Millo Manager project card.",
-      "html": "<div class=\"ds-pcard\"><div class=\"ds-pcard-top\"><div><b>89</b><small>DEL</small></div><span>LEYENDA</span></div><div class=\"ds-pcard-crest\"></div><div class=\"ds-pcard-name\">Francescoli</div></div>",
-      "css": ".ds-pcard{width:264px;padding:20px 20px 18px;border-radius:22px;color:#16171b;border:3px solid transparent;background-image:linear-gradient(#fff,#fff),linear-gradient(160deg,#f3c34a,#e2332b);background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 2px 4px rgba(0,0,0,.06),0 36px 60px -30px rgba(120,20,15,.45);font-family:\"Barlow Condensed\",\"Schibsted Grotesk\",sans-serif;text-transform:uppercase;transform:rotate(3deg);transition:transform .6s cubic-bezier(.16,1,.3,1)}.ds-pcard:hover{transform:rotate(0) translateY(-4px)}.ds-pcard-top{display:flex;justify-content:space-between;align-items:flex-start}.ds-pcard-top b{display:block;font-size:48px;line-height:.9;color:#b8862b}.ds-pcard-top small{font-size:14px;font-weight:700;color:#b8862b}.ds-pcard-top span{font-size:11px;font-weight:700;letter-spacing:.08em;color:#fff;background:#b8862b;padding:3px 8px;border-radius:6px}.ds-pcard-crest{position:relative;overflow:hidden;width:128px;height:128px;margin:6px auto 14px;border-radius:50%;background:#f4f3f0;border:3px solid #f3c34a}.ds-pcard-crest::after{content:\"\";position:absolute;left:-20%;top:38%;width:140%;height:30px;background:#e2332b;transform:rotate(-35deg)}.ds-pcard-name{text-align:center;font-size:28px;font-weight:700;letter-spacing:.01em;line-height:1}"
+      "refersTo": "gran-player-card",
+      "description": "Guest brand: the game's Leyenda shield card (clip-path polygon), five idols stacked and crossfading, scoped to the Gran Manager project card.",
+      "html": "<div class=\"ds-gcard\"><div class=\"ds-gcard-in\"><div class=\"ds-gcard-top\"><div><b>93</b><small>MP</small></div><i></i></div><div class=\"ds-gcard-name\">Francescoli</div></div></div>",
+      "css": ".ds-gcard{position:relative;width:10em;height:13.9em;font-size:24px;font-family:\"Barlow Condensed\",\"Schibsted Grotesk\",sans-serif;filter:drop-shadow(0 .7em 1.1em rgba(20,33,58,.3));transform:rotate(3deg)}.ds-gcard::before,.ds-gcard-in{clip-path:polygon(0 7%,22% 0,78% 0,100% 7%,100% 82%,50% 100%,0 82%)}.ds-gcard::before{content:\"\";position:absolute;inset:0;background:linear-gradient(135deg,#fff3c4,#f3b13a 45%,#a8211b)}.ds-gcard-in{position:absolute;inset:.22em;padding:12% 9% 0;background:linear-gradient(160deg,#ffeaa6 0%,#f8c75a 32%,#f19a3c 68%,#e2622a 100%);color:#2a0e05}.ds-gcard-top{display:grid;grid-template-columns:1.9em 1fr;gap:6%}.ds-gcard-top b{display:block;font-size:2em;line-height:.85}.ds-gcard-top small{font-size:.72em;font-weight:700}.ds-gcard-top i{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 35%,#f8bf5e,#b4421d);box-shadow:0 0 0 .12em rgba(42,14,5,.45)}.ds-gcard-name{margin-top:6%;text-align:center;font-weight:700;text-transform:uppercase}"
     }
   ],
   "narrative": {
     "northStar": "The Shipped Résumé",
-    "overview": "A CV that reads like a product site. The page is a white sheet (or a near-black one in dark mode) carrying a tight, heavy grotesk, stone-grey surfaces and hairline-ruled rows; the only color that belongs to the owner is a deep forest green, and it marks the things that matter: the action, the name, the proof figures, the \"now\" dot. Everything else is ink at three strengths. Density is calm and editorial: generous section spacing (128px), lists that are rows rather than card grids, one idea per row, a metric at the end of every service.\n\nThe owner's own products are the one place other colors are allowed in. Vesty and Millo Manager each enter as a guest brand inside a stone card: Vesty as a teal/purple phone mockup, Millo Manager as a red/gold Barlow Condensed player card with a real photo. The guests keep their identity; the host card stays neutral around them.\n\nMotion is present but quiet: a single orchestrated settle on the hero, blur-in reveals on scroll, figures that count up, a pointer tilt and spotlight on the photo and product cards, a career track that draws itself, a sheen across primary buttons, a 2px reading-progress bar. All of it disappears under reduced motion and nothing depends on JS to be visible. The site is bilingual (ES default, EN toggle in the nav) and every surface must hold both languages' lengths.",
+    "overview": "A CV that reads like a product site. The page is a white sheet (or a near-black one in dark mode) carrying a tight, heavy grotesk, stone-grey surfaces and hairline-ruled rows; the only color that belongs to the owner is a deep forest green, and it marks the things that matter: the action, the name, the proof figures, the \"now\" dot. Everything else is ink at three strengths. Density is calm and editorial: generous section spacing (128px), lists that are rows rather than card grids, one idea per row, a metric at the end of every service.\n\nThe owner's own products are the one place other colors are allowed in. Vesty and Gran Manager each enter as a guest brand inside a stone card: Vesty as a teal/purple browser window, Gran Manager as the game's Leyenda shield card cycling through one idol per club. The guests keep their identity; the host card stays neutral around them.\n\nMotion is present but quiet: a single orchestrated settle on the hero, blur-in reveals on scroll, figures that count up, a pointer tilt and spotlight on the photo and product cards, a career track that draws itself, a sheen across primary buttons, a 2px reading-progress bar. All of it disappears under reduced motion and nothing depends on JS to be visible. The site is bilingual (ES default, EN toggle in the nav) and every surface must hold both languages' lengths.",
     "keyCharacteristics": [
       "White / near-black canvas, stone surfaces, ink text in three strengths.",
       "One brand color, forest green, used only for action, emphasis and proof.",
       "Schibsted Grotesk throughout at tight negative tracking; JetBrains Mono only for years and periods.",
       "Pills for every control (nav, buttons, toggles, capability pills); 28px for every large surface.",
       "Hairline-ruled rows instead of card grids for services, experience and content.",
-      "Guest brands (Vesty, Millo Manager) render in their own palettes inside neutral host cards.",
+      "Guest brands (Vesty, Gran Manager) render in their own palettes inside neutral host cards.",
       "Soft motion with a single ease (`cubic-bezier(0.16, 1, 0.3, 1)`), fully disabled by `prefers-reduced-motion`."
     ],
     "rules": [
@@ -741,7 +681,7 @@
       },
       {
         "name": "The Guest Brand Rule",
-        "body": "A product's own palette and typeface stay inside its card. Nothing outside the Vesty or Millo Manager card borrows teal, purple, red, gold or Barlow Condensed, and inside the card the host button turns ink-black so the green never competes with the guest.",
+        "body": "A product's own palette and typeface stay inside its card. Nothing outside the Vesty or Gran Manager card borrows teal, purple, Leyenda gold/orange or Barlow Condensed, and inside the card the host button turns ink-black so the green never competes with the guest.",
         "section": "colors"
       },
       {
@@ -782,7 +722,7 @@
     ],
     "donts": [
       "**Don't** add a second owner accent, a gradient in the owner's green, or a green section background outside the closing card.",
-      "**Don't** let Vesty or Millo Manager colors or Barlow Condensed leak outside their cards.",
+      "**Don't** let Vesty or Gran Manager colors or Barlow Condensed leak outside their cards.",
       "**Don't** use JetBrains Mono for anything but years, periods and dated meta.",
       "**Don't** put shadows on rows, buttons, sections or product cards; shadows belong to depicted objects and the scrolled nav.",
       "**Don't** add skill bars, emoji, glow orbs or decorative blobs; the thesis rejects the dev-portfolio template.",

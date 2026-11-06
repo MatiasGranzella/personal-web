@@ -29,11 +29,10 @@ colors:
   vesty-purple: "#715DF2"
   vesty-ink: "#0E0B2E"
   vesty-bezel: "#0a0820"
-  millo-red: "#e2332b"
-  millo-red-night: "#ff5a4f"
-  millo-gold: "#b8862b"
-  millo-gold-light: "#f3c34a"
-  millo-card-ink: "#16171b"
+  gran-leyenda-face: "#f8c75a"
+  gran-leyenda-ink: "#2a0e05"
+  gran-gold-wordmark: "#a87c1e"
+  gran-gold-light: "#e6b94e"
 typography:
   display:
     fontFamily: "Schibsted Grotesk, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
@@ -119,7 +118,7 @@ typography:
     fontWeight: 400
     lineHeight: 1.6
     fontFeature: "tnum"
-  guest-millo:
+  guest-gran:
     fontFamily: "Barlow Condensed, Schibsted Grotesk, sans-serif"
     fontSize: "28px"
     fontWeight: 700
@@ -261,13 +260,11 @@ components:
     rounded: "{rounded.phone}"
     padding: "10px"
     width: "276px"
-  millo-player-card:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.millo-card-ink}"
-    typography: "{typography.guest-millo}"
-    rounded: "{rounded.guest-card}"
-    padding: "20px 20px 18px"
-    width: "264px"
+  gran-player-card:
+    backgroundColor: "{colors.gran-leyenda-face}"
+    textColor: "{colors.gran-leyenda-ink}"
+    typography: "{typography.guest-gran}"
+    width: "240px"
 ---
 
 # Design System: Matías Granzella
@@ -278,7 +275,7 @@ components:
 
 A CV that reads like a product site. The page is a white sheet (or a near-black one in dark mode) carrying a tight, heavy grotesk, stone-grey surfaces and hairline-ruled rows; the only color that belongs to the owner is a deep forest green, and it marks the things that matter: the action, the name, the proof figures, the "now" dot. Everything else is ink at three strengths. Density is calm and editorial, with lots of air: generous section spacing (160px), rows for services, education and content, unboxed text along the timeline, a metric at the end of every service.
 
-The owner's own products are the one place other colors are allowed in. Vesty and Millo Manager each enter as a guest brand inside a stone card: Vesty as a teal/purple phone mockup, Millo Manager as a red/gold Barlow Condensed player card with a real photo. The guests keep their identity; the host card stays neutral around them.
+The owner's own products are the one place other colors are allowed in. Vesty and Gran Manager each enter as a guest brand inside a stone card: Vesty as a teal/purple browser window, Gran Manager (formerly Millo Manager) as the game's own Leyenda shield card, cycling through one idol per club with real photos. The guests keep their identity; the host card stays neutral around them.
 
 Motion is present but quiet: a single orchestrated settle on the hero, blur-in reveals on scroll, figures that count up, a pointer tilt and spotlight on the photo and product cards, a career track that draws itself, a sheen across primary buttons, a 2px reading-progress bar. All of it disappears under reduced motion and nothing depends on JS to be visible. The site is bilingual (ES default, EN toggle in the nav) and every surface must hold both languages' lengths.
 
@@ -288,7 +285,7 @@ Motion is present but quiet: a single orchestrated settle on the hero, blur-in r
 - Schibsted Grotesk for UI, body and the giant hero name; Newsreader (serif, 400) for section, subsection and closing titles; JetBrains Mono only for years and periods.
 - Pills for every control (nav, buttons, toggles, capability pills); 28px for every large surface.
 - Hairline-ruled rows for services, education and content; experience is a centered timeline with alternating cards.
-- Guest brands (Vesty, Millo Manager) render in their own palettes inside neutral host cards.
+- Guest brands (Vesty, Gran Manager) render in their own palettes inside neutral host cards.
 - Soft motion with a single ease (`cubic-bezier(0.16, 1, 0.3, 1)`), fully disabled by `prefers-reduced-motion`.
 
 ## Colors
@@ -303,7 +300,7 @@ A near-monochrome paper-and-ink palette with a single deep forest green, plus tw
 
 ### Guest palettes (scoped)
 - **Vesty Teal / Vesty Purple / Vesty Ink / Vesty Bezel**: only inside the Vesty card: the phone screen gradient, the chart line, the score chip, the holdings bars, the logo wordmark color.
-- **Millo Red / Millo Gold / Millo Gold Light / Millo Card Ink**: only inside the Millo Manager card: the player card gradient border, rating, position, rarity chip, sash, crest ring, the "Manager" wordmark accent. Millo Red Night is the dark-mode wordmark.
+- **Gran Leyenda face / metal / ink**: only inside the Gran Manager card: the shield card copies the game's Leyenda tier (`packages/shared/ui/card.css` in the game repo): face `#ffeaa6 → #f8c75a → #f19a3c → #e2622a`, metal `#fff3c4 → #f3b13a → #a8211b`, ink `#2a0e05`. Gran Gold Wordmark (#a87c1e) is the light-mode "Manager" accent; Gran Gold Light (#e6b94e) the dark-mode one. The GM mark is transparent: navy letters in light mode, white letters in dark (`assets/gran-manager/gm-azul.png` / `gm-blanco.png`).
 
 ### Neutral
 - **Canvas** (canvas) / **Night Canvas** (night-canvas): page ground; also the ghost button fill.
@@ -317,7 +314,7 @@ A near-monochrome paper-and-ink palette with a single deep forest green, plus tw
 ### Named Rules
 **The One Green Rule.** Forest green is the only owner color. It marks action, the name, proof and state; it is never a background wash for a section, never a gradient, and never used for body text.
 
-**The Guest Brand Rule.** A product's own palette and typeface stay inside its card. Nothing outside the Vesty or Millo Manager card borrows teal, purple, red, gold or Barlow Condensed, and inside the card the host button turns ink-black so the green never competes with the guest.
+**The Guest Brand Rule.** A product's own palette and typeface stay inside its card. Nothing outside the Vesty or Gran Manager card borrows teal, purple, Leyenda gold/orange or Barlow Condensed, and inside the card the host button turns ink-black so the green never competes with the guest.
 
 **The Dark Mode Is Its Own Green Rule.** Dark mode does not reuse #1F5F4A; it swaps to sage (fills) and brighter sage (text), and the closing card goes to Night Pine.
 
@@ -326,7 +323,7 @@ A near-monochrome paper-and-ink palette with a single deep forest green, plus tw
 **Display Font:** Schibsted Grotesk (with ui-sans-serif, system-ui, -apple-system, Segoe UI)
 **Body Font:** Schibsted Grotesk
 **Label/Mono Font:** JetBrains Mono (with ui-monospace, SF Mono, Menlo), years and periods only
-**Guest face:** Barlow Condensed, Millo Manager player card only
+**Guest face:** Barlow Condensed, Gran Manager player card only
 
 **Character:** One grotesk carries the whole site, heavy and tightly tracked at display sizes, plain at body size. The mono appears only where numbers need to line up in time (org meta, role periods).
 
@@ -345,7 +342,7 @@ A near-monochrome paper-and-ink palette with a single deep forest green, plus tw
 - **Tag** (500, 0.8rem): tags, captions; "now" marker 0.78rem; lang toggle 600 0.82rem with +0.02em.
 - **Period mono** (400, 0.8 to 0.82rem, tabular figures): years, periods, org meta.
 
-The literal ramp in use is: 5rem (clamp) / 3.4 / 3 / 2.9 / 2 / 1.5 / 1.45 / 1.4 / 1.35 / 1.22 / 1.12 / 1.1 / 1.08 / 1.06 / 1 / 0.98 / 0.95 / 0.92 / 0.9 / 0.88 / 0.85 / 0.82 / 0.8 / 0.78 / 0.72rem. Guest cards use px sizes of their own (Vesty screen 30/16/13/12/11.5/11/10.5px; Millo card 48/28/22/14/13/11px), which are mockup scale, not site scale.
+The literal ramp in use is: 5rem (clamp) / 3.4 / 3 / 2.9 / 2 / 1.5 / 1.45 / 1.4 / 1.35 / 1.22 / 1.12 / 1.1 / 1.08 / 1.06 / 1 / 0.98 / 0.95 / 0.92 / 0.9 / 0.88 / 0.85 / 0.82 / 0.8 / 0.78 / 0.72rem. Guest cards use px sizes of their own (Vesty screen 30/16/13/12/11.5/11/10.5px; Gran Manager card 48/28/22/14/13/11px), which are mockup scale, not site scale.
 
 ### Named Rules
 **The Mono Is For Time Rule.** JetBrains Mono appears only on years, periods and dated meta (plus the Vesty mockup's change chip). Never for headings, labels or decoration.
@@ -358,7 +355,7 @@ A single centered column (1080px container, 24px gutter, 20px under 600px). Sect
 
 - **Hero:** single left-aligned column, 200px top padding (120px mobile). The photo card is absolutely positioned top-right, filling the empty space beside "Hola, soy". Under 720px it becomes a static 112px card above the H1, rotated -3deg; under 600px the CTAs go full-width.
 - **Service rows:** three-column grid (5fr / 6fr / 3.4fr, gaps 32px/40px, 36px vertical padding): title, text plus tags, proof column separated by a left hairline. Collapses to one column under 880px with the proof inline.
-- **Product cards:** two-column grid inside a 56px-padded card (1.15fr/0.85fr, 48px gap); Millo Manager mirrors the order so the visual leads. Under 900px: one column, 36px 24px padding, the Vesty browser window cropped at 400px with a bottom fade.
+- **Product cards:** two-column grid inside a 56px-padded card (1.15fr/0.85fr, 48px gap); Gran Manager mirrors the order so the visual leads. Under 900px: one column, 36px 24px padding, the Vesty browser window cropped at 400px with a bottom fade.
 - **CV rows:** 200px org column plus roles, 30px vertical padding; multi-role companies get a career track (a 1px line with 7px dots, the current role dot in green). One column under 720px.
 - **Post rows:** 110px type / title / arrow, 22px padding; two-column under 560px.
 - **Stack marquees:** full-bleed band after the closing, 88px above, two masked tracks (60s forward logos, 70s reverse capability pills), paused on hover, wrapped statically under reduced motion.
@@ -381,7 +378,7 @@ Flat by default. Depth comes from tonal layering (canvas, stone, deep stone) and
 - **Nav lift** (`box-shadow: 0 6px 24px -12px rgba(0,0,0,.18)`): the nav pill after scroll, together with a hairline border.
 - **Photo drop** (`box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 40px 60px -32px rgba(0,0,0,.45)`): the hero photo.
 - **Phone drop** (`box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.08), 0 40px 60px -30px rgba(14,11,46,.55)`): the Vesty browser window, shadow tinted with Vesty Ink.
-- **Card drop** (`box-shadow: 0 2px 4px rgba(0,0,0,.06), 0 36px 60px -30px rgba(120,20,15,.45)`): the Millo player card, shadow tinted red.
+- **Card drop** (`filter: drop-shadow(0 .7em 1.1em rgba(20,33,58,.3))`): the Gran Manager shield card (a drop-shadow, so it follows the clipped shield shape), tinted navy.
 - **Status halo** (`box-shadow: 0 0 0 4px` green at 18%): the status dot only.
 
 ### Named Rules
@@ -391,7 +388,7 @@ Flat by default. Depth comes from tonal layering (canvas, stone, deep stone) and
 
 Two radii carry the site: full pill (100px) for every control and chip-like element, and 28px for every large surface (product cards, closing card, hero photo, service hover wash). Small shapes use 7px (tags) and 6px (focus ring, monogram, guest chips). Circles are for dots and the theme toggle.
 
-Objects are the only things that tilt: the hero photo rests at 2deg, the Vesty browser window at -3deg, the Millo card at 3deg; all straighten or follow the pointer on hover. Guest mockups keep their own geometry (phone 46px outer / 37px screen; player card 22px with a 3px gold-to-red gradient border; crest circle with a diagonal sash).
+Objects are the only things that tilt: the hero photo rests at 2deg, the Vesty browser window at -3deg, the Gran Manager card at 3deg; all straighten or follow the pointer on hover. Guest mockups keep their own geometry (phone 46px outer / 37px screen; player card is the game's shield polygon, five cards stacked and crossfading every 2.6s while in view; static under reduced motion).
 
 The stack marquee shows real tool logos as Simple Icons SVGs painted through a CSS mask in `currentColor` (22px); tools without a public mark get a monogram: the initial in a 22px, 6px-radius, 1.6px outlined square, so the row reads as one family.
 
@@ -411,7 +408,7 @@ Confident, pill-shaped, fast.
 - **Capability pill:** 0.95rem 500, forest on Forest Mist, 8px 16px, full pill; only in the reversed marquee track.
 
 ### Cards / Containers
-- **Product card:** Stone fill, 28px radius, 56px padding, no border, no shadow. On hover a 520px radial spotlight follows the pointer, tinted by the guest brand (Vesty purple at 16%, Millo red at 12%; stronger in dark), and the mockup tilts up to 12deg.
+- **Product card:** Stone fill, 28px radius, 56px padding, no border, no shadow. On hover a 520px radial spotlight follows the pointer, tinted by the guest brand (Vesty purple at 16%, Gran gold at 16%), and the mockup tilts up to 12deg.
 - **Closing:** no card. Hairline top, two columns (stacked under 820px): a giant grotesk question (clamp(2.6rem, 6.2vw, 5rem), 700, -0.05em) whose final "?" is green like the hero period, and a column with the short text, the green primary LinkedIn button and the X ghost button.
 
 ### Navigation
@@ -435,7 +432,7 @@ The name is giant Schibsted 700 (clamp(2.9rem, 8.4vw, 7.4rem), -0.055em), left-a
 
 ### Guest brand cards (signature)
 - **Vesty phone:** 276px, 9:19, bezel Vesty Bezel, screen Vesty Ink with purple and teal radial glows, balance, teal change chip (mono), teal chart line, purple score chip, gradient holdings bars. Official logo beside the wordmark.
-- **Millo player card:** 264px, white, 22px radius, 3px gold-to-red border, Barlow Condensed uppercase: gold rating (48px) and position, gold rarity chip, circular crest with the real photo and a red sash, name (28px), three stat columns. Official logo on a white 10px-radius tile.
+- **Gran Manager player card:** the game's Leyenda shield (10em × 13.9em at 24px, 21px on mobile), Barlow Condensed: rating and position top-left, circular portrait, name, six stats in two columns. Five cards (Francescoli, Riquelme, Bochini, Milito, Romagnoli: one per club, the same as the game's share image) stacked in `.gstack`; the visible one has `.is-on` and app.js advances it. GM mark transparent, no tile.
 
 ### Motion
 One ease for everything (`cubic-bezier(0.16, 1, 0.3, 1)`). Hero pieces settle in once (0.9s, 8px rise plus 3px blur, staggered 0.06 to 0.46s). Section heads, rows, cards and the closing reveal on scroll (22px rise plus 6px blur, 0.9s, 0.08s stagger capped at 5). Proof figures count up over 1.4s with a quartic ease-out. A 2px green progress bar at the top tracks reading. Everything is visible without JS, and `prefers-reduced-motion` removes all animation, transitions, marquee movement and the progress bar.
@@ -454,7 +451,7 @@ One ease for everything (`cubic-bezier(0.16, 1, 0.3, 1)`). Hero pieces settle in
 
 ### Don't:
 - **Don't** add a second owner accent, a gradient in the owner's green, or a green section background outside the closing card.
-- **Don't** let Vesty or Millo Manager colors or Barlow Condensed leak outside their cards.
+- **Don't** let Vesty or Gran Manager colors or Barlow Condensed leak outside their cards.
 - **Don't** use JetBrains Mono for anything but years, periods and dated meta.
 - **Don't** put shadows on rows, buttons, sections or product cards; shadows belong to depicted objects and the scrolled nav.
 - **Don't** add skill bars, emoji, glow orbs or decorative blobs; the thesis rejects the dev-portfolio template.
@@ -467,4 +464,4 @@ One ease for everything (`cubic-bezier(0.16, 1, 0.3, 1)`). Hero pieces settle in
 - **Print CV** (`cv/cv.html` to `assets/cv-matias-granzella-{es,en}.pdf`): ATS-safe, Arial at 9.6pt, #111 ink, pt units with 4pt chip radii. Deliberately outside the web system; its Arial and 4pt are sanctioned detector exceptions.
 - **OG image** (`og-image.html` to `assets/og-image-v6.png`): cream ground, giant name with green period, "Backend & AI Engineer" in forest and the three offers in ink-soft, photo filling the right 470px.
 
-Sanctioned detector exceptions (in `.impeccable/config.json`): Barlow Condensed (Millo card only), Arial and 4pt (print CV only), #1F5F4A (brand).
+Sanctioned detector exceptions (in `.impeccable/config.json`): Barlow Condensed (Gran Manager card only), Arial and 4pt (print CV only), #1F5F4A (brand).

@@ -386,9 +386,9 @@ p { text-wrap: pretty; }
 }
 .product__logo { display: flex; align-items: center; gap: 12px; color: var(--v-purple); }
 .product__mark { width: .95em; height: .95em; object-fit: contain; flex-shrink: 0; }
-.product--millo .product__mark { border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px var(--line); }
+.product__mark--dark, [data-theme="dark"] .product__mark--light { display: none; }
+[data-theme="dark"] .product__mark--dark { display: block; }
 .app__logo { width: 26px; height: 26px; object-fit: contain; }
-.pcard__crest img { width: 100%; height: 100%; object-fit: cover; }
 [data-theme="dark"] .product__logo { color: #a79bff; }
 .product__pitch {
   font-size: clamp(1.75rem, 3vw, 2.2rem);
@@ -417,62 +417,87 @@ p { text-wrap: pretty; }
 .product .btn--primary:hover { background: color-mix(in srgb, var(--ink) 82%, var(--bg)); }
 .projects { display: grid; gap: 24px; }
 .product--vesty { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.product--millo { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
-.product--millo .product__visual { order: -1; }
-.product--millo .product__logo { color: var(--ink); }
-.product--millo .product__logo em { font-style: normal; color: #e2332b; }
-[data-theme="dark"] .product--millo .product__logo em { color: #ff5a4f; }
+.product--gran { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+.product--gran .product__visual { order: -1; }
+.product--gran .product__logo { color: var(--ink); }
+.product--gran .product__logo em { font-style: normal; color: #a87c1e; }
+[data-theme="dark"] .product--gran .product__logo em { color: #e6b94e; }
 
-/* Carta de jugador (identidad Millo Manager) */
-.pcard {
-  --m-red: #e2332b;
-  --m-gold: #b8862b;
-  width: 264px;
-  padding: 20px 20px 18px;
-  border-radius: 22px;
-  background: #fff;
-  color: #16171b;
-  border: 3px solid transparent;
-  background-image: linear-gradient(#fff, #fff), linear-gradient(160deg, #f3c34a, var(--m-red));
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .06), 0 36px 60px -30px rgba(120, 20, 15, .45);
+/* Carta de jugador (identidad Gran Manager): el escudo Leyenda del juego. Las cinco cartas están
+   apiladas y se ve una (.is-on); app.js las va pasando. Todo en em: escala con el font-size. */
+.gstack {
+  position: relative;
+  width: 10em; height: 13.9em;
+  font-size: 24px;
   font-family: "Barlow Condensed", var(--sans);
-  text-transform: uppercase;
   transform: rotate(3deg);
   transition: transform .6s var(--ease-out);
 }
-.product--millo:hover .pcard { transform: rotate(0deg) translateY(-4px); }
-.pcard__top { display: flex; justify-content: space-between; align-items: flex-start; }
-.pcard__rating { font-size: 48px; font-weight: 700; line-height: .9; color: var(--m-gold); }
-.pcard__pos { font-size: 14px; font-weight: 700; color: var(--m-gold); margin-top: 2px; }
-.pcard__rarity {
-  font-size: 11px; font-weight: 700; letter-spacing: .08em;
-  color: #fff; background: var(--m-gold);
-  padding: 3px 8px; border-radius: 6px;
+.product--gran:hover .gstack { transform: rotate(0deg) translateY(-4px); }
+.gcard {
+  position: absolute; inset: 0;
+  filter: drop-shadow(0 .7em 1.1em rgba(20, 33, 58, .3));
+  opacity: 0;
+  transform: translateX(1.2em) rotate(6deg) scale(.96);
+  transition: opacity .5s ease, transform .7s var(--ease-out);
 }
-.pcard__crest {
-  position: relative; overflow: hidden;
-  width: 128px; height: 128px; margin: 6px auto 14px;
-  border-radius: 50%;
-  background: #f4f3f0;
-  border: 3px solid #f3c34a;
+.gcard.is-on { opacity: 1; transform: none; }
+.gcard::before, .gcard__in { clip-path: polygon(0 7%, 22% 0, 78% 0, 100% 7%, 100% 82%, 50% 100%, 0 82%); }
+.gcard::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, #fff3c4, #f3b13a 45%, #a8211b);
 }
-.pcard__sash {
-  position: absolute; left: -20%; top: 38%;
-  width: 140%; height: 30px;
-  background: var(--m-red);
-  transform: rotate(-35deg);
+.gcard__in {
+  position: absolute; inset: .22em;
+  overflow: hidden;
+  display: grid; grid-template-rows: auto auto 1fr;
+  padding: 12% 9% 0;
+  background: linear-gradient(160deg, #ffeaa6 0%, #f8c75a 32%, #f19a3c 68%, #e2622a 100%);
+  color: #2a0e05;
 }
-.pcard__name { text-align: center; font-size: 28px; font-weight: 700; letter-spacing: .01em; line-height: 1; }
-.pcard__years { text-align: center; margin-top: 4px; font-size: 13px; font-weight: 600; color: var(--m-gold); letter-spacing: .08em; }
-.pcard__stats {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 0;
-  margin-top: 16px; padding-top: 14px; border-top: 1px solid #e7e5e0;
-  text-align: center;
+.gcard__in::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .07) 0 .45em, transparent .45em .9em);
 }
-.pcard__stats b { display: block; font-size: 22px; font-weight: 700; line-height: 1; }
-.pcard__stats span { font-size: 11px; font-weight: 600; color: #6b6b63; letter-spacing: .08em; }
+.gcard__in::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  mix-blend-mode: soft-light;
+  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, .75) 47%, transparent 62%);
+  background-size: 260% 260%;
+  background-position: var(--mx, 90%) var(--my, 10%);
+}
+.gcard__top { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(1.9em, auto) 1fr; gap: 6%; align-items: start; }
+.gcard__rt { display: flex; flex-direction: column; align-items: center; line-height: .85; }
+.gcard__rt b { font-size: 2em; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.gcard__rt span { font-size: .72em; font-weight: 700; letter-spacing: .02em; margin-top: .15em; }
+.gcard__ph {
+  position: relative; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, #f8bf5e, #b4421d);
+  box-shadow: 0 0 0 .12em rgba(42, 14, 5, .45), inset 0 -.6em 1em rgba(0, 0, 0, .18);
+}
+.gcard__ph img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 30%;
+  scale: 1.18; transform-origin: 50% 8%;
+}
+.gcard__name {
+  position: relative; z-index: 1;
+  text-align: center; font-weight: 700; text-transform: uppercase;
+  font-size: 1.02em; line-height: 1;
+  margin-top: 6%; padding-bottom: 4%;
+  border-bottom: 1px solid rgba(42, 14, 5, .28);
+  white-space: nowrap;
+}
+.gcard__stats {
+  position: relative; z-index: 1; margin: 0;
+  display: grid; grid-template-columns: auto auto; grid-template-rows: repeat(3, auto); grid-auto-flow: column;
+  justify-content: center; align-content: start; row-gap: .12em;
+  padding: 5% 0 0; font-size: .64em;
+}
+.gcard__stats div { display: flex; gap: .3em; align-items: baseline; padding: 0 .75em; font-size: 1.15em; line-height: 1.1; }
+.gcard__stats div:nth-child(n + 4) { border-left: 1px solid rgba(42, 14, 5, .28); }
+.gcard__stats dd { margin: 0; font-weight: 700; min-width: 1.15em; text-align: right; font-variant-numeric: tabular-nums; }
+.gcard__stats dt { font-weight: 600; letter-spacing: .02em; opacity: .85; }
 
 .product__visual { display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .product__caption { font-size: .8rem; color: var(--ink-faint); }
@@ -552,17 +577,18 @@ p { text-wrap: pretty; }
 .app__bar i { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, #3CCBCE, #715DF2); }
 
 @media (max-width: 900px) {
-  .product, .product--millo { grid-template-columns: 1fr; padding: 36px 24px 0; gap: 40px; }
-  .product--millo { padding-bottom: 36px; }
-  .product--millo .product__visual { order: 0; height: auto; overflow: visible; }
-  .product--millo .product__caption { order: 0; }
-  .pcard, .product--millo:hover .pcard { transform: none; }
+  .product, .product--gran { grid-template-columns: 1fr; padding: 36px 24px 0; gap: 40px; }
+  .product--gran { padding-bottom: 36px; }
+  .product--gran .product__visual { order: 0; height: auto; overflow: visible; }
+  .product--gran .product__caption { order: 0; }
+  .gstack { font-size: 21px; }
+  .gstack, .product--gran:hover .gstack { transform: none; }
   .product__visual {
     overflow: hidden; height: 400px; justify-content: flex-start;
     -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
     mask-image: linear-gradient(to bottom, #000 72%, transparent);
   }
-  .product--millo .product__visual { -webkit-mask-image: none; mask-image: none; }
+  .product--gran .product__visual { -webkit-mask-image: none; mask-image: none; }
   .product__caption { order: -1; }
   .browser, .product:hover .browser { transform: none; }
 }
@@ -864,13 +890,13 @@ p { text-wrap: pretty; }
 }
 .product:hover::after { opacity: 1; }
 .product--vesty { --spot: rgba(113, 93, 242, .16); }
-.product--millo { --spot: rgba(226, 51, 43, .12); }
+.product--gran { --spot: rgba(230, 185, 78, .16); }
 [data-theme="dark"] .product--vesty { --spot: rgba(113, 93, 242, .22); }
-[data-theme="dark"] .product--millo { --spot: rgba(226, 51, 43, .18); }
+[data-theme="dark"] .product--gran { --spot: rgba(230, 185, 78, .14); }
 .product__visual { perspective: 1000px; }
-.product .browser, .product .pcard { will-change: transform; }
+.product .browser, .product .gstack { will-change: transform; }
 .product.is-tilting .browser { transform: rotateX(var(--rx)) rotateY(var(--ry)) translateY(-6px); transition: transform .12s linear; }
-.product.is-tilting .pcard { transform: rotateX(var(--rx)) rotateY(var(--ry)) translateY(-6px); transition: transform .12s linear; }
+.product.is-tilting .gstack { transform: rotateX(var(--rx)) rotateY(var(--ry)) translateY(-6px); transition: transform .12s linear; }
 
 /* Features: el ícono gira apenas al pasar el mouse */
 .feature .i { transition: transform .4s var(--ease-out), color .3s; }
